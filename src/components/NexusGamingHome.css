@@ -1,0 +1,499 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+/* ---------------- GLOBAL ---------------- */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0a0a0a; /* Fondo negro futurista */
+  color: #fff; /* Texto blanco base */
+}
+
+.nexus-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+/* ---------------- HEADER ---------------- */
+.nexus-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 98%; /* Ajustable si necesitas que ocupe 100% exacto */
+  z-index: 100;
+  height: 80px;
+  background-color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  border-bottom: 2px solid #00FFFF;
+}
+
+.nexus-logo {
+  font-size: 24px;
+  color: #00FFFF;
+}
+
+.nexus-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nexus-nav a {
+  margin: 0 15px;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover estándar para enlaces del nav */
+.nexus-nav a:hover {
+  color: #00FFFF;
+  border: 2px solid #00FFFF;
+  box-shadow: 0 0 8px #00FFFF;
+}
+
+/* Hover especial para el segundo enlace (PvP) */
+.nexus-nav a:nth-child(2):hover {
+  color: #FF0033;
+  border-color: #FF0033;
+  box-shadow: 0 0 8px #FF0033;
+}
+
+.nexus-nav-item {
+  margin: 0 15px;
+}
+
+/* Hover para el control de idioma */
+.nexus-nav-item:hover .nexus-select__control {
+  border: 2px solid #00FFFF;
+  box-shadow: 0 0 8px #00FFFF;
+}
+
+
+/* ---------------- HERO SECTION ---------------- */
+.nexus-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 100px 20px;
+  margin-top: 100px; /* Compensar header fijo */
+  background: linear-gradient(180deg, #111, #000);
+}
+
+.nexus-hero h1 {
+  font-size: 48px;
+  color: #00FFFF;
+  margin-bottom: 10px;
+}
+
+.nexus-hero p {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.nexus-hero button {
+  padding: 15px 30px;
+  font-size: 16px;
+  background-color: #FF0033;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #FF0033;
+  transition: all 0.3s ease;
+}
+
+.nexus-hero button:hover {
+  background-color: #cc0026;
+  box-shadow: 0 0 15px #FF0033, 0 0 30px #FF0033;
+}
+
+
+/* ---------------- PARALLAX SECTION ---------------- */
+.nexus-parallax {
+  background-image: url('../../public/assets/parallax-bg.jpg');
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #000;
+}
+
+
+/* ---------------- CONTENT SECTIONS ---------------- */
+.nexus-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.nexus-section h2 {
+  font-size: 36px;
+  color: #00FFFF;
+  margin-bottom: 20px;
+}
+
+/* Estilo de título en rojo para sección PvP */
+#matches h2 {
+  color: #FF0033;
+}
+
+.nexus-section p {
+  max-width: 800px;
+  margin: auto;
+  color: #ccc;
+}
+
+
+/* ---------------- FOOTER ---------------- */
+.nexus-footer {
+  position: relative;
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #111;
+  color: #666;
+}
+
+.nexus-footer::before {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  margin: 0 auto 10px;
+  background-color: #FF0033;
+}
+
+
+/* ---------------- SELECTOR DE IDIOMA (React Select) ---------------- */
+.nexus-select {
+  width: 90px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+}
+
+
+/* ---------------- VIDEO SECTION (EXPERIENCIA) ---------------- */
+.nexus-experience-video {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ffff44;
+  object-fit: cover;
+}
+
+.nexus-video-section {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.nexus-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.nexus-video-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 40px;
+  max-width: 800px;
+}
+
+.nexus-video-content h2 {
+  font-size: 36px;
+  color: #00FFFF;
+  margin-bottom: 10px;
+}
+
+.nexus-video-content p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.nexus-video-content button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #FF0033;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #FF0033;
+  transition: 0.3s ease;
+}
+
+.nexus-video-content button:hover {
+  background-color: #cc0026;
+  box-shadow: 0 0 15px #FF0033, 0 0 30px #FF0033;
+}
+
+
+/* ---------------- EQUIPMENT SECTION ---------------- */
+.equipment-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.equipment-block.reverse {
+  flex-direction: row-reverse;
+}
+
+.equipment-image {
+  flex: 1;
+  min-width: 280px;
+}
+
+.equipment-image img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.equipment-text {
+  flex: 1;
+  color: #ccc;
+}
+
+.equipment-text h3 {
+  color: #00FFFF;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.equipment-text p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* ---------------- CUSTOM SCROLLBAR ---------------- */
+
+/* Estilo para navegadores WebKit (Chrome, Edge, Brave, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00FFFF;
+  border-radius: 10px;
+  border: 2px solid #111;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #FF0033;
+}
+
+/* Estilo para Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #00FFFF #111;
+}
+/* ---------------- RESPONSIVE: Tablets ---------------- */
+@media (max-width: 1024px) {
+    .nexus-header {
+      padding: 0 20px;
+      height: 70px;
+    }
+  
+    .nexus-logo {
+      font-size: 20px;
+    }
+  
+    .nexus-hero h1 {
+      font-size: 36px;
+    }
+  
+    .nexus-hero p {
+      font-size: 16px;
+    }
+  
+    .nexus-hero button {
+      font-size: 14px;
+      padding: 12px 24px;
+    }
+  
+    .nexus-section h2 {
+      font-size: 30px;
+    }
+  
+    .equipment-block {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .equipment-block.reverse {
+      flex-direction: column;
+    }
+  
+    .equipment-image img {
+      max-width: 100%;
+    }
+  
+    .nexus-video-content h2 {
+      font-size: 30px;
+    }
+  
+    .nexus-video-content p {
+      font-size: 15px;
+    }
+  }
+  
+  
+  /* ---------------- RESPONSIVE: Móviles ---------------- */
+  @media (max-width: 768px) {
+    .nexus-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 20px;
+      height: auto;
+    }
+  
+    .nexus-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .nexus-nav a,
+    .nexus-nav-item {
+      margin: 5px 0;
+      padding: 8px 10px;
+    }
+  
+    .nexus-hero h1 {
+      font-size: 28px;
+    }
+  
+    .nexus-hero p {
+      font-size: 14px;
+    }
+  
+    .nexus-hero button {
+      font-size: 13px;
+      padding: 10px 20px;
+    }
+  
+    .nexus-parallax {
+      font-size: 24px;
+      height: 250px;
+    }
+  
+    .nexus-section h2 {
+      font-size: 26px;
+    }
+  
+    .nexus-section p {
+      font-size: 14px;
+    }
+  
+    .nexus-footer {
+      font-size: 12px;
+      padding: 20px 10px;
+    }
+  
+    .equipment-text h3 {
+      font-size: 22px;
+    }
+  
+    .equipment-text p {
+      font-size: 14px;
+    }
+  }
+  /* Botón hamburguesa oculto por defecto */
+.nexus-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #00FFFF;
+    cursor: pointer;
+  }
+  
+  /* Para móviles */
+  @media (max-width: 768px) {
+    .nexus-menu-toggle {
+      display: block;
+    }
+  
+    .nexus-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 20px;
+      height: auto;
+    }
+  
+    .nexus-nav {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      background-color: #111;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 20px;
+      display: none;
+    }
+  
+    .nexus-nav.open {
+      display: flex;
+    }
+  
+    .nexus-nav a,
+    .nexus-nav-item {
+      margin: 10px 0;
+      padding: 8px 12px;
+      width: 100%;
+    }
+  }
+  
+  .nexus-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .nexus-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #00FFFF;
+    cursor: pointer;
+  }
+  
