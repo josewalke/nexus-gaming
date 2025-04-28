@@ -104,7 +104,7 @@ export default function NexusGamingHome() {
       </section>
 
       <section className="nexus-parallax">
-        <h2>Enter the VR World</h2>
+        <h2>{t.enterVr}</h2>
       </section>
 
       <section id="experience" className="nexus-section nexus-video-section">
