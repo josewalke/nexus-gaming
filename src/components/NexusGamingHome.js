@@ -23,74 +23,79 @@ export default function NexusGamingHome() {
   return (
     <div className="nexus-container">
       <header className="nexus-header">
-        <div className="nexus-brand">
-          <div className="nexus-logo">NEXUS GAMING eSPORT</div>
-          <button className="nexus-menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-            ☰
-          </button>
-        </div>
+  <div className="nexus-header-inner">
+    {/* Logo y Hamburguesa alineados */}
+    <div className="nexus-brand">
+      <div className="nexus-logo">NEXUS GAMING eSPORT</div>
+      <button className="nexus-menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </button>
+    </div>
 
-        <nav className={`nexus-nav ${menuOpen ? 'open' : ''}`}>
-          {navLinks.map((link, i) => (
-            <a key={i} href={`#${link.id}`} onClick={() => setMenuOpen(false)}>
-              {link.label}
-            </a>
-          ))}
-          <div className="nexus-nav-item">
-            <Select
-              options={langOptions}
-              defaultValue={langOptions.find(opt => opt.value === lang)}
-              onChange={(e) => setLang(e.value)}
-              classNamePrefix="nexus-select"
-              className="nexus-select"
-              styles={{
-                control: (base, state) => ({
-                  ...base,
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  color: '#00FFFF',
-                  fontFamily: 'Orbitron',
-                  fontSize: '14px',
-                  minHeight: '40px',
-                  height: '35px',
-                  boxShadow: state.isFocused ? '0 0 8px #00FFFF' : 'none',
-                  cursor: 'pointer',
-                  transition: '0.3s ease',
-                  borderRadius: '8px'
-                }),
-                dropdownIndicator: (base) => ({
-                  ...base,
-                  padding: 2,
-                  color: '#00FFFF',
-                  transition: '0.3s ease',
-                }),
-                indicatorSeparator: () => ({ display: 'none' }),
-                menu: (base) => ({
-                  ...base,
-                  backgroundColor: '#0a0a0a',
-                  border: '1px solid #00FFFF',
-                  borderRadius: '8px',
-                }),
-                option: (base, state) => ({
-                  ...base,
-                  backgroundColor: state.isFocused ? '#00FFFF' : '#0a0a0a',
-                  color: state.isFocused ? '#0a0a0a' : '#00FFFF',
-                  fontSize: '13px',
-                  padding: '8px 12px',
-                  fontFamily: 'Orbitron',
-                  cursor: 'pointer',
-                  transition: '0.3s ease',
-                }),
-                singleValue: (base) => ({
-                  ...base,
-                  color: '#00FFFF',
-                  fontWeight: 'bold',
-                }),
-              }}
-            />
-          </div>
-        </nav>
-      </header>
+    {/* Navegación y selector de idioma */}
+    <nav className={`nexus-nav ${menuOpen ? 'open' : ''}`}>
+      {navLinks.map((link, i) => (
+        <a key={i} href={`#${link.id}`} onClick={() => setMenuOpen(false)}>
+          {link.label}
+        </a>
+      ))}
+      <div className="nexus-nav-item">
+        <Select
+          options={langOptions}
+          defaultValue={langOptions.find(opt => opt.value === lang)}
+          onChange={(e) => setLang(e.value)}
+          classNamePrefix="nexus-select"
+          className="nexus-select"
+          styles={{
+            control: (base, state) => ({
+              ...base,
+              backgroundColor: 'transparent',
+              border: 'none',
+              color: '#00FFFF',
+              fontFamily: 'Orbitron',
+              fontSize: '14px',
+              minHeight: '40px',
+              height: '35px',
+              boxShadow: state.isFocused ? '0 0 8px #00FFFF' : 'none',
+              cursor: 'pointer',
+              transition: '0.3s ease',
+              borderRadius: '8px'
+            }),
+            dropdownIndicator: (base) => ({
+              ...base,
+              padding: 2,
+              color: '#00FFFF',
+              transition: '0.3s ease',
+            }),
+            indicatorSeparator: () => ({ display: 'none' }),
+            menu: (base) => ({
+              ...base,
+              backgroundColor: '#0a0a0a',
+              border: '1px solid #00FFFF',
+              borderRadius: '8px',
+            }),
+            option: (base, state) => ({
+              ...base,
+              backgroundColor: state.isFocused ? '#00FFFF' : '#0a0a0a',
+              color: state.isFocused ? '#0a0a0a' : '#00FFFF',
+              fontSize: '13px',
+              padding: '8px 12px',
+              fontFamily: 'Orbitron',
+              cursor: 'pointer',
+              transition: '0.3s ease',
+            }),
+            singleValue: (base) => ({
+              ...base,
+              color: '#00FFFF',
+              fontWeight: 'bold',
+            }),
+          }}
+        />
+      </div>
+    </nav>
+  </div>
+</header>
+
 
       <section className="nexus-hero">
         <h1>{t.title}</h1>
