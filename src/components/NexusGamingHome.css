@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
-/* ---------------- GLOBAL ---------------- */
+/* ----------- GLOBAL ----------- */
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -14,18 +14,17 @@ body {
   min-height: 100vh;
 }
 
-
-/* ---------------- HEADER ---------------- */
+/* ----------- HEADER ----------- */
 .nexus-header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 98%;
   z-index: 100;
   height: 80px;
   background-color: #111;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 0 40px;
   border-bottom: 2px solid #00FFFF;
@@ -36,7 +35,6 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
 }
 
 .nexus-brand {
@@ -57,19 +55,24 @@ body {
   font-size: 32px;
   color: #00FFFF;
   cursor: pointer;
+  margin-left: 15px;
   z-index: 1001;
 }
 
+/* ----------- NAV ----------- */
 .nexus-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-end;
+  flex: 1;
+  width: 100%;
 }
 
 .nexus-nav a {
+  margin: 0 15px;
+  padding: 8px 15px;
   text-decoration: none;
   color: #fff;
-  padding: 8px 15px;
   border: 2px solid transparent;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -87,19 +90,23 @@ body {
   box-shadow: 0 0 8px #FF0033;
 }
 
+.nexus-nav-item {
+  margin: 0 15px;
+}
+
 .nexus-nav-item:hover .nexus-select__control {
   border: 2px solid #00FFFF;
   box-shadow: 0 0 8px #00FFFF;
 }
 
+/* ----------- SELECTOR IDIOMA ----------- */
 .nexus-select {
   width: 90px;
   font-family: 'Orbitron', sans-serif;
   font-size: 13px;
 }
 
-
-/* ---------------- HERO SECTION ---------------- */
+/* ----------- HERO SECTION ----------- */
 .nexus-hero {
   display: flex;
   flex-direction: column;
@@ -113,12 +120,13 @@ body {
 .nexus-hero h1 {
   font-size: 48px;
   color: #00FFFF;
+  margin-bottom: 10px;
 }
 
 .nexus-hero p {
   font-size: 18px;
   color: #ccc;
-  margin: 20px 0 30px;
+  margin-bottom: 30px;
 }
 
 .nexus-hero button {
@@ -138,15 +146,14 @@ body {
   box-shadow: 0 0 15px #FF0033, 0 0 30px #FF0033;
 }
 
-
-/* ---------------- PARALLAX SECTION ---------------- */
+/* ----------- PARALLAX ----------- */
 .nexus-parallax {
   background-image: url('../../public/assets/parallax-bg.jpg');
+  height: 400px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,8 +163,7 @@ body {
   text-shadow: 0 0 10px #000;
 }
 
-
-/* ---------------- CONTENT SECTIONS ---------------- */
+/* ----------- CONTENT SECTIONS ----------- */
 .nexus-section {
   padding: 60px 20px;
   text-align: center;
@@ -179,8 +185,7 @@ body {
   color: #ccc;
 }
 
-
-/* ---------------- EQUIPMENT SECTION ---------------- */
+/* ----------- EQUIPMENT SECTION ----------- */
 .equipment-block {
   display: flex;
   align-items: center;
@@ -194,6 +199,11 @@ body {
   flex-direction: row-reverse;
 }
 
+.equipment-image {
+  flex: 1;
+  min-width: 280px;
+}
+
 .equipment-image img {
   width: 100%;
   max-width: 400px;
@@ -205,8 +215,8 @@ body {
 }
 
 .equipment-text h3 {
-  font-size: 28px;
   color: #00FFFF;
+  font-size: 28px;
   margin-bottom: 10px;
 }
 
@@ -215,8 +225,7 @@ body {
   line-height: 1.6;
 }
 
-
-/* ---------------- VIDEO SECTION ---------------- */
+/* ----------- VIDEO SECTION ----------- */
 .nexus-video-section {
   position: relative;
   height: 500px;
@@ -272,8 +281,7 @@ body {
   box-shadow: 0 0 15px #FF0033, 0 0 30px #FF0033;
 }
 
-
-/* ---------------- FOOTER ---------------- */
+/* ----------- FOOTER ----------- */
 .nexus-footer {
   position: relative;
   text-align: center;
@@ -291,10 +299,10 @@ body {
   background-color: #FF0033;
 }
 
-
-/* ---------------- CUSTOM SCROLLBAR ---------------- */
+/* ----------- CUSTOM SCROLLBAR ----------- */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -316,8 +324,7 @@ html {
   scrollbar-color: #00FFFF #111;
 }
 
-
-/* ---------------- RESPONSIVE ---------------- */
+/* ----------- RESPONSIVE: Tablets ----------- */
 @media (max-width: 1024px) {
   .nexus-header {
     padding: 0 20px;
@@ -335,16 +342,42 @@ html {
   .nexus-hero p {
     font-size: 16px;
   }
-}
 
-@media (max-width: 768px) {
-  .nexus-header-inner {
-    flex-direction: column;
-    align-items: flex-start;
+  .nexus-hero button {
+    font-size: 14px;
+    padding: 12px 24px;
   }
 
-  .nexus-menu-toggle {
-    display: block;
+  .nexus-section h2 {
+    font-size: 30px;
+  }
+
+  .equipment-block {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .equipment-image img {
+    max-width: 100%;
+  }
+
+  .nexus-video-content h2 {
+    font-size: 30px;
+  }
+
+  .nexus-video-content p {
+    font-size: 15px;
+  }
+}
+
+/* ----------- RESPONSIVE: Móviles ----------- */
+@media (max-width: 768px) {
+  .nexus-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    height: auto;
   }
 
   .nexus-nav {
@@ -358,6 +391,7 @@ html {
     padding: 20px 0;
     border-top: 2px solid #00FFFF;
     text-align: center;
+    z-index: 99;
   }
 
   .nexus-nav.open {
@@ -366,9 +400,13 @@ html {
 
   .nexus-nav a,
   .nexus-nav-item {
-    margin: 10px 0;
-    padding: 8px 12px;
+    margin: 5px 0;
+    padding: 8px 10px;
     width: 100%;
+  }
+
+  .nexus-menu-toggle {
+    display: block;
   }
 
   .nexus-hero h1 {
@@ -379,8 +417,26 @@ html {
     font-size: 14px;
   }
 
+  .nexus-hero button {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+
   .nexus-parallax {
     font-size: 24px;
     height: 250px;
+  }
+
+  .nexus-section h2 {
+    font-size: 26px;
+  }
+
+  .nexus-section p {
+    font-size: 14px;
+  }
+
+  .nexus-footer {
+    font-size: 12px;
+    padding: 20px 10px;
   }
 }
