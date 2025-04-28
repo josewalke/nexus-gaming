@@ -9,7 +9,7 @@ const translations = {
     section2Text: "Challenge your friends or rivals...",
     section3: "Testimonials",
     section3Text: "Incredible experience!",
-    nav: ["Experience", "PvP Matches", "Equipment", "Testimonials"],
+    nav: ["Experience", "PvP", "Equipment", "Testimonials"],
     footer: "All rights reserved.",
     equipment: {
       kat: {

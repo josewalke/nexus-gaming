@@ -112,13 +112,12 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 100px 20px;
-  margin-top: 100px;
+  padding: 200px 20px;
   background: linear-gradient(180deg, #111, #000);
 }
 
 .nexus-hero h1 {
-  font-size: 48px;
+  font-size: 58px;
   color: #00FFFF;
   margin-bottom: 10px;
 }
@@ -165,12 +164,12 @@ body {
 
 /* ----------- CONTENT SECTIONS ----------- */
 .nexus-section {
-  padding: 60px 20px;
+  padding: 60px;
   text-align: center;
 }
 
 .nexus-section h2 {
-  font-size: 36px;
+  font-size: 46px;
   color: #00FFFF;
   margin-bottom: 20px;
 }
@@ -440,3 +439,44 @@ html {
     padding: 20px 10px;
   }
 }
+@media (max-width: 350px) {
+  .nexus-logo {
+    font-size: 17px;
+  }
+
+  .nexus-hero h1 {
+    font-size: 24px;
+  }
+
+  .nexus-hero p {
+    font-size: 13px;
+  }
+
+  .nexus-hero button {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .nexus-nav a {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .nexus-select {
+    width: 80px;
+    font-size: 12px;
+  }
+
+  .nexus-section h2 {
+    font-size: 24px;
+  }
+
+  .nexus-section p {
+    font-size: 13px;
+  }
+
+  .nexus-footer {
+    font-size: 11px;
+  }
+}
+
