@@ -53,7 +53,7 @@ export default function NexusGamingHome() {
                   border: 'none',
                   color: '#00FFFF',
                   fontFamily: 'Orbitron',
-                  fontSize: '14px',
+                  fontSize: '16px',
                   minHeight: '40px',
                   height: '35px',
                   boxShadow: state.isFocused ? '0 0 8px #00FFFF' : 'none',
