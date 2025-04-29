@@ -335,6 +335,8 @@ html {
 @media (max-width: 1024px) {
   .nexus-parallax {
     height: 300px;
+    background-size: cover;
+    background-position: center;
     font-size: 24px;
   }
   .nexus-header {
@@ -459,12 +461,20 @@ html {
     font-size: 12px;
     padding: 20px 10px;
   }
+  .nexus-parallax {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    font-size: 24px;
+  }
 }
 
 /* ----------- RESPONSIVE: 480px a 600px ----------- */
 @media (min-width: 480px) and (max-width: 600px) {
   .nexus-parallax {
     height: 300px;
+    background-size: cover;
+    background-position: center;
     font-size: 24px;
   }
   .nexus-hero h1 {
@@ -521,6 +531,8 @@ html {
 @media (min-width: 350px) and (max-width: 480px) {
   .nexus-parallax {
     height: 300px;
+    background-size: cover;
+    background-position: center;
     font-size: 24px;
   }
   .nexus-hero h1 {
@@ -577,6 +589,8 @@ html {
 @media (max-width: 350px) {
   .nexus-parallax {
     height: 300px;
+    background-size: cover;
+    background-position: center;
     font-size: 24px;
   }
   .nexus-logo {
