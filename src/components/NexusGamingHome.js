@@ -25,7 +25,7 @@ export default function NexusGamingHome() {
       <header className="nexus-header">
         <div className="nexus-header-inner">
           <div className="nexus-brand">
-            <div className="nexus-logo">NEXUS GAMING eSPORT</div>
+            <div className="nexus-logo">NEXUS eSPORT VR</div>
             <button className="nexus-menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
               ☰
             </button>
