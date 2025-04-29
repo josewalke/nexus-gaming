@@ -151,7 +151,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* 🎯 Esto activa el efecto parallax */
+  background-attachment: scroll; /* 👈 por defecto NO parallax */
   height: 400px;
   display: flex;
   align-items: center;
@@ -161,6 +161,13 @@ body {
   font-size: 36px;
   font-weight: bold;
   text-shadow: 0 0 10px #000;
+}
+
+/* ----- EFECTO PARALLAX SOLO EN ORDENADORES ----- */
+@media (hover: hover) and (pointer: fine) {
+  .nexus-parallax {
+    background-attachment: fixed;
+  }
 }
 
 .nexus-parallax-content {
