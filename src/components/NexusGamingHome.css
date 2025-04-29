@@ -333,6 +333,20 @@ html {
 }
 /* ----------- RESPONSIVE: Tablets ----------- */
 @media (max-width: 1024px) {
+  .nexus-parallax {
+    background-image: url('../../public/assets/parallax-bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #000;
+  }
   .nexus-header {
     padding: 0 20px;
     height: 70px;
@@ -459,6 +473,20 @@ html {
 
 /* ----------- RESPONSIVE: 480px a 600px ----------- */
 @media (min-width: 480px) and (max-width: 600px) {
+  .nexus-parallax {
+    background-image: url('../../public/assets/parallax-bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #000;
+  }
   .nexus-hero h1 {
     font-size: 32px;
   }
@@ -511,6 +539,20 @@ html {
 
 /* ----------- RESPONSIVE: 350px a 480px ----------- */
 @media (min-width: 350px) and (max-width: 480px) {
+  .nexus-parallax {
+    background-image: url('../../public/assets/parallax-bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #000;
+  }
   .nexus-hero h1 {
     font-size: 26px;
   }
@@ -563,6 +605,20 @@ html {
 
 /* ----------- RESPONSIVE: móviles muy pequeños (menos de 350px) ----------- */
 @media (max-width: 350px) {
+  .nexus-parallax {
+    background-image: url('../../public/assets/parallax-bg.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #000;
+  }
   .nexus-logo {
     font-size: 17px;
   }
