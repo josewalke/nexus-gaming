@@ -55,7 +55,7 @@ body {
   font-size: 32px;
   color: #00FFFF;
   cursor: pointer;
-  margin-left: 15px;
+  margin-left: 370px;
   z-index: 1001;
 }
 
@@ -103,7 +103,7 @@ body {
 .nexus-select {
   width: 90px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 16px; /* 16px para evitar zoom en móviles */
+  font-size: 16px;
 }
 
 /* ----------- HERO SECTION ----------- */
@@ -148,18 +148,23 @@ body {
 /* ----------- PARALLAX SECTION ----------- */
 .nexus-parallax {
   background-image: url('../../public/assets/parallax-bg.jpg');
-  height: 400px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 36px;
   font-weight: bold;
   text-shadow: 0 0 10px #000;
+}
+
+.nexus-parallax-content {
+  font-size: 36px;
+  text-align: center;
+  padding: 0 20px;
 }
 
 /* ----------- CONTENT SECTIONS ----------- */
@@ -213,6 +218,7 @@ body {
 
 .equipment-text {
   flex: 1;
+  text-align: center;
   color: #ccc;
 }
 
@@ -325,9 +331,7 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #00FFFF #111;
 }
-
-/* ----------- RESPONSIVE ----------- */
-/* Tablets */
+/* ----------- RESPONSIVE: Tablets ----------- */
 @media (max-width: 1024px) {
   .nexus-header {
     padding: 0 20px;
@@ -372,9 +376,13 @@ html {
   .nexus-video-content p {
     font-size: 15px;
   }
+
+  .nexus-parallax-content {
+    font-size: 30px;
+  }
 }
 
-/* Móviles */
+/* ----------- RESPONSIVE: Móviles ----------- */
 @media (max-width: 768px) {
   .nexus-header {
     flex-direction: column;
@@ -410,13 +418,7 @@ html {
 
   .nexus-menu-toggle {
     display: block;
-  }
-
-  .nexus-parallax {
-    height: 250px;
-  }
-  .nexus-parallax-content {
-    font-size: 84px;
+    margin-left: 400px;
   }
 
   .nexus-hero h1 {
@@ -433,23 +435,12 @@ html {
   }
 
   .nexus-parallax {
-    background-image: url('../../public/assets/parallax-bg.jpg');
-    height: 400px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 30x;
-    font-weight: bold;
-    text-shadow: 0 0 10px #000;
+    height: 250px;
+    font-size: 40px;
   }
-  
+
   .nexus-parallax-content {
-    font-size: 84px;
+    font-size: 24px;
   }
 
   .nexus-section h2 {
@@ -466,7 +457,111 @@ html {
   }
 }
 
-/* Móviles pequeños (350px) */
+/* ----------- RESPONSIVE: 480px a 600px ----------- */
+@media (min-width: 480px) and (max-width: 600px) {
+  .nexus-hero h1 {
+    font-size: 32px;
+  }
+
+  .nexus-hero p {
+    font-size: 16px;
+  }
+
+  .nexus-hero button {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+  .nexus-parallax {
+    height: 250px;
+    font-size: 25px;
+  }
+  .nexus-parallax-content {
+    font-size: 28px;
+  }
+  .nexus-menu-toggle {
+    display: block;
+    margin-left: 170px;
+  }
+
+  .nexus-section h2 {
+    font-size: 28px;
+  }
+
+  .nexus-section p {
+    font-size: 16px;
+  }
+
+  .equipment-image img {
+    max-width: 90%;
+  }
+
+  .equipment-text h3 {
+    font-size: 24px;
+  }
+
+  .equipment-text p {
+    font-size: 15px;
+  }
+
+  .nexus-footer {
+    font-size: 13px;
+    padding: 25px 15px;
+  }
+}
+
+/* ----------- RESPONSIVE: 350px a 480px ----------- */
+@media (min-width: 350px) and (max-width: 480px) {
+  .nexus-hero h1 {
+    font-size: 26px;
+  }
+
+  .nexus-hero p {
+    font-size: 14px;
+  }
+
+  .nexus-hero button {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+  .nexus-parallax {
+    height: 250px;
+    font-size: 19px;
+  }
+  .nexus-parallax-content {
+    font-size: 24px;
+  }
+
+  .nexus-section h2 {
+    font-size: 26px;
+  }
+
+  .nexus-section p {
+    font-size: 14px;
+  }
+
+  .equipment-image img {
+    max-width: 100%;
+  }
+
+  .equipment-text h3 {
+    font-size: 22px;
+  }
+
+  .equipment-text p {
+    font-size: 14px;
+  }
+
+  .nexus-footer {
+    font-size: 12px;
+    padding: 20px 10px;
+  }
+  .nexus-menu-toggle {
+    display: block;
+    margin-left: 35px;
+  }
+}
+
+/* ----------- RESPONSIVE: móviles muy pequeños (menos de 350px) ----------- */
 @media (max-width: 350px) {
   .nexus-logo {
     font-size: 17px;
@@ -474,21 +569,6 @@ html {
 
   .nexus-hero h1 {
     font-size: 24px;
-  }
-  .nexus-parallax {
-    background-image: url('../../public/assets/parallax-bg.jpg');
-    height: 400px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 19px;
-    font-weight: bold;
-    text-shadow: 0 0 10px #000;
   }
 
   .nexus-hero p {
@@ -510,16 +590,16 @@ html {
     font-size: 12px;
   }
 
+  .nexus-parallax-content {
+    font-size: 20px;
+  }
+
   .nexus-section h2 {
     font-size: 24px;
   }
 
   .nexus-section p {
     font-size: 13px;
-  }
-
-  .nexus-footer {
-    font-size: 11px;
   }
 
   .equipment-block,
@@ -541,129 +621,9 @@ html {
     max-width: 300px;
     width: 100%;
   }
-}
-@media (min-width: 480px) and (max-width: 600px) {
-  /* Hero Section */
-  .nexus-hero h1 {
-    font-size: 32px;
-  }
 
-  .nexus-hero p {
-    font-size: 16px;
-  }
-
-  .nexus-hero button {
-    font-size: 14px;
-    padding: 12px 24px;
-  }
-  .nexus-parallax {
-    background-image: url('../../public/assets/parallax-bg.jpg');
-    height: 400px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 19px;
-    font-weight: bold;
-    text-shadow: 0 0 10px #000;
-  }
-  /* Parallax Section */
-  .nexus-parallax-content {
-    font-size: 28px;
-  }
-
-  /* Sections Titles */
-  .nexus-section h2 {
-    font-size: 28px;
-  }
-
-  .nexus-section p {
-    font-size: 16px;
-  }
-
-  /* Equipment Section */
-  .equipment-image img {
-    max-width: 90%;
-  }
-
-  .equipment-text h3 {
-    font-size: 24px;
-  }
-
-  .equipment-text p {
-    font-size: 15px;
-  }
-
-  /* Footer */
   .nexus-footer {
-    font-size: 13px;
-    padding: 25px 15px;
-  }
-}
-@media (min-width: 350px) and (max-width: 480px) {
-  /* Hero Section */
-  .nexus-hero h1 {
-    font-size: 26px;
-  }
-
-  .nexus-hero p {
-    font-size: 14px;
-  }
-
-  .nexus-hero button {
-    font-size: 13px;
-    padding: 10px 20px;
-  }
-  .nexus-parallax {
-    background-image: url('../../public/assets/parallax-bg.jpg');
-    height: 400px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 19px;
-    font-weight: bold;
-    text-shadow: 0 0 10px #000;
-  }
-  /* Parallax Section */
-  .nexus-parallax-content {
-    font-size: 24px;
-  }
-
-  /* Sections Titles */
-  .nexus-section h2 {
-    font-size: 26px;
-  }
-
-  .nexus-section p {
-    font-size: 14px;
-  }
-
-  /* Equipment Section */
-  .equipment-image img {
-    max-width: 100%;
-  }
-
-  .equipment-text h3 {
-    font-size: 22px;
-  }
-
-  .equipment-text p {
-    font-size: 14px;
-  }
-
-  /* Footer */
-  .nexus-footer {
-    font-size: 12px;
+    font-size: 11px;
     padding: 20px 10px;
   }
 }
-
