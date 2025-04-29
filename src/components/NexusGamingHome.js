@@ -42,6 +42,8 @@ export default function NexusGamingHome() {
           <div className="nexus-nav-item">
             <Select
               options={langOptions}
+              menuPlacement="auto"
+              isSearchable={false}
               defaultValue={langOptions.find(opt => opt.value === lang)}
               onChange={(e) => setLang(e.value)}
               classNamePrefix="nexus-select"
