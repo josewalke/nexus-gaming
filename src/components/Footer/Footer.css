@@ -1,0 +1,48 @@
+/* ----------- FOOTER ----------- */
+.nexus-footer {
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid #00FFFF;
+  position: relative;
+}
+
+.nexus-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00FFFF, transparent);
+}
+
+/* ----------- RESPONSIVE FOOTER ----------- */
+@media (max-width: 768px) {
+  .nexus-footer {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 600px) {
+  .nexus-footer {
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 480px) {
+  .nexus-footer {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .nexus-footer {
+    padding: 8px;
+    font-size: 11px;
+  }
+} 

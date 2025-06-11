@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+/* ----------- GLOBAL ----------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0a0a0a;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.nexus-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ----------- CONTENT SECTIONS ----------- */
+.nexus-section {
+  padding: 60px;
+  text-align: center;
+  width: 100%;
+}
+
+.nexus-section h2 {
+  font-size: 46px;
+  color: #00FFFF;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.nexus-section p {
+  max-width: 800px;
+  margin: auto;
+  color: #ccc;
+  word-wrap: break-word;
+  line-height: 1.6;
+}
+
+/* ----------- OPTIMIZED IMAGES ----------- */
+.optimized-image {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.optimized-image.loading {
+  opacity: 0.3;
+  transform: scale(0.95);
+}
+
+.optimized-image.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ----------- SCROLLBAR ----------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00FFFF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00cccc;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ----------- DEVICE SPECIFIC ----------- */
+/* iPhone X and newer with notch */
+@supports (padding: max(0px)) {
+  .nexus-header {
+    padding-left: max(40px, env(safe-area-inset-left));
+    padding-right: max(40px, env(safe-area-inset-right));
+  }
+  
+  .nexus-section {
+    padding-left: max(60px, env(safe-area-inset-left));
+    padding-right: max(60px, env(safe-area-inset-right));
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .nexus-hero {
+    padding: 100px 20px;
+  }
+  
+  .nexus-video-section {
+    height: 300px;
+  }
+  
+  .nexus-parallax {
+    height: 200px;
+  }
+}
+
+/* ----------- RESPONSIVE GLOBAL ----------- */
+@media (max-width: 1024px) {
+  .nexus-section {
+    padding: 40px;
+  }
+
+  .nexus-section h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nexus-section {
+    padding: 30px 20px;
+  }
+
+  .nexus-section h2 {
+    font-size: 28px;
+  }
+
+  .nexus-section p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 600px) {
+  .nexus-section {
+    padding: 25px 15px;
+  }
+
+  .nexus-section h2 {
+    font-size: 24px;
+  }
+
+  .nexus-section p {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 480px) {
+  .nexus-section {
+    padding: 20px 10px;
+  }
+
+  .nexus-section h2 {
+    font-size: 20px;
+  }
+
+  .nexus-section p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .nexus-section {
+    padding: 15px 8px;
+  }
+
+  .nexus-section h2 {
+    font-size: 18px;
+  }
+
+  .nexus-section p {
+    font-size: 11px;
+  }
+}
+
+/* ----------- TOUCH DEVICE OPTIMIZATIONS ----------- */
+@media (hover: none) and (pointer: coarse) {
+  /* Optimizations for touch devices */
+  .nexus-nav a {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nexus-hero button {
+    min-height: 44px;
+    min-width: 120px;
+  }
+}
+
+/* ----------- HIGH DPI DISPLAYS ----------- */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .optimized-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+} 

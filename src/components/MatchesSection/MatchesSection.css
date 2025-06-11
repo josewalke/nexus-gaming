@@ -1,0 +1,35 @@
+/* ----------- MATCHES SECTION ----------- */
+#matches h2 {
+  color: #FF0033;
+}
+
+/* ----------- RESPONSIVE MATCHES ----------- */
+@media (max-width: 1024px) {
+  #matches h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  #matches h2 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 600px) {
+  #matches h2 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 480px) {
+  #matches h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  #matches h2 {
+    font-size: 18px;
+  }
+} 

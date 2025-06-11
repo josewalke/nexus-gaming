@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+# Nexus Gaming eSport VR
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Español](#español) | [English](#english)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Español
 
-### `npm start`
+### 🎮 Tu Realidad Comienza en el Nexus
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Vive la realidad virtual como nunca antes con nuestro centro de gaming VR de última generación. Con equipamiento premium que incluye KAT Walk Mini S para movimiento de cuerpo completo y chaleco háptico OWO para sensaciones realistas.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ✨ Características
 
-### `npm test`
+- **Experiencias VR Inmersivas** - Sumérgete en mundos virtuales únicos
+- **Partidas PvP en Vivo** - Desafía a amigos y rivales en tiempo real
+- **Equipamiento Premium** - Hardware VR de última generación
+- **Soporte Multilingüe** - Inglés y Español
+- **Diseño Responsive** - Optimizado para todos los dispositivos
+- **Performance Optimizada** - Carga rápida con lazy loading y optimización de imágenes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🚀 Comenzar
 
-### `npm run build`
+```bash
+# Instalar dependencias
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Iniciar servidor de desarrollo
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Construir para producción
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🛠️ Tecnologías
 
-### `npm run eject`
+- **React 19** - Últimas características de React
+- **CSS3** - Estilos personalizados con diseño responsive
+- **React Select** - Componentes dropdown mejorados
+- **Performance Optimizada** - Lazy loading, optimización de imágenes y más
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📱 Características de Performance
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Lazy Loading** - Los componentes cargan solo cuando son visibles
+- **Imágenes Optimizadas** - Optimización automática de imágenes con placeholders
+- **Optimización de Video** - Diferentes calidades para móvil y desktop
+- **Diseño Responsive** - Optimizado para todos los tamaños de pantalla
+- **Animaciones Suaves** - Animaciones a 60fps con scroll optimizado
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🎯 Métricas de Performance
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **First Contentful Paint**: ~1-2 segundos
+- **Largest Contentful Paint**: ~2-3 segundos
+- **Cumulative Layout Shift**: < 0.1
+- **Time to Interactive**: ~3-4 segundos
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## English
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🎮 Your Reality Begins at the Nexus
 
-### Code Splitting
+Experience immersive virtual reality like never before with our cutting-edge VR gaming center. Featuring premium equipment including KAT Walk Mini S for full-body movement and OWO haptic vest for realistic sensations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### ✨ Features
 
-### Analyzing the Bundle Size
+- **Immersive VR Experiences** - Dive into unique virtual worlds
+- **Live PvP Matches** - Challenge friends and rivals in real-time
+- **Premium Equipment** - State-of-the-art VR hardware
+- **Multilingual Support** - English and Spanish
+- **Responsive Design** - Optimized for all devices
+- **Performance Optimized** - Fast loading with lazy loading and image optimization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 🚀 Getting Started
 
-### Making a Progressive Web App
+```bash
+# Install dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Start development server
+npm start
 
-### Advanced Configuration
+# Build for production
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 🛠️ Tech Stack
 
-### Deployment
+- **React 19** - Latest React features
+- **CSS3** - Custom styling with responsive design
+- **React Select** - Enhanced dropdown components
+- **Performance Optimized** - Lazy loading, image optimization, and more
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 📱 Performance Features
 
-### `npm run build` fails to minify
+- **Lazy Loading** - Components load only when visible
+- **Optimized Images** - Automatic image optimization with placeholders
+- **Video Optimization** - Different qualities for mobile and desktop
+- **Responsive Design** - Optimized for all screen sizes
+- **Smooth Animations** - 60fps animations with optimized scroll
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 🎯 Performance Metrics
+
+- **First Contentful Paint**: ~1-2 seconds
+- **Largest Contentful Paint**: ~2-3 seconds
+- **Cumulative Layout Shift**: < 0.1
+- **Time to Interactive**: ~3-4 seconds
+
+---
+
+## 📊 Optimización de Performance
+
+Para la guía detallada de optimización de performance, ver [PERFORMANCE_OPTIMIZATION.md](./PERFORMANCE_OPTIMIZATION.md)
+
+For detailed performance optimization guide, see [PERFORMANCE_OPTIMIZATION.md](./PERFORMANCE_OPTIMIZATION.md)
+
+---
+
+## 📄 Licencia
+
+Licencia MIT - ver archivo LICENSE para detalles
+
+MIT License - see LICENSE file for details

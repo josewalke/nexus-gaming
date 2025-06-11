@@ -1,0 +1,119 @@
+/* ----------- EQUIPMENT SECTION ----------- */
+.equipment-block {
+  display: flex;
+  align-items: center;
+  margin: 60px 0;
+  gap: 40px;
+}
+
+.equipment-block.reverse {
+  flex-direction: row-reverse;
+}
+
+.equipment-image {
+  flex: 1;
+  text-align: center;
+}
+
+.equipment-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.equipment-text {
+  flex: 1;
+  padding: 20px;
+}
+
+.equipment-text h3 {
+  font-size: 32px;
+  color: #00FFFF;
+  margin-bottom: 15px;
+}
+
+.equipment-text p {
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* ----------- RESPONSIVE EQUIPMENT ----------- */
+@media (max-width: 1024px) {
+  .equipment-block {
+    margin: 40px 0;
+    gap: 30px;
+  }
+
+  .equipment-text h3 {
+    font-size: 28px;
+  }
+
+  .equipment-text p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .equipment-block {
+    flex-direction: column;
+    margin: 30px 0;
+    gap: 20px;
+  }
+
+  .equipment-block.reverse {
+    flex-direction: column;
+  }
+
+  .equipment-image img {
+    max-width: 80%;
+  }
+
+  .equipment-text h3 {
+    font-size: 24px;
+  }
+
+  .equipment-text p {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 600px) {
+  .equipment-text h3 {
+    font-size: 20px;
+  }
+
+  .equipment-text p {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 480px) {
+  .equipment-text h3 {
+    font-size: 18px;
+  }
+
+  .equipment-text p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 350px) {
+  .equipment-block,
+  .equipment-block.reverse {
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+  .equipment-text {
+    padding: 10px;
+  }
+
+  .equipment-image {
+    order: -1;
+  }
+
+  .equipment-image img {
+    max-width: 90%;
+  }
+} 
