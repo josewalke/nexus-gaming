@@ -35,7 +35,7 @@
 }
 
 .nexus-menu-toggle {
-  display: none;
+  display: flex; /* Siempre visible */
   background: none;
   border: none;
   font-size: 32px;
@@ -46,12 +46,12 @@
   min-height: 44px;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  position: relative; /* Para asegurar posicionamiento */
+  right: 0; /* Siempre a la derecha */
 }
 
 .nexus-menu-toggle:hover {
   color: #00cccc;
-  transform: scale(1.1);
 }
 
 /* ----------- NAVIGATION ----------- */
@@ -117,6 +117,7 @@
   .nexus-header {
     padding: 0 15px;
     height: 60px;
+    border-bottom: 1px solid #00FFFF; /* Línea más sutil en móvil */
   }
 
   /* Overlay para el menú móvil */
@@ -186,20 +187,36 @@
   .nexus-nav.open a:nth-child(3) { transition-delay: 0.3s; }
   .nexus-nav.open .nexus-nav-item { transition-delay: 0.4s; }
 
+  /* El menú hamburguesa siempre visible y a la derecha */
   .nexus-menu-toggle {
-    display: flex;
+    display: flex !important;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
 @media (min-width: 480px) and (max-width: 600px) {
+  .nexus-header {
+    border-bottom: 1px solid #00FFFF; /* Línea más sutil */
+  }
+
+  /* El menú hamburguesa siempre visible y a la derecha */
   .nexus-menu-toggle {
-    display: flex;
+    display: flex !important;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
 @media (max-width: 350px) {
   .nexus-header {
     padding: 0 10px;
+    height: 50px;
+    border-bottom: 1px solid #00FFFF; /* Línea más sutil */
   }
 
   .nexus-logo {
@@ -208,29 +225,49 @@
 
   .nexus-nav a {
     font-size: 18px;
-    padding: 8px 16px;
-    min-width: 100px;
   }
 
   .nexus-select {
     width: 70px;
+    font-size: 12px;
+  }
+
+  /* El menú hamburguesa siempre visible y a la derecha */
+  .nexus-menu-toggle {
+    display: flex !important;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    min-width: 40px;
+    min-height: 40px;
   }
 }
 
-/* ----------- LANDSCAPE ORIENTATION ----------- */
 @media (orientation: landscape) and (max-height: 500px) {
   .nexus-header {
     height: 50px;
+    border-bottom: 1px solid #00FFFF; /* Línea más sutil */
   }
-  
+
   .nexus-logo {
     font-size: 18px;
   }
-  
+
   .nexus-nav a,
   .nexus-nav-item {
-    font-size: 18px;
-    margin: 8px 0;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  /* El menú hamburguesa siempre visible y a la derecha */
+  .nexus-menu-toggle {
+    display: flex !important;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
