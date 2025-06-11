@@ -13,6 +13,9 @@
 .equipment-image {
   flex: 1;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .equipment-image img {
@@ -54,6 +57,23 @@
   }
 }
 
+/* iPad - Centrado específico */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .equipment-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .equipment-image img {
+    max-width: 400px; /* Ancho específico para iPad */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
   .equipment-block {
     flex-direction: column;
@@ -65,8 +85,18 @@
     flex-direction: column;
   }
 
+  .equipment-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .equipment-image img {
-    max-width: 80%;
+    max-width: 300px; /* Ancho específico para móvil */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
   }
 
   .equipment-text h3 {
@@ -78,7 +108,15 @@
   }
 }
 
+/* Móvil pequeño - Centrado específico */
 @media (min-width: 480px) and (max-width: 600px) {
+  .equipment-image img {
+    max-width: 280px; /* Ancho específico para móvil pequeño */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
   .equipment-text h3 {
     font-size: 20px;
   }
@@ -88,7 +126,15 @@
   }
 }
 
+/* Móvil muy pequeño - Centrado específico */
 @media (min-width: 350px) and (max-width: 480px) {
+  .equipment-image img {
+    max-width: 250px; /* Ancho específico para móvil muy pequeño */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
   .equipment-text h3 {
     font-size: 18px;
   }
@@ -98,6 +144,7 @@
   }
 }
 
+/* Móvil extra pequeño - Centrado específico */
 @media (max-width: 350px) {
   .equipment-block,
   .equipment-block.reverse {
@@ -105,15 +152,22 @@
     margin: 20px 0;
   }
 
-  .equipment-text {
-    padding: 10px;
-  }
-
   .equipment-image {
     order: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .equipment-image img {
-    max-width: 90%;
+    max-width: 200px; /* Ancho específico para móvil extra pequeño */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .equipment-text {
+    padding: 10px;
   }
 } 
