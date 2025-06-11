@@ -8,8 +8,8 @@ export const useResponsive = () => {
     window.innerWidth >= BREAKPOINTS.mobileLarge && window.innerWidth < BREAKPOINTS.tablet
   );
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= BREAKPOINTS.tablet);
-  const [isTouch, setIsTouch] = useState(isTouchDevice());
-  const [hasNotchDevice, setHasNotchDevice] = useState(hasNotch());
+  const [isTouch] = useState(isTouchDevice());
+  const [hasNotchDevice] = useState(hasNotch());
   const [orientation, setOrientation] = useState(
     window.innerWidth > window.innerHeight ? 'landscape' : 'portrait'
   );

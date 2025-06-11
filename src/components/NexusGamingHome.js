@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, lazy } from 'react';
 import Header from './Header/Header';
 import Hero from './Hero/Hero';
 import ParallaxSection from './ParallaxSection/ParallaxSection';
