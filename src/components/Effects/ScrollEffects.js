@@ -22,30 +22,31 @@ export const FloatingParticles = ({ children }) => {
       transition={{ duration: 1 }} // Duración de la transición
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      {/* Generamos 20 partículas con propiedades aleatorias */}
-      {[...Array(20)].map((_, i) => (
+      {/* Generamos 12 partículas optimizadas para rendimiento */}
+      {[...Array(12)].map((_, i) => (
         <motion.div
           key={i}
           className="floating-particle"
           style={{
             position: 'absolute',
-            width: Math.random() * 4 + 2, // Tamaño aleatorio entre 2-6px
-            height: Math.random() * 4 + 2,
-            background: `rgba(0, 255, 255, ${Math.random() * 0.5 + 0.2})`, // Color cian con opacidad aleatoria
+            width: Math.random() * 3 + 2, // Tamaño optimizado entre 2-5px
+            height: Math.random() * 3 + 2,
+            background: `rgba(0, 255, 255, ${Math.random() * 0.4 + 0.3})`, // Color cian con opacidad optimizada
             borderRadius: '50%', // Forma circular
             left: `${Math.random() * 100}%`, // Posición horizontal aleatoria
             top: `${Math.random() * 100}%`, // Posición vertical aleatoria
+            willChange: 'transform, opacity', // Optimización de GPU
           }}
           animate={{
-            y: [0, -30, 0], // Movimiento vertical: sube y baja
-            x: [0, Math.random() * 20 - 10, 0], // Movimiento horizontal aleatorio
-            opacity: [0.2, 0.8, 0.2], // Cambio de opacidad
+            y: [0, -20, 0], // Movimiento vertical optimizado
+            x: [0, Math.random() * 15 - 7.5, 0], // Movimiento horizontal optimizado
+            opacity: [0.3, 0.7, 0.3], // Cambio de opacidad optimizado
           }}
           transition={{
-            duration: Math.random() * 3 + 2, // Duración aleatoria entre 2-5 segundos
+            duration: Math.random() * 2 + 3, // Duración optimizada entre 3-5 segundos
             repeat: Infinity, // Se repite infinitamente
             ease: "easeInOut", // Tipo de animación suave
-            delay: Math.random() * 2, // Delay aleatorio para que no todas empiecen juntas
+            delay: Math.random() * 1.5, // Delay optimizado
           }}
         />
       ))}
@@ -258,8 +259,8 @@ export const WaveEffect = ({ children }) => {
       transition={{ duration: 1 }}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      {/* Generamos 3 ondas concéntricas */}
-      {[...Array(3)].map((_, i) => (
+      {/* Generamos 2 ondas concéntricas optimizadas */}
+      {[...Array(2)].map((_, i) => (
         <motion.div
           key={i}
           className="energy-wave"
@@ -269,19 +270,20 @@ export const WaveEffect = ({ children }) => {
             left: '50%',
             width: '200px',
             height: '200px',
-            border: `2px solid rgba(0, 255, 255, ${0.3 - i * 0.1})`, // Opacidad decreciente
+            border: `2px solid rgba(0, 255, 255, ${0.4 - i * 0.2})`, // Opacidad optimizada
             borderRadius: '50%', // Forma circular
             transform: 'translate(-50%, -50%)', // Centrado perfecto
+            willChange: 'transform, opacity', // Optimización de GPU
           }}
           animate={{
-            scale: [0, 3], // Se expande desde 0 hasta 3 veces su tamaño
-            opacity: [0.8, 0], // Se desvanece mientras se expande
+            scale: [0, 2.5], // Escala optimizada
+            opacity: [0.6, 0], // Opacidad optimizada
           }}
           transition={{
-            duration: 2, // Duración de la expansión
+            duration: 2.5, // Duración optimizada
             repeat: Infinity, // Se repite infinitamente
             ease: "easeOut", // Animación que se desacelera
-            delay: i * 0.5, // Cada onda empieza 0.5 segundos después
+            delay: i * 0.8, // Delay optimizado
           }}
         />
       ))}
@@ -353,38 +355,38 @@ export const FireParticles = ({ children }) => {
       transition={{ duration: 1 }}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      {/* Generamos 150 partículas de fuego para máxima densidad y cobertura */}
-      {[...Array(150)].map((_, i) => (
+      {/* Generamos 80 partículas de fuego optimizadas para rendimiento */}
+      {[...Array(80)].map((_, i) => (
         <motion.div
           key={i}
           className="fire-particle"
           style={{
             position: 'absolute',
-            width: Math.random() * 12 + 2, // Tamaño aleatorio entre 2-14px
-            height: Math.random() * 12 + 2,
+            width: Math.random() * 8 + 3, // Tamaño optimizado entre 3-11px
+            height: Math.random() * 8 + 3,
             background: `radial-gradient(circle, 
-              rgba(255, 0, 0, ${Math.random() * 0.9 + 0.1}) 0%, 
-              rgba(255, 0, 0, ${Math.random() * 0.8 + 0.2}) 30%, 
-              rgba(200, 0, 0, ${Math.random() * 0.7 + 0.3}) 60%,
-              rgba(150, 0, 0, ${Math.random() * 0.5 + 0.2}) 80%,
-              transparent 100%)`, // Gradiente completamente rojo
+              rgba(255, 0, 0, 0.9) 0%, 
+              rgba(255, 0, 0, 0.7) 40%, 
+              rgba(200, 0, 0, 0.5) 70%,
+              transparent 100%)`, // Gradiente simplificado para mejor rendimiento
             borderRadius: '50%',
-            left: `${Math.random() * 140 - 20}%`, // Distribución más amplia (-20% a 120%)
-            bottom: '0%', // Todas empiezan desde abajo
-            boxShadow: `0 0 ${Math.random() * 10 + 4}px rgb(255, 0, 0)`, // Brillo de fuego rojo más intenso
-            zIndex: 2, // Por encima del gradiente
+            left: `${Math.random() * 120 - 10}%`, // Distribución optimizada
+            bottom: '0%',
+            boxShadow: `0 0 6px rgba(255, 0, 0, 0.8)`, // Brillo simplificado
+            zIndex: 2,
+            willChange: 'transform, opacity', // Optimización de GPU
           }}
           animate={{
-            y: [0, -300], // Suben más (300px)
-            x: [0, Math.random() * 120 - 60], // Movimiento horizontal mucho más amplio (±60px)
-            scale: [1, 0.1], // Se encogen más para simular distancia
-            opacity: [1, 0], // Se desvanecen
+            y: [0, -250], // Altura reducida para mejor rendimiento
+            x: [0, Math.random() * 80 - 40], // Movimiento horizontal optimizado
+            scale: [1, 0.2],
+            opacity: [1, 0],
           }}
           transition={{
-            duration: Math.random() * 5 + 3, // Duración aleatoria entre 3-8 segundos
-            repeat: Infinity, // Se repite infinitamente
-            ease: "easeOut", // Animación que se desacelera
-            delay: Math.random() * 6, // Delay aleatorio más amplio
+            duration: Math.random() * 3 + 2, // Duración optimizada entre 2-5 segundos
+            repeat: Infinity,
+            ease: "easeOut",
+            delay: Math.random() * 4, // Delay optimizado
           }}
         />
       ))}

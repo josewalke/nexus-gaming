@@ -103,7 +103,7 @@ export default function Header({ lang, setLang }) {
             options={langOptions}
             menuPlacement="auto"
             isSearchable={false}
-            defaultValue={langOptions.find(opt => opt.value === lang)}
+            value={langOptions.find(opt => opt.value === lang)}
             onChange={(e) => setLang(e.value)}
             classNamePrefix="nexus-select"
             className="nexus-select"

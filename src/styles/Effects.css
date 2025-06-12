@@ -295,4 +295,97 @@
   40% { transform: translate(2px, 2px); } /* Desplazamiento diagonal */
   60% { transform: translate(-2px, -2px); } /* Desplazamiento opuesto */
   80% { transform: translate(-2px, 2px); } /* Desplazamiento diagonal */
+}
+
+/* ========================================
+   OPTIMIZACIONES DE RENDIMIENTO
+   ======================================== */
+
+/* Optimización de GPU para partículas */
+.fire-particle,
+.floating-particle,
+.energy-wave {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Forzar aceleración por hardware */
+  backface-visibility: hidden; /* Optimización de renderizado */
+  perspective: 1000px; /* Mejora el rendimiento 3D */
+}
+
+/* Optimización de animaciones */
+.fire-particle {
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+.floating-particle {
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+.energy-wave {
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+/* Reducir repaints en elementos animados */
+.nexus-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimización de scroll */
+.nexus-header,
+.nexus-hero,
+.nexus-parallax {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ========================================
+   EFECTOS ESPECIALES OPTIMIZADOS
+   ======================================== */
+
+/* Efecto de partículas flotantes optimizado */
+.floating-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none; /* Evita interferencias con el mouse */
+  z-index: 1;
+}
+
+/* Efecto de partículas de fuego optimizado */
+.fire-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Efecto de ondas de energía optimizado */
+.energy-wave {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   EFECTO DE NEÓN PARA TEXTOS (ELIMINADO)
+   ======================================== */
+.neon-text {
+  /* Efecto eliminado para evitar difuminado */
+}
+
+/* ========================================
+   EFECTO DE TEXTO GLITCH (ELIMINADO)
+   ======================================== */
+.glitch-text {
+  /* Efecto eliminado para mejorar rendimiento */
+}
+
+/* ========================================
+   EFECTO ASCII TEXT (ELIMINADO)
+   ======================================== */
+.ascii-text {
+  /* Efecto eliminado para mejorar rendimiento */
 } 
