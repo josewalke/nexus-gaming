@@ -4,6 +4,7 @@ import Hero from './Hero/Hero';
 import ParallaxSection from './ParallaxSection/ParallaxSection';
 import LazyComponent from './LazyComponent';
 import '../styles/Global.css';
+import '../styles/Effects.css';
 
 // Lazy load de componentes pesados
 const VideoSection = lazy(() => import('./VideoSection/VideoSection'));

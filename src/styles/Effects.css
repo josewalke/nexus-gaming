@@ -1,0 +1,302 @@
+/* ========================================
+   ESTILOS PARA EFECTOS ESPECIALES
+   ======================================== */
+
+/* ========================================
+   PARTÍCULAS FLOTANTES
+   ======================================== */
+.floating-particle {
+  pointer-events: none; /* Las partículas no interfieren con clics */
+  z-index: 1; /* Se mantienen detrás del contenido principal */
+}
+
+/* ========================================
+   ONDAS DE ENERGÍA
+   ======================================== */
+.energy-wave {
+  pointer-events: none; /* Las ondas no interfieren con interacciones */
+  z-index: 2; /* Se mantienen por encima de partículas pero debajo del contenido */
+}
+
+/* ========================================
+   PARTÍCULAS DE FUEGO
+   ======================================== */
+.fire-particle {
+  pointer-events: none; /* Las partículas de fuego no interfieren con clics */
+  z-index: 1; /* Se mantienen en el fondo */
+}
+
+/* ========================================
+   EFECTOS DE HOVER PARA BOTONES
+   ======================================== */
+.nexus-hero button {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  overflow: hidden; /* Oculta el efecto de brillo que se desborda */
+}
+
+/* Efecto de brillo que se desliza por el botón */
+.nexus-hero button::before {
+  content: ''; /* Crea el pseudo-elemento */
+  position: absolute;
+  top: 0;
+  left: -100%; /* Empieza fuera del botón (izquierda) */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); /* Gradiente de brillo */
+  transition: left 0.6s ease; /* Animación suave del movimiento */
+}
+
+/* Cuando se hace hover, el brillo se desliza hacia la derecha */
+.nexus-hero button:hover::before {
+  left: 100%; /* Termina fuera del botón (derecha) */
+}
+
+/* ========================================
+   EFECTOS DE BRILLO PARA EQUIPOS
+   ======================================== */
+.equipment-image {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  overflow: hidden; /* Oculta el efecto de brillo que se desborda */
+}
+
+/* Efecto de brillo cian que se desliza por las imágenes de equipos */
+.equipment-image::after {
+  content: ''; /* Crea el pseudo-elemento */
+  position: absolute;
+  top: 0;
+  left: -100%; /* Empieza fuera de la imagen */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent); /* Gradiente cian */
+  transition: left 0.8s ease; /* Animación más lenta para equipos */
+}
+
+/* Cuando se hace hover, el brillo se desliza por la imagen */
+.equipment-image:hover::after {
+  left: 100%; /* Termina fuera de la imagen */
+}
+
+/* ========================================
+   ANIMACIONES DE ENTRADA ESCALONADAS
+   ======================================== */
+.stagger-animation > * {
+  opacity: 0; /* Estado inicial: invisible */
+  transform: translateY(30px); /* Estado inicial: desplazado hacia abajo */
+  animation: staggerFadeIn 0.6s ease forwards; /* Animación de entrada */
+}
+
+/* Cada elemento aparece con un delay diferente para crear efecto escalonado */
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+
+/* Animación que hace aparecer los elementos */
+@keyframes staggerFadeIn {
+  to {
+    opacity: 1; /* Se vuelve visible */
+    transform: translateY(0); /* Vuelve a su posición original */
+  }
+}
+
+/* ========================================
+   EFECTO DE PULSO PARA ELEMENTOS IMPORTANTES
+   ======================================== */
+.pulse-effect {
+  animation: pulse 2s infinite; /* Animación de pulso que se repite infinitamente */
+}
+
+/* Animación que crea un efecto de pulso con sombra */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); /* Sombra inicial */
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); /* Sombra expandida y transparente */
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); /* Sombra desaparece */
+  }
+}
+
+/* ========================================
+   EFECTO DE NEÓN PARA TEXTOS
+   ======================================== */
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,    /* Sombra interna */
+    0 0 10px currentColor,   /* Sombra media */
+    0 0 15px currentColor,   /* Sombra externa */
+    0 0 20px currentColor;   /* Sombra más externa */
+}
+
+/* ========================================
+   EFECTO DE DISTORSIÓN PARA VIDEOS
+   ======================================== */
+.video-distortion {
+  filter: contrast(1.1) saturate(1.2) brightness(0.9); /* Filtros iniciales */
+  transition: filter 0.3s ease; /* Transición suave para los filtros */
+}
+
+/* Al hacer hover, los filtros se intensifican */
+.video-distortion:hover {
+  filter: contrast(1.3) saturate(1.4) brightness(1.1); /* Filtros más intensos */
+}
+
+/* ========================================
+   EFECTO DE ESCANEO
+   ======================================== */
+.scan-effect {
+  position: relative; /* Necesario para posicionar la línea de escaneo */
+  overflow: hidden; /* Oculta la línea cuando se sale del contenedor */
+}
+
+/* Línea de escaneo que se mueve de izquierda a derecha */
+.scan-effect::before {
+  content: ''; /* Crea el pseudo-elemento */
+  position: absolute;
+  top: 0;
+  left: -100%; /* Empieza fuera del contenedor */
+  width: 100%;
+  height: 2px; /* Grosor de la línea */
+  background: linear-gradient(90deg, transparent, #00FFFF, transparent); /* Gradiente cian */
+  animation: scan 3s linear infinite; /* Animación continua */
+}
+
+/* Animación que mueve la línea de escaneo */
+@keyframes scan {
+  0% {
+    left: -100%; /* Empieza fuera del contenedor */
+  }
+  100% {
+    left: 100%; /* Termina fuera del contenedor */
+  }
+}
+
+/* ========================================
+   EFECTO DE PARTÍCULAS DE ENERGÍA
+   ======================================== */
+.energy-particles {
+  position: relative; /* Necesario para posicionar las partículas */
+}
+
+/* Dos partículas de energía que flotan */
+.energy-particles::before,
+.energy-particles::after {
+  content: ''; /* Crea los pseudo-elementos */
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00FFFF; /* Color cian */
+  border-radius: 50%; /* Forma circular */
+  animation: energyFloat 4s ease-in-out infinite; /* Animación de flotación */
+}
+
+/* Primera partícula: posición superior izquierda */
+.energy-particles::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s; /* Sin delay */
+}
+
+/* Segunda partícula: posición inferior derecha */
+.energy-particles::after {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s; /* Delay de 2 segundos */
+}
+
+/* Animación que hace flotar las partículas */
+@keyframes energyFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1); /* Posición normal */
+    opacity: 0.5; /* Semi-transparente */
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2); /* Sube y se agranda */
+    opacity: 1; /* Completamente visible */
+  }
+}
+
+/* ========================================
+   EFECTO DE HOLOGRAMA MEJORADO
+   ======================================== */
+.hologram-effect {
+  position: relative; /* Necesario para posicionar el efecto */
+  overflow: hidden; /* Oculta el efecto cuando se sale del contenedor */
+}
+
+/* Barrido holográfico con múltiples gradientes */
+.hologram-effect::before {
+  content: ''; /* Crea el pseudo-elemento */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%), /* Gradiente cian */
+    linear-gradient(-45deg, transparent 30%, rgba(255, 0, 51, 0.05) 50%, transparent 70%); /* Gradiente rojo sutil */
+  animation: hologramScan 4s linear infinite; /* Animación continua */
+}
+
+/* Animación que mueve el barrido holográfico */
+@keyframes hologramScan {
+  0% {
+    transform: translateX(-100%) translateY(-100%); /* Empieza en esquina superior izquierda */
+  }
+  100% {
+    transform: translateX(100%) translateY(100%); /* Termina en esquina inferior derecha */
+  }
+}
+
+/* ========================================
+   EFECTO DE DISTORSIÓN DE TEXTO (GLITCH)
+   ======================================== */
+.glitch-text {
+  position: relative; /* Necesario para posicionar las capas */
+  animation: glitch 3s infinite; /* Animación de glitch que se repite */
+}
+
+/* Capas de texto que crean el efecto glitch */
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text); /* Usa el texto del atributo data-text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Primera capa: distorsión roja */
+.glitch-text::before {
+  animation: glitch-1 0.3s infinite; /* Animación rápida */
+  color: #FF0033; /* Color rojo */
+  z-index: -1; /* Se mantiene detrás del texto original */
+}
+
+/* Segunda capa: distorsión cian */
+.glitch-text::after {
+  animation: glitch-2 0.3s infinite; /* Animación rápida */
+  color: #00FFFF; /* Color cian */
+  z-index: -2; /* Se mantiene más atrás */
+}
+
+/* Primera animación de glitch: movimientos sutiles */
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); } /* Posición normal */
+  20% { transform: translate(-2px, 2px); } /* Desplazamiento diagonal */
+  40% { transform: translate(-2px, -2px); } /* Desplazamiento opuesto */
+  60% { transform: translate(2px, 2px); } /* Desplazamiento diagonal */
+  80% { transform: translate(2px, -2px); } /* Desplazamiento opuesto */
+}
+
+/* Segunda animación de glitch: movimientos opuestos */
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); } /* Posición normal */
+  20% { transform: translate(2px, -2px); } /* Desplazamiento opuesto al anterior */
+  40% { transform: translate(2px, 2px); } /* Desplazamiento diagonal */
+  60% { transform: translate(-2px, -2px); } /* Desplazamiento opuesto */
+  80% { transform: translate(-2px, 2px); } /* Desplazamiento diagonal */
+} 

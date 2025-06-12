@@ -30,12 +30,39 @@
 
 .nexus-logo {
   font-size: 24px;
-  color: #00FFFF;
+  color: #FFFFFF;
   white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.nexus-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00FFFF, #FF0033);
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+
+.nexus-logo:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+  transform: scale(1.02);
+}
+
+.nexus-logo:hover::after {
+  width: 100%;
 }
 
 .nexus-menu-toggle {
-  display: flex; /* Siempre visible */
+  display: none; /* Oculto por defecto */
   background: none;
   border: none;
   font-size: 32px;
@@ -46,8 +73,8 @@
   min-height: 44px;
   align-items: center;
   justify-content: center;
-  position: relative; /* Para asegurar posicionamiento */
-  right: 0; /* Siempre a la derecha */
+  position: relative;
+  right: 0;
 }
 
 .nexus-menu-toggle:hover {
@@ -61,6 +88,31 @@
   justify-content: flex-end;
   flex: 1;
   width: 100%;
+}
+
+/* Mostrar navegación normal en escritorio */
+@media (min-width: 769px) {
+  .nexus-nav {
+    display: flex;
+    position: static;
+    transform: none;
+    background: none;
+    height: auto;
+    width: auto;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+  }
+  
+  .nexus-nav a,
+  .nexus-nav-item {
+    margin: 0 15px;
+    font-size: 16px;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .nexus-nav a {
@@ -187,7 +239,7 @@
   .nexus-nav.open a:nth-child(3) { transition-delay: 0.3s; }
   .nexus-nav.open .nexus-nav-item { transition-delay: 0.4s; }
 
-  /* El menú hamburguesa siempre visible y a la derecha */
+  /* El menú hamburguesa solo visible en móviles */
   .nexus-menu-toggle {
     display: flex !important;
     position: absolute;
@@ -202,7 +254,7 @@
     border-bottom: 1px solid #00FFFF; /* Línea más sutil */
   }
 
-  /* El menú hamburguesa siempre visible y a la derecha */
+  /* El menú hamburguesa solo visible en móviles */
   .nexus-menu-toggle {
     display: flex !important;
     position: absolute;
@@ -232,7 +284,7 @@
     font-size: 12px;
   }
 
-  /* El menú hamburguesa siempre visible y a la derecha */
+  /* El menú hamburguesa solo visible en móviles */
   .nexus-menu-toggle {
     display: flex !important;
     position: absolute;
@@ -261,7 +313,7 @@
     margin: 10px 0;
   }
 
-  /* El menú hamburguesa siempre visible y a la derecha */
+  /* El menú hamburguesa solo visible en móviles */
   .nexus-menu-toggle {
     display: flex !important;
     position: absolute;
