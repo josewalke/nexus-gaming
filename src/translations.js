@@ -4,7 +4,7 @@ const translations = {
     subtitle: "Experience immersive virtual reality like never before.",
     book: "BOOK YOUR EXPERIENCE",
     enterVr: "Enter the VR World",  
-    section1: "KAT Walk Mini S & OWO",
+    section1: "KAT Walk Core 2+ & OWO",
     section1Text: "Step into full-body VR movement...",
     section2: "Live PvP Matches",
     section2Text: "Challenge your friends or rivals...",
@@ -14,8 +14,8 @@ const translations = {
     footer: "All rights reserved.",
     equipment: {
       kat: {
-        title: "KAT Walk Mini S",
-        text: "The KAT Walk Mini S allows for full 360° movement in VR. Run, walk, and turn freely in immersive environments without space limitations."
+        title: "KAT Walk Core 2+",
+        text: "The KAT Walk Core 2+ allows for full 360° movement in VR. Run, walk, and turn freely in immersive environments without space limitations."
       },
       owo: {
         title: "OWO Haptic Vest",
@@ -29,7 +29,7 @@ const translations = {
     subtitle: "Vive la realidad virtual como nunca antes.",
     book: "RESERVA TU EXPERIENCIA",
     enterVr: "Entra en el Mundo VR",  
-    section1: "KAT Walk Mini S y OWO",
+    section1: "KAT Walk Core 2+ y OWO",
     section1Text: "Sumérgete en movimiento VR de cuerpo completo...",
     section2: "Partidas PvP en Vivo",
     section2Text: "Desafía a tus amigos o rivales...",
@@ -39,8 +39,8 @@ const translations = {
     footer: "Todos los derechos reservados.",
     equipment: {
       kat: {
-        title: "KAT Walk Mini S",
-        text: "El KAT Walk Mini S permite moverte en 360° dentro de la VR. Corre, camina y gira con libertad sin limitaciones de espacio."
+        title: "KAT Walk Core 2+",
+        text: "El KAT Walk Core 2+ permite moverte en 360° dentro de la VR. Corre, camina y gira con libertad sin limitaciones de espacio."
       },
       owo: {
         title: "Chaleco Haptico OWO",

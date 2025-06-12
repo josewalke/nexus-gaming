@@ -14,7 +14,7 @@ export default function ParallaxSection({ lang }) {
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true }}
         className="neon-text"
-        style={{ color: '#00FFFF' }}
+        style={{ color: '#FFFFFF' }}
       >
         {t.enterVr}
       </motion.h2>

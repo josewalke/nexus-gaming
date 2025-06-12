@@ -353,31 +353,38 @@ export const FireParticles = ({ children }) => {
       transition={{ duration: 1 }}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      {/* Generamos 15 partículas de fuego */}
-      {[...Array(15)].map((_, i) => (
+      {/* Generamos 150 partículas de fuego para máxima densidad y cobertura */}
+      {[...Array(150)].map((_, i) => (
         <motion.div
           key={i}
           className="fire-particle"
           style={{
             position: 'absolute',
-            width: Math.random() * 6 + 3, // Tamaño aleatorio entre 3-9px
-            height: Math.random() * 6 + 3,
-            background: `radial-gradient(circle, rgba(255, 0, 51, ${Math.random() * 0.8 + 0.2}) 0%, transparent 70%)`, // Gradiente rojo
+            width: Math.random() * 12 + 2, // Tamaño aleatorio entre 2-14px
+            height: Math.random() * 12 + 2,
+            background: `radial-gradient(circle, 
+              rgba(255, 0, 0, ${Math.random() * 0.9 + 0.1}) 0%, 
+              rgba(255, 0, 0, ${Math.random() * 0.8 + 0.2}) 30%, 
+              rgba(200, 0, 0, ${Math.random() * 0.7 + 0.3}) 60%,
+              rgba(150, 0, 0, ${Math.random() * 0.5 + 0.2}) 80%,
+              transparent 100%)`, // Gradiente completamente rojo
             borderRadius: '50%',
-            left: `${Math.random() * 100}%`, // Posición horizontal aleatoria
+            left: `${Math.random() * 140 - 20}%`, // Distribución más amplia (-20% a 120%)
             bottom: '0%', // Todas empiezan desde abajo
+            boxShadow: `0 0 ${Math.random() * 10 + 4}px rgb(255, 0, 0)`, // Brillo de fuego rojo más intenso
+            zIndex: 2, // Por encima del gradiente
           }}
           animate={{
-            y: [0, -100], // Suben 100px
-            x: [0, Math.random() * 40 - 20], // Movimiento horizontal aleatorio
-            scale: [1, 0], // Se encogen mientras suben
+            y: [0, -300], // Suben más (300px)
+            x: [0, Math.random() * 120 - 60], // Movimiento horizontal mucho más amplio (±60px)
+            scale: [1, 0.1], // Se encogen más para simular distancia
             opacity: [1, 0], // Se desvanecen
           }}
           transition={{
-            duration: Math.random() * 2 + 1, // Duración aleatoria entre 1-3 segundos
+            duration: Math.random() * 5 + 3, // Duración aleatoria entre 3-8 segundos
             repeat: Infinity, // Se repite infinitamente
             ease: "easeOut", // Animación que se desacelera
-            delay: Math.random() * 2, // Delay aleatorio
+            delay: Math.random() * 6, // Delay aleatorio más amplio
           }}
         />
       ))}

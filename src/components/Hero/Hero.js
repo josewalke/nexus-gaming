@@ -24,7 +24,6 @@ export default function Hero({ lang }) {
           transition={{ duration: 1, delay: 0.3 }}
           style={{
             color: '#FFFFFF',
-            textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
             fontSize: '3rem',
             fontWeight: 'bold',
             marginBottom: '20px',
@@ -41,7 +40,6 @@ export default function Hero({ lang }) {
           transition={{ duration: 1, delay: 0.6 }}
           style={{
             color: '#FFFFFF',
-            textShadow: '0 0 10px rgba(255, 255, 255, 0.5)',
             fontSize: '1.5rem',
             marginBottom: '30px',
             textAlign: 'center'

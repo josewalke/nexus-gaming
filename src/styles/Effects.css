@@ -123,11 +123,7 @@
    EFECTO DE NEÓN PARA TEXTOS
    ======================================== */
 .neon-text {
-  text-shadow: 
-    0 0 5px currentColor,    /* Sombra interna */
-    0 0 10px currentColor,   /* Sombra media */
-    0 0 15px currentColor,   /* Sombra externa */
-    0 0 20px currentColor;   /* Sombra más externa */
+  /* Efecto eliminado para evitar difuminado */
 }
 
 /* ========================================
