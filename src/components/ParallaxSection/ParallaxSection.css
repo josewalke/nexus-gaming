@@ -1,10 +1,6 @@
 /* ----------- PARALLAX SECTION ----------- */
-.nexus-parallax {
-  background-image: url('../../../public/assets/parallax-bg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
+.nexus-parallax-container {
+  position: relative;
   height: 400px;
   display: flex;
   align-items: center;
@@ -13,69 +9,116 @@
   color: white;
   font-size: 56px;
   font-weight: bold;
+  overflow: hidden;
 }
 
-/* ----- EFECTO PARALLAX SOLO EN ORDENADORES ----- */
-@media (hover: hover) and (pointer: fine) {
-  .nexus-parallax {
-    background-attachment: fixed;
-  }
+.parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-.nexus-parallax-content {
-  font-size: 36px;
+.parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.parallax-content {
+  font-size: 56px;
   text-align: center;
   padding: 0 20px;
+  position: relative;
+  z-index: 3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimizaciones para dispositivos con movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-background {
+    transform: none !important;
+  }
 }
 
 /* ----------- RESPONSIVE PARALLAX ----------- */
 @media (max-width: 1024px) {
-  .nexus-parallax {
+  .nexus-parallax-container {
     height: 300px;
+  }
+  
+  .parallax-content {
     font-size: 48px;
   }
 }
 
 @media (max-width: 768px) {
-  .nexus-parallax {
+  .nexus-parallax-container {
     height: 250px;
-    font-size: 36px;
   }
-
-  .nexus-parallax-content {
-    font-size: 28px;
+  
+  .parallax-content {
+    font-size: 36px;
   }
 }
 
 @media (min-width: 480px) and (max-width: 600px) {
-  .nexus-parallax {
+  .nexus-parallax-container {
     height: 200px;
-    font-size: 32px;
   }
-
-  .nexus-parallax-content {
-    font-size: 24px;
+  
+  .parallax-content {
+    font-size: 32px;
   }
 }
 
 @media (min-width: 350px) and (max-width: 480px) {
-  .nexus-parallax {
+  .nexus-parallax-container {
     height: 180px;
-    font-size: 28px;
   }
-
-  .nexus-parallax-content {
-    font-size: 20px;
+  
+  .parallax-content {
+    font-size: 28px;
   }
 }
 
 @media (max-width: 350px) {
-  .nexus-parallax {
+  .nexus-parallax-container {
     height: 150px;
+  }
+  
+  .parallax-content {
     font-size: 24px;
   }
+}
 
-  .nexus-parallax-content {
-    font-size: 18px;
+/* Optimizaciones para dispositivos de alta resolución */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .parallax-background {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Orientación landscape */
+@media (orientation: landscape) and (max-height: 500px) {
+  .nexus-parallax-container {
+    height: 100vh;
+    min-height: 300px;
+  }
+  
+  .parallax-content {
+    font-size: clamp(2rem, 5vw, 3rem);
   }
 } 
