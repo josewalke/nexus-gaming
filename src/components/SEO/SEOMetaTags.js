@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import translations from '../../translations';
 
 export default function SEOMetaTags({ lang, currentPath }) {
   // const t = translations[lang]; // Eliminado porque no se usa
