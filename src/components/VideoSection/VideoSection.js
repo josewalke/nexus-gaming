@@ -1,14 +1,14 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { PERFORMANCE_CONFIG } from '../../config/performance';
 import translations from '../../translations';
 import { useResponsive } from '../../hooks/useResponsive';
-import { WaveEffect, TypewriterText } from '../Effects/ScrollEffects';
+import { TypewriterText } from '../Effects/ScrollEffects';
 import { motion } from 'framer-motion';
 import './VideoSection.css';
 
 /**
  * Componente VideoSection - Sección de experiencia VR
  * Muestra un video de fondo con contenido superpuesto
- * Aplica efectos especiales: ondas de energía y texto tipo máquina de escribir
  */
 export default function VideoSection({ lang }) {
   // Obtiene las traducciones según el idioma seleccionado
@@ -17,6 +17,39 @@ export default function VideoSection({ lang }) {
   const { isMobile } = useResponsive();
   // Referencia al elemento de video para controlarlo
   const videoRef = useRef(null);
+  const [videoQuality, setVideoQuality] = useState('high');
+  const [isDataSaving, setIsDataSaving] = useState(false);
+
+  useEffect(() => {
+    // Detectar preferencias de ahorro de datos y tipo de conexión
+    const connectionInfo = PERFORMANCE_CONFIG.connectionAware.detectConnectionType();
+    const dataSaving = PERFORMANCE_CONFIG.dataSaving.detectDataSaving();
+    
+    setIsDataSaving(dataSaving);
+    
+    // Ajustar calidad del video según conexión y preferencias
+    const quality = PERFORMANCE_CONFIG.connectionAware.adjustResourceQuality(connectionInfo);
+    setVideoQuality(quality);
+
+    // Configurar observador de conexión
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection) {
+      connection.addEventListener('change', () => {
+        const newConnectionInfo = PERFORMANCE_CONFIG.connectionAware.detectConnectionType();
+        const newQuality = PERFORMANCE_CONFIG.connectionAware.adjustResourceQuality(newConnectionInfo);
+        setVideoQuality(newQuality);
+      });
+    }
+  }, []);
+
+  // Seleccionar fuente de video según calidad
+  const getVideoSource = () => {
+    const basePath = '/assets/experience-video';
+    if (videoQuality === 'low' || isDataSaving) {
+      return `${basePath}-low.mp4`; // Versión de menor calidad
+    }
+    return `${basePath}.mp4`; // Versión de alta calidad
+  };
 
   // Efecto para manejar la reproducción del video
   useEffect(() => {
@@ -64,49 +97,54 @@ export default function VideoSection({ lang }) {
   }, [isMobile]); // Se ejecuta cuando cambia el estado de móvil
 
   return (
-    // Contenedor con ondas de energía para crear ambiente tecnológico
-    <WaveEffect>
-      <section id="experience" className="nexus-section nexus-video-section">
-        {/* Video de fondo con configuración optimizada */}
-        <video
-          ref={videoRef}
-          className="nexus-video-bg"
-          src="/assets/experience-video.mp4"
-          autoPlay // Reproducción automática
-          muted // Sin sonido (requerido para autoplay)
-          loop // Se repite infinitamente
-          playsInline // Reproduce inline en móviles
-          preload="auto" // Precarga el video
-          controls={false} // Sin controles de reproducción
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover', // Cubre todo el contenedor
-            zIndex: 1 // Se mantiene detrás del contenido
-          }}
+    <section id="experience" className="nexus-section nexus-video-section">
+      {/* Video de fondo con configuración optimizada */}
+      <video
+        ref={videoRef}
+        className="nexus-video-bg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/assets/video-poster.jpg"
+      >
+        <source
+          src={getVideoSource()}
+          type="video/mp4"
         />
-        
-        {/* Contenido superpuesto sobre el video */}
-        <div className="nexus-video-content">
-          {/* Título con animación de entrada */}
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }} // Estado inicial: invisible y desplazado
-            whileInView={{ opacity: 1, y: 0 }} // Animación cuando entra en viewport
-            transition={{ duration: 0.8 }} // Duración de la animación
-            viewport={{ once: true }} // Solo se ejecuta una vez
-          >
-            {t.nav[0]}
-          </motion.h2>
-          
-          {/* Texto con efecto de máquina de escribir */}
-          <TypewriterText delay={0.3}>
-            <p>Discover our unique immersive VR worlds and premium facilities.</p>
-          </TypewriterText>
+        {/* Fallback para navegadores que no soportan video */}
+        <div className="nexus-video-fallback">
+          <img
+            src="/assets/video-fallback.jpg"
+            alt="Experiencia VR"
+            loading="lazy"
+          />
         </div>
-      </section>
-    </WaveEffect>
+      </video>
+      
+      {/* Contenido superpuesto sobre el video */}
+      <div className="nexus-video-content">
+        {/* Título con animación de entrada */}
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          {t.nav[0]}
+        </motion.h2>
+        
+        {/* Texto con efecto de máquina de escribir */}
+        <TypewriterText delay={0.3}>
+          <p>{t.experienceSubtitle}</p>
+        </TypewriterText>
+        {isDataSaving && (
+          <div className="data-saving-notice">
+            Modo ahorro de datos activado - Calidad de video reducida
+          </div>
+        )}
+      </div>
+    </section>
   );
 } 

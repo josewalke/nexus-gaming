@@ -56,6 +56,106 @@ export const PERFORMANCE_CONFIG = {
   cache: {
     maxAge: 31536000, // 1 año
     staleWhileRevalidate: 86400 // 1 día
+  },
+
+  // Configuración de ahorro de datos
+  dataSaving: {
+    // Detectar preferencias de ahorro de datos
+    detectDataSaving: () => {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      return connection ? connection.saveData : false;
+    },
+
+    // Configuración de calidad de recursos según ahorro de datos
+    resourceQuality: {
+      images: {
+        high: {
+          quality: 0.8,
+          format: 'webp',
+          maxWidth: 1920
+        },
+        low: {
+          quality: 0.6,
+          format: 'webp',
+          maxWidth: 1280
+        }
+      },
+      video: {
+        high: {
+          bitrate: '2000k',
+          resolution: '1080p'
+        },
+        low: {
+          bitrate: '1000k',
+          resolution: '720p'
+        }
+      }
+    },
+
+    // Configuración de carga diferida
+    lazyLoading: {
+      images: true,
+      videos: true,
+      components: true,
+      threshold: 0.1,
+      rootMargin: '50px'
+    },
+
+    // Configuración de caché
+    cache: {
+      images: {
+        maxAge: 86400, // 1 día
+        staleWhileRevalidate: true
+      },
+      videos: {
+        maxAge: 604800, // 1 semana
+        staleWhileRevalidate: true
+      }
+    },
+
+    // Configuración de compresión
+    compression: {
+      images: {
+        enabled: true,
+        formats: ['webp', 'avif'],
+        quality: 0.8
+      },
+      text: {
+        enabled: true,
+        gzip: true,
+        brotli: true
+      }
+    }
+  },
+
+  // Configuración de recursos según conexión
+  connectionAware: {
+    // Detectar tipo de conexión
+    detectConnectionType: () => {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (connection) {
+        return {
+          type: connection.effectiveType,
+          downlink: connection.downlink,
+          rtt: connection.rtt,
+          saveData: connection.saveData
+        };
+      }
+      return null;
+    },
+
+    // Ajustar calidad de recursos según conexión
+    adjustResourceQuality: (connectionInfo) => {
+      if (!connectionInfo) return 'high';
+      
+      if (connectionInfo.saveData) return 'low';
+      
+      if (connectionInfo.effectiveType === '4g' && connectionInfo.downlink >= 5) {
+        return 'high';
+      }
+      
+      return 'low';
+    }
   }
 };
 

@@ -5,10 +5,9 @@ import { motion } from 'framer-motion';
  * Componente ASCIIText
  * Genera texto ASCII real con caracteres que cambian dinámicamente
  * @param {string} text - El texto a convertir a ASCII
- * @param {boolean} enableWaves - Habilita efecto de ondas
  * @param {number} asciiFontSize - Tamaño de fuente para el ASCII
  */
-const ASCIIText = ({ text, enableWaves = true, asciiFontSize = 8 }) => {
+const ASCIIText = ({ text, asciiFontSize = 8 }) => {
   const [displayText, setDisplayText] = useState(text);
 
   // Caracteres ASCII para el efecto
@@ -41,19 +40,6 @@ const ASCIIText = ({ text, enableWaves = true, asciiFontSize = 8 }) => {
     return () => clearInterval(interval);
   }, [text]);
 
-  // Efecto de ondas
-  const waveEffect = enableWaves ? {
-    animate: {
-      y: [0, -2, 0, 2, 0],
-      opacity: [0.8, 1, 0.8, 1, 0.8],
-    },
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }
-  } : {};
-
   return (
     <motion.div
       style={{
@@ -66,7 +52,6 @@ const ASCIIText = ({ text, enableWaves = true, asciiFontSize = 8 }) => {
         letterSpacing: '1px',
         fontWeight: 'bold',
       }}
-      {...waveEffect}
     >
       {displayText}
     </motion.div>

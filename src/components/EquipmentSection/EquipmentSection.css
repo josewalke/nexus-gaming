@@ -1,6 +1,6 @@
 /* ----------- EQUIPMENT SECTION - ESTILO APPLE ----------- */
 .nexus-section {
-  padding: 120px 20px;
+  padding: 150px 40px;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
   position: relative;
   overflow: hidden;
@@ -11,7 +11,7 @@
   font-weight: 300;
   color: #ffffff;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
   letter-spacing: -0.02em;
   line-height: 1.1;
   opacity: 0;
@@ -23,12 +23,11 @@
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  margin-bottom: 4rem;
+  margin: 50px auto 6rem;
   font-weight: 300;
-  line-height: 1.6;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  line-height: 1.8;
+  max-width: 90%;
+  width: 800px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
@@ -37,8 +36,11 @@
 .equipment-block {
   display: flex;
   align-items: center;
-  margin: 80px 0;
-  gap: 60px;
+  justify-content: center;
+  margin: 120px auto;
+  gap: 140px;
+  max-width: 1200px;
+  width: 90%;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s forwards;
@@ -96,10 +98,17 @@
 
 .equipment-text {
   flex: 1;
-  padding: 40px;
+  padding: 60px 60px;
   opacity: 0;
   transform: translateX(30px);
   animation: fadeInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.1s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 400px;
+  min-width: 320px;
+  margin: 0 auto;
 }
 
 .equipment-block.reverse .equipment-text {
@@ -111,10 +120,12 @@
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 300;
   color: #00FFFF;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   letter-spacing: -0.01em;
-  line-height: 1.2;
+  line-height: 1.3;
   position: relative;
+  text-align: center;
+  width: 100%;
 }
 
 .equipment-text h3::after {
@@ -131,10 +142,13 @@
 .equipment-text p {
   font-size: clamp(1rem, 2.2vw, 1.2rem);
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
+  line-height: 1.8;
   font-weight: 300;
   letter-spacing: 0.01em;
   margin: 0;
+  text-align: center;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Animaciones */
@@ -198,16 +212,18 @@
 /* ----------- RESPONSIVE EQUIPMENT ----------- */
 @media (max-width: 1024px) {
   .nexus-section {
-    padding: 100px 20px;
+    padding: 120px 30px;
   }
   
   .equipment-block {
-    margin: 60px 0;
-    gap: 40px;
+    margin: 100px auto;
+    gap: 60px;
   }
   
   .equipment-text {
-    padding: 30px;
+    padding: 40px 20px;
+    max-width: 90vw;
+    min-width: unset;
   }
 }
 
@@ -230,13 +246,14 @@
 
 @media (max-width: 768px) {
   .nexus-section {
-    padding: 80px 15px;
+    padding: 100px 20px;
   }
   
   .equipment-block {
     flex-direction: column;
-    margin: 50px 0;
-    gap: 30px;
+    margin: 80px auto;
+    gap: 40px;
+    width: 95%;
   }
 
   .equipment-block.reverse {
@@ -258,13 +275,12 @@
   }
 
   .equipment-text {
-    padding: 20px;
-    text-align: center;
+    padding: 30px 10px;
+    max-width: 100vw;
   }
   
-  .equipment-text h3::after {
-    left: 50%;
-    transform: translateX(-50%);
+  .equipment-text h3 {
+    margin-bottom: 2rem;
   }
 }
 
@@ -294,10 +310,14 @@
     padding: 60px 10px;
   }
   
-  .equipment-block,
+  .equipment-block {
+    width: 100%;
+    margin: 40px auto;
+    gap: 30px;
+  }
+
   .equipment-block.reverse {
     flex-direction: column;
-    margin: 30px 0;
   }
 
   .equipment-image {
@@ -316,8 +336,11 @@
   }
 
   .equipment-text {
-    padding: 15px;
-    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .equipment-text h3 {
+    margin-bottom: 1.2rem;
   }
 }
 

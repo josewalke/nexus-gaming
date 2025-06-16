@@ -240,57 +240,6 @@ export const GlitchText = ({ children, delay = 0 }) => {
 };
 
 /**
- * Efecto de ondas de energía para el VideoSection
- * Crea ondas concéntricas que se expanden desde el centro
- * Simula energía o señal de transmisión
- */
-export const WaveEffect = ({ children }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 1 }}
-      style={{ position: 'relative', overflow: 'hidden' }}
-    >
-      {/* Generamos 3 ondas concéntricas */}
-      {[...Array(3)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="energy-wave"
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            width: '200px',
-            height: '200px',
-            border: `2px solid rgba(0, 255, 255, ${0.3 - i * 0.1})`, // Opacidad decreciente
-            borderRadius: '50%', // Forma circular
-            transform: 'translate(-50%, -50%)', // Centrado perfecto
-          }}
-          animate={{
-            scale: [0, 3], // Se expande desde 0 hasta 3 veces su tamaño
-            opacity: [0.8, 0], // Se desvanece mientras se expande
-          }}
-          transition={{
-            duration: 2, // Duración de la expansión
-            repeat: Infinity, // Se repite infinitamente
-            ease: "easeOut", // Animación que se desacelera
-            delay: i * 0.5, // Cada onda empieza 0.5 segundos después
-          }}
-        />
-      ))}
-      {children}
-    </motion.div>
-  );
-};
-
-/**
  * Efecto de holograma para EquipmentSection
  * Crea un barrido de luz que simula un holograma
  * Perfecto para mostrar equipos tecnológicos
@@ -429,10 +378,10 @@ export const TypewriterText = ({ children, delay = 0 }) => {
       transition={{ duration: 0.5, delay }}
     >
       <motion.div
-        initial={{ width: 0 }} // Estado inicial: ancho 0 (texto oculto)
-        animate={inView ? { width: '100%' } : { width: 0 }} // Animación: revela el texto
-        transition={{ duration: 2, delay: delay + 0.5 }} // Duración de 2 segundos
-        style={{ overflow: 'hidden', whiteSpace: 'nowrap' }} // Oculta el texto que se está revelando
+        initial={{ width: 0 }}
+        animate={inView ? { width: '100%' } : { width: 0 }}
+        transition={{ duration: 2, delay: delay + 0.5 }}
+        style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}
       >
         {children}
       </motion.div>

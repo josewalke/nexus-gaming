@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import Hero from './Hero/Hero';
 import ParallaxSection from './ParallaxSection/ParallaxSection';
 import LazyComponent from './LazyComponent';
+import SEOMetaTags from './SEO/SEOMetaTags';
 import '../styles/Global.css';
 import '../styles/Effects.css';
 
@@ -14,9 +15,11 @@ const Footer = lazy(() => import('./Footer/Footer'));
 
 export default function NexusGamingHome() {
   const [lang, setLang] = useState('en');
+  const currentPath = window.location.pathname;
 
   return (
     <div className="nexus-container">
+      <SEOMetaTags lang={lang} currentPath={currentPath} />
       <Header lang={lang} setLang={setLang} />
       <Hero lang={lang} />
       <ParallaxSection lang={lang} />

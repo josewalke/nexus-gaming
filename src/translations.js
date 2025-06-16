@@ -11,6 +11,7 @@ const translations = {
     section3: "Testimonials",
     section3Text: "Incredible experience!",
     nav: ["Experience", "PvP", "Equipment", "Testimonials"],
+    experienceSubtitle: "Discover our unique immersive VR worlds and premium facilities.",
     footer: "All rights reserved.",
     equipment: {
       kat: {
@@ -36,6 +37,7 @@ const translations = {
     section3: "Testimonios",
     section3Text: "¡Experiencia increíble!",
     nav: ["Experiencia", "PvP", "Equipamiento", "Testimonios"],
+    experienceSubtitle: "Descubre nuestros mundos VR inmersivos únicos y nuestras instalaciones premium.",
     footer: "Todos los derechos reservados.",
     equipment: {
       kat: {
