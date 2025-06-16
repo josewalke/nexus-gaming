@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import translations from '../../translations';
 
 export default function SEOMetaTags({ lang, currentPath }) {
-  const t = translations[lang];
+  // const t = translations[lang]; // Eliminado porque no se usa
   
   // Definir títulos y descripciones específicas para cada ruta
   const pageMetadata = {
