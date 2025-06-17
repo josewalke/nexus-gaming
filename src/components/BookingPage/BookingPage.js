@@ -259,21 +259,33 @@ export default function BookingPage({ lang, setLang }) {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group">
+                  <div className="form-group date-group">
                     <label htmlFor="date">{t.booking.form.date}</label>
-                    <input
-                      type="date"
-                      id="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleInputChange}
-                      required
-                      min={new Date().toISOString().split('T')[0]}
-                      placeholder={t.booking.form.selectDate}
-                      className="date-input"
-                    />
+                    <div className="date-input-wrapper">
+                      <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleInputChange}
+                        required
+                        min={new Date().toISOString().split('T')[0]}
+                        placeholder={t.booking.form.selectDate}
+                        className="date-input"
+                      />
+                      <span className="calendar-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="3" y="5" width="18" height="16" rx="3" stroke="#00FFFF" strokeWidth="2"/>
+                          <path d="M16 3V7" stroke="#00FFFF" strokeWidth="2" strokeLinecap="round"/>
+                          <path d="M8 3V7" stroke="#00FFFF" strokeWidth="2" strokeLinecap="round"/>
+                          <path d="M3 11H21" stroke="#00FFFF" strokeWidth="2" strokeLinecap="round"/>
+                          <rect x="7.5" y="14" width="2" height="2" rx="1" fill="#00FFFF"/>
+                          <rect x="11.5" y="14" width="2" height="2" rx="1" fill="#00FFFF"/>
+                          <rect x="15.5" y="14" width="2" height="2" rx="1" fill="#00FFFF"/>
+                        </svg>
+                      </span>
+                    </div>
                   </div>
-
                   <div className="form-group">
                     <label htmlFor="time">{t.booking.form.time}</label>
                     <select

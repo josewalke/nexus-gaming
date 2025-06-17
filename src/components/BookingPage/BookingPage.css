@@ -100,14 +100,14 @@
 
 .experience-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-  border-color: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2), 0 0 20px rgba(255, 0, 51, 0.1);
+  border-color: #FF0033;
 }
 
 .experience-card.selected {
   background: rgba(0, 255, 255, 0.1);
-  border-color: #00FFFF;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  border-color: #FF0033;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 10px rgba(255, 0, 51, 0.2);
 }
 
 .experience-card h3 {
@@ -178,9 +178,17 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #00FFFF;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  border-color: #FF0033;
+  box-shadow: 0 0 12px 0 #00FFFF, 0 0 4px 2px #FF0033;
   background: rgba(255, 255, 255, 0.15);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #FF0033;
+  box-shadow: 0 0 8px 0 #00FFFF;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .form-group input::placeholder,
@@ -617,140 +625,6 @@
   outline-offset: 2px;
 }
 
-/* Estilos específicos para el input de fecha */
-.date-input {
-  cursor: pointer;
-  position: relative;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3e%3c/rect%3e%3cline x1='16' y1='2' x2='16' y2='6'%3e%3c/line%3e%3cline x1='8' y1='2' x2='8' y2='6'%3e%3c/line%3e%3cline x1='3' y1='10' x2='21' y2='10'%3e%3c/line%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.2em;
-  padding-right: 2.5rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.date-input:hover {
-  border-color: rgba(0, 255, 255, 0.6);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-.date-input:focus {
-  border-color: #00FFFF;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-/* Estilos para el texto del calendario */
-.date-input::-webkit-datetime-edit {
-  color: #FFFFFF;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-}
-
-.date-input::-webkit-datetime-edit-text {
-  color: rgba(0, 255, 255, 0.8);
-  padding: 0 0.2em;
-  font-weight: 600;
-}
-
-.date-input::-webkit-datetime-edit-month-field,
-.date-input::-webkit-datetime-edit-day-field,
-.date-input::-webkit-datetime-edit-year-field {
-  color: #FFFFFF;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-/* Efectos de focus en los campos de fecha */
-.date-input:focus::-webkit-datetime-edit-text {
-  color: #00FFFF;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
-}
-
-.date-input:focus::-webkit-datetime-edit-month-field,
-.date-input:focus::-webkit-datetime-edit-day-field,
-.date-input:focus::-webkit-datetime-edit-year-field {
-  color: #00FFFF;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
-}
-
-/* Estilos para el indicador del calendario */
-.date-input::-webkit-calendar-picker-indicator {
-  background: transparent;
-  bottom: 0;
-  color: transparent;
-  cursor: pointer;
-  height: auto;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: auto;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover en el indicador */
-.date-input:hover::-webkit-calendar-picker-indicator {
-  filter: brightness(1.2);
-}
-
-/* Estilos para Firefox */
-.date-input::-moz-calendar-picker-indicator {
-  background: transparent;
-  border: none;
-  color: transparent;
-  cursor: pointer;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover para Firefox */
-.date-input:hover::-moz-calendar-picker-indicator {
-  filter: brightness(1.2);
-}
-
-/* Estilos para el calendario popup (cuando se abre) */
-.date-input::-webkit-calendar-picker-indicator:hover {
-  background-color: rgba(0, 255, 255, 0.1);
-}
-
-/* Estilos para el calendario cuando se abre */
-.date-input::-webkit-calendar-picker-indicator:active {
-  background-color: rgba(0, 255, 255, 0.2);
-}
-
-/* Mejorar la apariencia del calendario nativo */
-.date-input::-webkit-calendar-picker-indicator {
-  filter: invert(1) hue-rotate(180deg) brightness(1.5);
-}
-
-.date-input:hover::-webkit-calendar-picker-indicator {
-  filter: invert(1) hue-rotate(180deg) brightness(2);
-}
-
-/* Estilos para el calendario popup en Chrome */
-.date-input::-webkit-calendar-picker-indicator:focus {
-  outline: 2px solid #00FFFF;
-  outline-offset: 2px;
-}
-
-/* Estilos para el calendario popup en Firefox */
-.date-input::-moz-calendar-picker-indicator:focus {
-  outline: 2px solid #00FFFF;
-  outline-offset: 2px;
-}
-
 /* Estilos para las opciones del select de hora */
 .time-select option {
   background-color: #0a0a0a;
@@ -795,19 +669,6 @@
 
 /* Estilos específicos para el select de hora */
 .time-select {
-  font-weight: 500;
-}
-
-.time-select option {
-  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
-}
-
-.time-select option:last-child {
-  border-bottom: none;
-}
-
-/* Estilos específicos para el select de hora */
-.time-select {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
@@ -815,24 +676,22 @@
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 1rem center;
-  background-size: 1em;
+  background-size: 1.2em;
   padding-right: 2.5rem;
-  position: relative;
-  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
 .time-select:hover {
-  border-color: rgba(0, 255, 255, 0.6);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-  transform: translateY(-1px);
+  border-color: #FF0033;
+  box-shadow: 0 0 8px 0 #00FFFF;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .time-select:focus {
-  border-color: #00FFFF;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  border-color: #FF0033;
+  box-shadow: 0 0 12px 0 #00FFFF, 0 0 4px 2px #FF0033;
   background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
 }
 
 /* Estilos para el texto del calendario */
@@ -941,4 +800,87 @@
 .time-select::-moz-calendar-picker-indicator:focus {
   outline: 2px solid #00FFFF;
   outline-offset: 2px;
+}
+
+/* --- Personalización avanzada del input de fecha y su icono --- */
+.date-group .date-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-group .date-input {
+  background: #0a0a0a;
+  color: #00FFFF;
+  border: 2px solid #00FFFF;
+  border-radius: 10px;
+  padding: 0.8rem 2.5rem 0.8rem 1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 0 0 rgba(0,255,255,0);
+}
+
+.date-group .date-input:focus {
+  border-color: #FF0033;
+  box-shadow: 0 0 12px 0 #00FFFF, 0 0 4px 2px #FF0033;
+  background: #111;
+}
+
+.date-group .date-input:hover {
+  border-color: #FF0033;
+  box-shadow: 0 0 8px 0 #00FFFF;
+}
+
+.date-group .calendar-icon {
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  filter: drop-shadow(0 0 6px #00ffff88);
+  transition: filter 0.3s;
+}
+
+.date-group .date-input:focus ~ .calendar-icon,
+.date-group .date-input:hover ~ .calendar-icon {
+  filter: drop-shadow(0 0 8px #FF0033) drop-shadow(0 0 12px #00FFFF);
+}
+
+/* Ocultar el icono nativo del calendario en navegadores compatibles */
+.date-group .date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.date-group .date-input::-webkit-input-placeholder {
+  color: #00FFFF;
+  opacity: 0.7;
+}
+.date-group .date-input::-moz-placeholder {
+  color: #00FFFF;
+  opacity: 0.7;
+}
+.date-group .date-input:-ms-input-placeholder {
+  color: #00FFFF;
+  opacity: 0.7;
+}
+.date-group .date-input::placeholder {
+  color: #00FFFF;
+  opacity: 0.7;
+}
+
+/* Para Firefox */
+.date-group .date-input::-moz-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* Para Edge/IE */
+.date-group .date-input::-ms-input-placeholder {
+  color: #00FFFF;
+  opacity: 0.7;
 } 
