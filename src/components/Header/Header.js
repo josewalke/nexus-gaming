@@ -103,10 +103,8 @@ export default function Header({ lang, setLang }) {
 
   // Medir FPS
   useEffect(() => {
-    let lastFrame = performance.now();
     let frames = 0;
     let lastFpsUpdate = performance.now();
-    let rafId;
     function loop(now) {
       frames++;
       if (now - lastFpsUpdate > 1000) {
@@ -114,9 +112,9 @@ export default function Header({ lang, setLang }) {
         frames = 0;
         lastFpsUpdate = now;
       }
-      rafId = requestAnimationFrame(loop);
+      requestAnimationFrame(loop);
     }
-    rafId = requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafId);
   }, []);
 

@@ -24,9 +24,6 @@ export default function BookingPage({ lang, setLang }) {
     message: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
   const [selectedDate, setSelectedDate] = useState(formData.date ? new Date(formData.date) : null);
 
   const handleInputChange = (e) => {
@@ -424,11 +421,10 @@ export default function BookingPage({ lang, setLang }) {
                 <motion.button
                   type="submit"
                   className="submit-btn"
-                  disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {isSubmitting ? t.booking.form.submitting : t.booking.form.submit}
+                  {t.booking.form.submit}
                 </motion.button>
               </motion.form>
             </div>
