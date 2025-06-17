@@ -13,7 +13,7 @@ registerLocale('es', es);
 
 export default function BookingPage({ lang, setLang }) {
   const t = translations[lang] || translations['es'];
-  const tEn = translations['en'];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
