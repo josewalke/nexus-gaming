@@ -115,7 +115,6 @@ export default function Header({ lang, setLang }) {
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(rafId);
   }, []);
 
   // Medir tiempo de carga de la página

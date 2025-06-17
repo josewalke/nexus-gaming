@@ -209,36 +209,6 @@ export default function BookingPage({ lang, setLang }) {
     }),
   };
 
-  if (submitSuccess) {
-    return (
-      <>
-        <Header lang={lang} setLang={setLang} />
-        <FloatingParticles count={30}>
-          <section className="booking-success">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="success-content"
-            >
-              <div className="success-icon">✅</div>
-              <h1>{t.booking.success.title}</h1>
-              <p>{t.booking.success.message}</p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/'}
-                className="back-home-btn"
-              >
-                {t.booking.success.backHome}
-              </motion.button>
-            </motion.div>
-          </section>
-        </FloatingParticles>
-      </>
-    );
-  }
-
   return (
     <>
       <Header lang={lang} setLang={setLang} />
