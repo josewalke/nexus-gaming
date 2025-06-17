@@ -13,6 +13,7 @@ registerLocale('es', es);
 
 export default function BookingPage({ lang, setLang }) {
   const t = translations[lang] || translations['es'];
+  const tEn = translations['en'];
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,6 +26,7 @@ export default function BookingPage({ lang, setLang }) {
   });
 
   const [selectedDate, setSelectedDate] = useState(formData.date ? new Date(formData.date) : null);
+  const [expandedExperience, setExpandedExperience] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,26 +49,37 @@ export default function BookingPage({ lang, setLang }) {
   };
 
   const experiences = [
-    { 
-      id: 'kat-walk', 
-      name: t.booking.experiences.katWalk.name, 
-      duration: t.booking.experiences.katWalk.duration, 
+    {
+      id: 'kat-walk',
+      name: t.booking.experiences.katWalk.name,
+      duration: t.booking.experiences.katWalk.duration,
       price: t.booking.experiences.katWalk.price,
-      description: t.booking.experiences.katWalk.description
+      description: t.booking.experiences.katWalk.description,
+      details: lang === 'es'
+        ? 'El Kat Walk C2 es una plataforma omnidireccional que te permite caminar, correr y moverte en 360° dentro de los juegos de realidad virtual. Ideal para quienes buscan la máxima inmersión y ejercicio físico durante la experiencia.'
+        : 'The Kat Walk C2 is an omnidirectional treadmill that lets you walk, run, and move 360° inside VR games. Perfect for those seeking maximum immersion and physical activity during the experience.'
     },
-    { 
-      id: 'owo-vest', 
-      name: t.booking.experiences.owoVest.name, 
-      duration: t.booking.experiences.owoVest.duration, 
+    {
+      id: 'owo-vest',
+      name: t.booking.experiences.owoVest.name,
+      duration: t.booking.experiences.owoVest.duration,
       price: t.booking.experiences.owoVest.price,
-      description: t.booking.experiences.owoVest.description
+      description: t.booking.experiences.owoVest.description,
+      details: lang === 'es'
+        ? 'El chaleco OWO permite sentir impactos, vibraciones y sensaciones táctiles en tiempo real durante el juego, aumentando la inmersión y realismo de cada partida.'
+        : 'The OWO vest lets you feel impacts, vibrations, and tactile sensations in real time during the game, increasing immersion and realism in every session.'
     },
-    { 
-      id: 'combo', 
-      name: t.booking.experiences.combo.name, 
-      duration: t.booking.experiences.combo.duration, 
-      price: t.booking.experiences.combo.price,
-      description: t.booking.experiences.combo.description
+    {
+      id: 'arena-vr',
+      name: lang === 'es' ? 'Jugar a la arena VR' : 'Play in the VR Arena',
+      duration: '60 min',
+      price: '25€',
+      description: lang === 'es'
+        ? 'Disfruta de una experiencia multijugador en la Arena VR, compite y colabora en juegos de realidad virtual de última generación. Ideal para grupos y eventos.'
+        : 'Enjoy a multiplayer experience in the VR Arena, compete and collaborate in next-gen virtual reality games. Perfect for groups and events.',
+      details: lang === 'es'
+        ? 'La Arena VR es un espacio abierto donde varios jugadores pueden interactuar y competir en juegos cooperativos o competitivos, usando lo último en tecnología VR. Perfecto para fiestas, eventos y grupos de amigos.'
+        : 'The VR Arena is an open space where several players can interact and compete in cooperative or competitive games, using the latest VR technology. Perfect for parties, events, and groups of friends.'
     }
   ];
 
@@ -235,7 +248,19 @@ export default function BookingPage({ lang, setLang }) {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className={`experience-card ${formData.experience === exp.id ? 'selected' : ''}`}
                     onClick={() => setFormData(prev => ({ ...prev, experience: exp.id }))}
+                    style={{position: 'relative'}}
                   >
+                    <button
+                      type="button"
+                      className="expand-btn"
+                      aria-label={expandedExperience === exp.id ? 'Cerrar detalles' : 'Ver más detalles'}
+                      onClick={e => {
+                        e.stopPropagation();
+                        setExpandedExperience(expandedExperience === exp.id ? null : exp.id);
+                      }}
+                    >
+                      <span className="expand-icon">+</span>
+                    </button>
                     <h3>{exp.name}</h3>
                     <div className="experience-details">
                       <span>⏱️ {exp.duration}</span>
@@ -244,6 +269,11 @@ export default function BookingPage({ lang, setLang }) {
                     <div className="experience-description">
                       {exp.description}
                     </div>
+                    {expandedExperience === exp.id && (
+                      <div className="experience-details-expanded">
+                        {exp.details}
+                      </div>
+                    )}
                   </motion.div>
                 ))}
               </div>

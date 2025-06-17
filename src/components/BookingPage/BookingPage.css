@@ -137,6 +137,23 @@
   color: #ccc;
   font-size: 0.95rem;
   line-height: 1.4;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 0;
+  position: static;
+  overflow: visible;
+  transition: none;
+  animation: none;
+}
+.experience-description::before {
+  content: none;
+}
+.experience-card.selected .experience-description {
+  border-color: inherit;
+  box-shadow: none;
 }
 
 .booking-form {
@@ -616,170 +633,6 @@
   outline-offset: 2px;
 }
 
-/* Estilos para las opciones del select de hora */
-.time-select option {
-  background-color: #0a0a0a;
-  color: #FFFFFF;
-  padding: 0.8rem 1rem;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
-  border: none;
-  margin: 2px 0;
-}
-
-.time-select option:hover {
-  background-color: rgba(0, 255, 255, 0.2);
-  color: #FFFFFF;
-}
-
-.time-select option:checked {
-  background-color: rgba(0, 255, 255, 0.3);
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-.time-select option:disabled {
-  color: rgba(255, 255, 255, 0.5);
-  font-style: italic;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Estilos para el dropdown del select */
-.time-select:focus option {
-  background-color: #1a1a1a;
-}
-
-/* Mejorar la visibilidad del texto seleccionado */
-.time-select:invalid {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.time-select:valid {
-  color: #FFFFFF;
-}
-
-/* Estilos para el select de hora */
-.time-select {
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.2em;
-  padding-right: 2.5rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.time-select:hover {
-  border-color: #FF0033;
-  box-shadow: 0 0 8px 0 #00FFFF;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.time-select:focus {
-  border-color: #FF0033;
-  box-shadow: 0 0 12px 0 #00FFFF, 0 0 4px 2px #FF0033;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Estilos para el texto del calendario */
-.time-select::-webkit-datetime-edit {
-  color: #FFFFFF;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-}
-
-.time-select::-webkit-datetime-edit-text {
-  color: rgba(0, 255, 255, 0.8);
-  padding: 0 0.2em;
-  font-weight: 600;
-}
-
-.time-select::-webkit-datetime-edit-month-field,
-.time-select::-webkit-datetime-edit-day-field,
-.time-select::-webkit-datetime-edit-year-field {
-  color: #FFFFFF;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-/* Estilos para el indicador del calendario */
-.time-select::-webkit-calendar-picker-indicator {
-  background: transparent;
-  bottom: 0;
-  color: transparent;
-  cursor: pointer;
-  height: auto;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: auto;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover en el indicador */
-.time-select:hover::-webkit-calendar-picker-indicator {
-  filter: brightness(1.2);
-}
-
-/* Estilos para Firefox */
-.time-select::-moz-calendar-picker-indicator {
-  background: transparent;
-  border: none;
-  color: transparent;
-  cursor: pointer;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover para Firefox */
-.time-select:hover::-moz-calendar-picker-indicator {
-  filter: brightness(1.2);
-}
-
-/* Estilos para el calendario popup (cuando se abre) */
-.time-select::-webkit-calendar-picker-indicator:hover {
-  background-color: rgba(0, 255, 255, 0.1);
-}
-
-/* Estilos para el calendario cuando se abre */
-.time-select::-webkit-calendar-picker-indicator:active {
-  background-color: rgba(0, 255, 255, 0.2);
-}
-
-/* Mejorar la apariencia del calendario nativo */
-.time-select::-webkit-calendar-picker-indicator {
-  filter: invert(1) hue-rotate(180deg) brightness(1.5);
-}
-
-.time-select:hover::-webkit-calendar-picker-indicator {
-  filter: invert(1) hue-rotate(180deg) brightness(2);
-}
-
-/* Estilos para el calendario popup en Chrome */
-.time-select::-webkit-calendar-picker-indicator:focus {
-  outline: 2px solid #00FFFF;
-  outline-offset: 2px;
-}
-
-/* Estilos para el calendario popup en Firefox */
-.time-select::-moz-calendar-picker-indicator:focus {
-  outline: 2px solid #00FFFF;
-  outline-offset: 2px;
-}
-
 /* === ESTILOS OSCUROS Y LETRAS BLANCAS PARA REACT-DATEPICKER === */
 .react-datepicker,
 .react-datepicker__header {
@@ -905,4 +758,64 @@ input[type="date"]::-ms-expand {
   color: #fff;
   border: 1px solid rgba(0, 255, 255, 0.3);
 }
-/* === FIN ESTILOS OSCUROS REACT-DATEPICKER === */ 
+/* === FIN ESTILOS OSCUROS REACT-DATEPICKER === */
+
+/* Botón expandir/cerrar detalles experiencia */
+.expand-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,255,255,0.12);
+  border: 1.5px solid #00FFFF;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00FFFF;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, border 0.2s, transform 0.2s;
+  box-shadow: 0 0 8px #00FFFF33;
+}
+.expand-btn:hover {
+  background: #00ffff33;
+  border-color: #FF0033;
+  color: #FF0033;
+}
+.expand-btn .expand-icon {
+  display: block;
+  transition: transform 0.2s;
+}
+.experience-card .expand-btn .expand-icon {
+  transform: rotate(0deg);
+}
+.experience-card.selected .expand-btn .expand-icon {
+  /* Si quieres que rote al estar expandido */
+}
+.experience-card .expand-btn[aria-label="Cerrar detalles"] .expand-icon {
+  transform: rotate(45deg);
+}
+
+.experience-details-expanded {
+  margin-top: 0.5rem;
+  color: #fff;
+  background: #222;
+  border-radius: 8px;
+  padding: 0.8rem;
+  box-shadow: 0 0 8px #00FFFF33;
+  animation: fadeInDetails 0.3s;
+}
+.experience-details-expanded::before {
+  content: none;
+}
+.experience-card.selected .experience-details-expanded {
+  border-color: inherit;
+  box-shadow: 0 0 8px #00FFFF33;
+}
+@keyframes fadeInDetails {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+} 
