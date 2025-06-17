@@ -18,7 +18,7 @@ export default function Header({ lang, setLang }) {
   });
   const [connection, setConnection] = useState(getConnectionInfo());
   const [ping, setPing] = useState(null);
-  const [deviceMemory, setDeviceMemory] = useState(navigator.deviceMemory || 'N/A');
+  const [deviceMemory] = useState(navigator.deviceMemory || 'N/A');
   const [fps, setFps] = useState(null);
   const [pageLoad, setPageLoad] = useState(null);
 
