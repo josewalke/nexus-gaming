@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import translations from '../../translations';
 import { FloatingParticles } from '../Effects/ScrollEffects';
 import { motion } from 'framer-motion';
@@ -12,6 +13,11 @@ import './Hero.css';
 export default function Hero({ lang }) {
   // Obtiene las traducciones según el idioma seleccionado
   const t = translations[lang];
+  const navigate = useNavigate();
+
+  const handleBookingClick = () => {
+    navigate('/reservar');
+  };
 
   return (
     // Contenedor con partículas flotantes para crear ambiente futurista
@@ -55,6 +61,7 @@ export default function Hero({ lang }) {
           transition={{ duration: 0.8, delay: 0.9 }} // Duración y delay
           whileHover={{ scale: 1.05 }} // Efecto hover: se agranda ligeramente
           whileTap={{ scale: 0.95 }} // Efecto al hacer clic: se encoge
+          onClick={handleBookingClick}
         >
           {t.book}
         </motion.button>

@@ -13,8 +13,7 @@ const EquipmentSection = lazy(() => import('./EquipmentSection/EquipmentSection'
 const MatchesSection = lazy(() => import('./MatchesSection/MatchesSection'));
 const Footer = lazy(() => import('./Footer/Footer'));
 
-export default function NexusGamingHome() {
-  const [lang, setLang] = useState('en');
+export default function NexusGamingHome({ lang, setLang }) {
   const currentPath = window.location.pathname;
 
   return (

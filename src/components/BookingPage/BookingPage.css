@@ -1,0 +1,944 @@
+.booking-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  padding: 120px 0 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 0, 51, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.booking-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.booking-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.booking-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00FFFF;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.booking-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00FFFF, transparent);
+  opacity: 0.8;
+}
+
+.booking-header p {
+  font-size: 1.2rem;
+  color: #ccc;
+  opacity: 0.9;
+}
+
+.booking-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.experiences-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.experience-card:hover::before {
+  left: 100%;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+  border-color: rgba(0, 255, 255, 0.4);
+}
+
+.experience-card.selected {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #00FFFF;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.experience-card h3 {
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.experience-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.experience-details span {
+  background: rgba(0, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #00FFFF;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.experience-description {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.booking-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00FFFF;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Estilos específicos para los selects */
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.form-group select option {
+  background-color: #0a0a0a;
+  color: #FFFFFF;
+  padding: 0.8rem 1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  border: none;
+  margin: 2px 0;
+}
+
+.form-group select option:hover {
+  background-color: rgba(0, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.form-group select option:checked {
+  background-color: rgba(0, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.form-group select option:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para el dropdown del select */
+.form-group select:focus option {
+  background-color: #1a1a1a;
+}
+
+/* Mejorar la visibilidad del texto seleccionado */
+.form-group select:invalid {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group select:valid {
+  color: #FFFFFF;
+}
+
+/* Estilos específicos para el select de hora */
+.form-group select[name="time"] {
+  font-weight: 500;
+}
+
+.form-group select[name="time"] option {
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.form-group select[name="time"] option:last-child {
+  border-bottom: none;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #FF0033, #cc0026);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 0, 51, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.booking-success {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  position: relative;
+  padding-top: 80px;
+}
+
+.booking-success::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 0, 51, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.success-content {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  max-width: 500px;
+  position: relative;
+  z-index: 2;
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease-in-out;
+  color: #00FFFF;
+}
+
+.success-content h1 {
+  color: #00FFFF;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.success-content p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.back-home-btn {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #FF0033, #cc0026);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.back-home-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 0, 51, 0.4);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .booking-header h1 {
+    font-size: 2rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .booking-container {
+    padding: 0 1rem;
+  }
+  
+  .booking-form {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .experience-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .success-content {
+    padding: 2rem;
+    margin: 1rem;
+  }
+}
+
+/* Estilos adicionales para el calendario */
+.form-group input[type="date"] {
+  cursor: pointer;
+  position: relative;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3e%3c/rect%3e%3cline x1='16' y1='2' x2='16' y2='6'%3e%3c/line%3e%3cline x1='8' y1='2' x2='8' y2='6'%3e%3c/line%3e%3cline x1='3' y1='10' x2='21' y2='10'%3e%3c/line%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Efecto de resplandor al hacer hover */
+.form-group input[type="date"]:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Efecto de resplandor al hacer focus */
+.form-group input[type="date"]:focus {
+  border-color: #00FFFF;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Animación del icono del calendario */
+.form-group input[type="date"]:hover,
+.form-group input[type="date"]:focus {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3e%3c/rect%3e%3cline x1='16' y1='2' x2='16' y2='6'%3e%3c/line%3e%3cline x1='8' y1='2' x2='8' y2='6'%3e%3c/line%3e%3cline x1='3' y1='10' x2='21' y2='10'%3e%3c/line%3e%3c/svg%3e");
+}
+
+/* Estilos para el texto del calendario */
+.form-group input[type="date"]::-webkit-datetime-edit {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.form-group input[type="date"]::-webkit-datetime-edit-text {
+  color: rgba(0, 255, 255, 0.8);
+  padding: 0 0.2em;
+  font-weight: 600;
+}
+
+.form-group input[type="date"]::-webkit-datetime-edit-month-field,
+.form-group input[type="date"]::-webkit-datetime-edit-day-field,
+.form-group input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Efectos de focus en los campos de fecha */
+.form-group input[type="date"]:focus::-webkit-datetime-edit-text {
+  color: #00FFFF;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+.form-group input[type="date"]:focus::-webkit-datetime-edit-month-field,
+.form-group input[type="date"]:focus::-webkit-datetime-edit-day-field,
+.form-group input[type="date"]:focus::-webkit-datetime-edit-year-field {
+  color: #00FFFF;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+/* Estilos para el indicador del calendario */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover en el indicador */
+.form-group input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para Firefox */
+.form-group input[type="date"]::-moz-calendar-picker-indicator {
+  background: transparent;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover para Firefox */
+.form-group input[type="date"]:hover::-moz-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para el calendario popup (cuando se abre) */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+/* Estilos específicos para el grupo de fecha */
+.form-row .form-group:first-child {
+  position: relative;
+}
+
+.form-row .form-group:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.05), transparent);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.form-row .form-group:first-child:hover::before {
+  opacity: 1;
+}
+
+/* Icono de calendario personalizado - CORREGIDO */
+.form-row .form-group:first-child::after {
+  content: '📅';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.form-row .form-group:first-child:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+}
+
+/* Estilos para el calendario cuando se abre */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:active {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* Mejorar la apariencia del calendario nativo */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5);
+}
+
+.form-group input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(2);
+}
+
+/* Estilos para el calendario popup en Chrome */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Estilos para el calendario popup en Firefox */
+.form-group input[type="date"]::-moz-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Estilos específicos para el input de fecha */
+.date-input {
+  cursor: pointer;
+  position: relative;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3e%3c/rect%3e%3cline x1='16' y1='2' x2='16' y2='6'%3e%3c/line%3e%3cline x1='8' y1='2' x2='8' y2='6'%3e%3c/line%3e%3cline x1='3' y1='10' x2='21' y2='10'%3e%3c/line%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.date-input:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.date-input:focus {
+  border-color: #00FFFF;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Estilos para el texto del calendario */
+.date-input::-webkit-datetime-edit {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.date-input::-webkit-datetime-edit-text {
+  color: rgba(0, 255, 255, 0.8);
+  padding: 0 0.2em;
+  font-weight: 600;
+}
+
+.date-input::-webkit-datetime-edit-month-field,
+.date-input::-webkit-datetime-edit-day-field,
+.date-input::-webkit-datetime-edit-year-field {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Efectos de focus en los campos de fecha */
+.date-input:focus::-webkit-datetime-edit-text {
+  color: #00FFFF;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+.date-input:focus::-webkit-datetime-edit-month-field,
+.date-input:focus::-webkit-datetime-edit-day-field,
+.date-input:focus::-webkit-datetime-edit-year-field {
+  color: #00FFFF;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+/* Estilos para el indicador del calendario */
+.date-input::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover en el indicador */
+.date-input:hover::-webkit-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para Firefox */
+.date-input::-moz-calendar-picker-indicator {
+  background: transparent;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover para Firefox */
+.date-input:hover::-moz-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para el calendario popup (cuando se abre) */
+.date-input::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+/* Estilos para el calendario cuando se abre */
+.date-input::-webkit-calendar-picker-indicator:active {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* Mejorar la apariencia del calendario nativo */
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5);
+}
+
+.date-input:hover::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(2);
+}
+
+/* Estilos para el calendario popup en Chrome */
+.date-input::-webkit-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Estilos para el calendario popup en Firefox */
+.date-input::-moz-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Estilos para las opciones del select de hora */
+.time-select option {
+  background-color: #0a0a0a;
+  color: #FFFFFF;
+  padding: 0.8rem 1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  border: none;
+  margin: 2px 0;
+}
+
+.time-select option:hover {
+  background-color: rgba(0, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.time-select option:checked {
+  background-color: rgba(0, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.time-select option:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para el dropdown del select */
+.time-select:focus option {
+  background-color: #1a1a1a;
+}
+
+/* Mejorar la visibilidad del texto seleccionado */
+.time-select:invalid {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.time-select:valid {
+  color: #FFFFFF;
+}
+
+/* Estilos específicos para el select de hora */
+.time-select {
+  font-weight: 500;
+}
+
+.time-select option {
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.time-select option:last-child {
+  border-bottom: none;
+}
+
+/* Estilos específicos para el select de hora */
+.time-select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.time-select:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.time-select:focus {
+  border-color: #00FFFF;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Estilos para el texto del calendario */
+.time-select::-webkit-datetime-edit {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.time-select::-webkit-datetime-edit-text {
+  color: rgba(0, 255, 255, 0.8);
+  padding: 0 0.2em;
+  font-weight: 600;
+}
+
+.time-select::-webkit-datetime-edit-month-field,
+.time-select::-webkit-datetime-edit-day-field,
+.time-select::-webkit-datetime-edit-year-field {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Efectos de focus en los campos de fecha */
+.time-select:focus::-webkit-datetime-edit-text {
+  color: #00FFFF;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+.time-select:focus::-webkit-datetime-edit-month-field,
+.time-select:focus::-webkit-datetime-edit-day-field,
+.time-select:focus::-webkit-datetime-edit-year-field {
+  color: #00FFFF;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+/* Estilos para el indicador del calendario */
+.time-select::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover en el indicador */
+.time-select:hover::-webkit-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para Firefox */
+.time-select::-moz-calendar-picker-indicator {
+  background: transparent;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover para Firefox */
+.time-select:hover::-moz-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para el calendario popup (cuando se abre) */
+.time-select::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+/* Estilos para el calendario cuando se abre */
+.time-select::-webkit-calendar-picker-indicator:active {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* Mejorar la apariencia del calendario nativo */
+.time-select::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5);
+}
+
+.time-select:hover::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(2);
+}
+
+/* Estilos para el calendario popup en Chrome */
+.time-select::-webkit-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Estilos para el calendario popup en Firefox */
+.time-select::-moz-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+} 

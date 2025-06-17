@@ -22,6 +22,68 @@ const translations = {
         title: "OWO Haptic Vest",
         text: "Feel every impact! The OWO haptic vest delivers sensations to your body that replicate real touch, enhancing every VR combat and experience."
       }
+    },
+    // Booking page translations
+    booking: {
+      title: "Book Your VR Experience",
+      subtitle: "Choose your experience and book your virtual reality session",
+      experiences: {
+        katWalk: {
+          name: "KAT Walk Core 2+",
+          duration: "30 min",
+          price: "25€",
+          description: "Full movement in VR with KAT Walk Core 2+"
+        },
+        owoVest: {
+          name: "OWO Haptic Vest",
+          duration: "45 min",
+          price: "35€",
+          description: "Realistic haptic sensations with OWO Vest"
+        },
+        combo: {
+          name: "Complete Combo",
+          duration: "60 min",
+          price: "50€",
+          description: "Complete experience with both equipments"
+        }
+      },
+      form: {
+        name: "Full name *",
+        email: "Email *",
+        phone: "Phone",
+        date: "Date *",
+        time: "Time *",
+        participants: "Number of participants",
+        message: "Additional message",
+        submit: "Confirm Booking",
+        submitting: "Sending...",
+        selectDate: "Select a date",
+        selectTime: "Select a time",
+        selectParticipants: "Select participants",
+        namePlaceholder: "Your full name",
+        emailPlaceholder: "your@email.com",
+        phonePlaceholder: "+34 XXX XXX XXX",
+        messagePlaceholder: "Special comments or requests..."
+      },
+      timeSlots: {
+        morning: "Morning",
+        noon: "Noon",
+        afternoon: "Afternoon",
+        night: "Night"
+      },
+      participants: {
+        one: "1 person",
+        two: "2 people",
+        three: "3 people",
+        four: "4 people",
+        five: "5 people",
+        six: "6 people"
+      },
+      success: {
+        title: "Booking Confirmed!",
+        message: "Thank you for booking your VR experience. We have sent you a confirmation email with all the details.",
+        backHome: "Back to Home"
+      }
     }
   },
 
@@ -47,6 +109,68 @@ const translations = {
       owo: {
         title: "Chaleco Haptico OWO",
         text: "¡Siente cada impacto! El chaleco OWO transmite sensaciones físicas al cuerpo, haciendo que cada combate VR sea más realista."
+      }
+    },
+    // Traducciones de la página de reservas
+    booking: {
+      title: "Reserva tu Experiencia VR",
+      subtitle: "Elige tu experiencia y reserva tu sesión de realidad virtual",
+      experiences: {
+        katWalk: {
+          name: "KAT Walk Core 2+",
+          duration: "30 min",
+          price: "25€",
+          description: "Movimiento completo en VR con KAT Walk Core 2+"
+        },
+        owoVest: {
+          name: "OWO Haptic Vest",
+          duration: "45 min",
+          price: "35€",
+          description: "Sensaciones hápticas realistas con OWO Vest"
+        },
+        combo: {
+          name: "Combo Completo",
+          duration: "60 min",
+          price: "50€",
+          description: "Experiencia completa con ambos equipamientos"
+        }
+      },
+      form: {
+        name: "Nombre completo *",
+        email: "Email *",
+        phone: "Teléfono",
+        date: "Fecha *",
+        time: "Hora *",
+        participants: "Número de participantes",
+        message: "Mensaje adicional",
+        submit: "Confirmar Reserva",
+        submitting: "Enviando...",
+        selectDate: "Selecciona una fecha",
+        selectTime: "Selecciona una hora",
+        selectParticipants: "Selecciona participantes",
+        namePlaceholder: "Tu nombre completo",
+        emailPlaceholder: "tu@email.com",
+        phonePlaceholder: "+34 XXX XXX XXX",
+        messagePlaceholder: "Comentarios especiales o solicitudes..."
+      },
+      timeSlots: {
+        morning: "Mañana",
+        noon: "Mediodía",
+        afternoon: "Tarde",
+        night: "Noche"
+      },
+      participants: {
+        one: "1 persona",
+        two: "2 personas",
+        three: "3 personas",
+        four: "4 personas",
+        five: "5 personas",
+        six: "6 personas"
+      },
+      success: {
+        title: "¡Reserva Confirmada!",
+        message: "Gracias por reservar tu experiencia VR. Te hemos enviado un email de confirmación con todos los detalles.",
+        backHome: "Volver al Inicio"
       }
     }
   }

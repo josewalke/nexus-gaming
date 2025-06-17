@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Select from 'react-select';
 import translations from '../../translations';
 import './Header.css';
 
 export default function Header({ lang, setLang }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const t = translations[lang];
 
@@ -62,18 +65,37 @@ export default function Header({ lang, setLang }) {
 
   const handleNavClick = (id) => {
     setMenuOpen(false);
-    // Scroll suave al elemento
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // Si estamos en la página de reservas, navegar a la página principal
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Esperar a que se cargue la página principal antes de hacer scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Scroll suave al elemento en la página principal
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+  };
+
+  const handleLogoClick = () => {
+    navigate('/');
   };
 
   return (
     <header className="nexus-header">
       <div className="nexus-header-inner">
         <div className="nexus-brand">
-          <div className="nexus-logo">NEXUS eSPORT VR</div>
+          <div className="nexus-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
+            NEXUS eSPORT VR
+          </div>
           <button 
             className="nexus-menu-toggle" 
             onClick={handleMenuToggle}
