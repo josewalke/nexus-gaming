@@ -4,10 +4,10 @@ import { useInView } from 'react-intersection-observer';
 
 /**
  * Efecto de partículas flotantes para el Hero
- * Crea 20 partículas que flotan suavemente por la pantalla
+ * Crea partículas que flotan suavemente por la pantalla
  * Perfecto para crear ambiente futurista y tecnológico
  */
-export const FloatingParticles = ({ children }) => {
+export const FloatingParticles = ({ children, count = 20 }) => {
   // Hook para detectar cuando el componente entra en el viewport
   const [ref, inView] = useInView({
     threshold: 0.1, // Se activa cuando el 10% del elemento es visible
@@ -22,8 +22,8 @@ export const FloatingParticles = ({ children }) => {
       transition={{ duration: 1 }} // Duración de la transición
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      {/* Generamos 20 partículas con propiedades aleatorias */}
-      {[...Array(20)].map((_, i) => (
+      {/* Generamos partículas con propiedades aleatorias */}
+      {[...Array(count)].map((_, i) => (
         <motion.div
           key={i}
           className="floating-particle"
@@ -50,235 +50,6 @@ export const FloatingParticles = ({ children }) => {
         />
       ))}
       {children} {/* Renderiza el contenido hijo */}
-    </motion.div>
-  );
-};
-
-/**
- * Efecto ASCII Text para el Hero
- * Simula caracteres ASCII que cambian gradualmente
- * Movimiento lento y elegante
- */
-export const GlitchText = ({ children, delay = 0 }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
-  // Caracteres ASCII para el efecto
-  const asciiChars = ['@', '#', '$', '%', '&', '*', '+', '=', '~', '!', '?', '^', '|', '/', '\\', '>', '<', ';', ':', '"', "'", '`', '-', '_', '.', ','];
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }} // Estado inicial: invisible y desplazado
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }} // Animación de entrada
-      transition={{ duration: 1, delay }} // Duración suave
-      style={{ position: 'relative' }}
-    >
-      {/* Efecto ASCII - Capa de caracteres que cambian lentamente */}
-      <motion.div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          color: '#00FFFF', // Color cian para caracteres ASCII
-          fontFamily: 'monospace', // Fuente monoespaciada
-          fontSize: 'inherit',
-          fontWeight: 'inherit',
-          opacity: 0.4, // Semi-transparente
-        }}
-        animate={{
-          opacity: [0, 0.5, 0.2, 0.4, 0], // Parpadeo sutil
-        }}
-        transition={{
-          duration: 4, // Duración muy lenta
-          repeat: Infinity,
-          repeatDelay: 6, // Pausa larga entre repeticiones
-          ease: "easeInOut",
-        }}
-      >
-        {/* Generamos caracteres ASCII aleatorios */}
-        {React.Children.map(children, (child) => {
-          if (typeof child === 'string') {
-            return child.split('').map((char, index) => (
-              <motion.span
-                key={index}
-                style={{
-                  display: 'inline-block',
-                  minWidth: '0.5em', // Ancho mínimo para evitar saltos
-                }}
-              >
-                <motion.span
-                  animate={{
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 3, // Cambio lento de caracteres
-                    repeat: Infinity,
-                    repeatDelay: 8, // Pausa muy larga
-                    ease: "easeInOut",
-                    delay: index * 0.2, // Delay escalonado por carácter
-                  }}
-                >
-                  {asciiChars[Math.floor(Math.random() * asciiChars.length)]}
-                </motion.span>
-                <motion.span
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                  }}
-                  animate={{
-                    opacity: [1, 0, 1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    repeatDelay: 8,
-                    ease: "easeInOut",
-                    delay: index * 0.2 + 1.5, // Delay opuesto
-                  }}
-                >
-                  {char}
-                </motion.span>
-              </motion.span>
-            ));
-          }
-          return child;
-        })}
-      </motion.div>
-
-      {/* Efecto ASCII - Segunda capa con diferentes caracteres */}
-      <motion.div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          color: '#FF00FF', // Color magenta para segunda capa
-          fontFamily: 'monospace',
-          fontSize: 'inherit',
-          fontWeight: 'inherit',
-          opacity: 0.3, // Más transparente
-        }}
-        animate={{
-          opacity: [0, 0.4, 0.1, 0.3, 0], // Parpadeo más sutil
-        }}
-        transition={{
-          duration: 5, // Duración aún más lenta
-          repeat: Infinity,
-          repeatDelay: 10, // Pausa muy larga
-          ease: "easeInOut",
-          delay: 2, // Delay para desfase
-        }}
-      >
-        {/* Segunda capa de caracteres ASCII */}
-        {React.Children.map(children, (child) => {
-          if (typeof child === 'string') {
-            return child.split('').map((char, index) => (
-              <motion.span
-                key={index}
-                style={{
-                  display: 'inline-block',
-                  minWidth: '0.5em',
-                }}
-              >
-                <motion.span
-                  animate={{
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 4, // Cambio muy lento
-                    repeat: Infinity,
-                    repeatDelay: 12, // Pausa extremadamente larga
-                    ease: "easeInOut",
-                    delay: index * 0.3 + 3, // Delay escalonado por carácter
-                  }}
-                >
-                  {asciiChars[Math.floor(Math.random() * asciiChars.length)]}
-                </motion.span>
-                <motion.span
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                  }}
-                  animate={{
-                    opacity: [1, 0, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatDelay: 12,
-                    ease: "easeInOut",
-                    delay: index * 0.3 + 5, // Delay opuesto
-                  }}
-                >
-                  {char}
-                </motion.span>
-              </motion.span>
-            ));
-          }
-          return child;
-        })}
-      </motion.div>
-
-      {/* Capa principal: Texto original */}
-      <div style={{ 
-        position: 'relative', 
-        zIndex: 1,
-        textShadow: '0 0 5px rgba(0, 255, 255, 0.3)' // Sombra sutil cian
-      }}>
-        {children}
-      </div>
-    </motion.div>
-  );
-};
-
-/**
- * Efecto de holograma para EquipmentSection
- * Crea un barrido de luz que simula un holograma
- * Perfecto para mostrar equipos tecnológicos
- */
-export const HologramEffect = ({ children }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.8 }} // Estado inicial: pequeño e invisible
-      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-      transition={{ duration: 0.8 }}
-      style={{ position: 'relative' }}
-    >
-      {/* Capa de barrido holográfico */}
-      <motion.div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%)',
-          borderRadius: 'inherit',
-        }}
-        animate={{
-          x: ['-100%', '100%'], // Barrido de izquierda a derecha
-        }}
-        transition={{
-          duration: 3, // Duración del barrido
-          repeat: Infinity, // Se repite infinitamente
-          ease: "linear", // Movimiento constante
-        }}
-      />
-      {children}
     </motion.div>
   );
 };
@@ -359,32 +130,4 @@ export const ParallaxScroll = ({ children, speed = 0.5 }) => {
   );
 };
 
-/**
- * Efecto de máquina de escribir para texto
- * El texto aparece gradualmente como si se estuviera escribiendo
- * Crea suspense y atención al contenido
- */
-export const TypewriterText = ({ children, delay = 0 }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.5, delay }}
-    >
-      <motion.div
-        initial={{ width: 0 }}
-        animate={inView ? { width: '100%' } : { width: 0 }}
-        transition={{ duration: 2, delay: delay + 0.5 }}
-        style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}
-      >
-        {children}
-      </motion.div>
-    </motion.div>
-  );
-}; 
+ 

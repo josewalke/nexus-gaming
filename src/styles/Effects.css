@@ -126,48 +126,9 @@
   /* Efecto eliminado para evitar difuminado */
 }
 
-/* ========================================
-   EFECTO DE DISTORSIÓN PARA VIDEOS
-   ======================================== */
-.video-distortion {
-  filter: contrast(1.1) saturate(1.2) brightness(0.9); /* Filtros iniciales */
-  transition: filter 0.3s ease; /* Transición suave para los filtros */
-}
 
-/* Al hacer hover, los filtros se intensifican */
-.video-distortion:hover {
-  filter: contrast(1.3) saturate(1.4) brightness(1.1); /* Filtros más intensos */
-}
 
-/* ========================================
-   EFECTO DE ESCANEO
-   ======================================== */
-.scan-effect {
-  position: relative; /* Necesario para posicionar la línea de escaneo */
-  overflow: hidden; /* Oculta la línea cuando se sale del contenedor */
-}
 
-/* Línea de escaneo que se mueve de izquierda a derecha */
-.scan-effect::before {
-  content: ''; /* Crea el pseudo-elemento */
-  position: absolute;
-  top: 0;
-  left: -100%; /* Empieza fuera del contenedor */
-  width: 100%;
-  height: 2px; /* Grosor de la línea */
-  background: linear-gradient(90deg, transparent, #00FFFF, transparent); /* Gradiente cian */
-  animation: scan 3s linear infinite; /* Animación continua */
-}
-
-/* Animación que mueve la línea de escaneo */
-@keyframes scan {
-  0% {
-    left: -100%; /* Empieza fuera del contenedor */
-  }
-  100% {
-    left: 100%; /* Termina fuera del contenedor */
-  }
-}
 
 /* ========================================
    EFECTO DE PARTÍCULAS DE ENERGÍA
@@ -232,7 +193,7 @@
   bottom: 0;
   background: 
     linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%), /* Gradiente cian */
-    linear-gradient(-45deg, transparent 30%, rgba(255, 0, 51, 0.05) 50%, transparent 70%); /* Gradiente rojo sutil */
+    linear-gradient(-45deg, transparent 30%, rgba(255, 0, 51, 0.144) 50%, transparent 70%); /* Gradiente rojo sutil */
   animation: hologramScan 4s linear infinite; /* Animación continua */
 }
 
@@ -246,53 +207,4 @@
   }
 }
 
-/* ========================================
-   EFECTO DE DISTORSIÓN DE TEXTO (GLITCH)
-   ======================================== */
-.glitch-text {
-  position: relative; /* Necesario para posicionar las capas */
-  animation: glitch 3s infinite; /* Animación de glitch que se repite */
-}
-
-/* Capas de texto que crean el efecto glitch */
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text); /* Usa el texto del atributo data-text */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Primera capa: distorsión roja */
-.glitch-text::before {
-  animation: glitch-1 0.3s infinite; /* Animación rápida */
-  color: #FF0033; /* Color rojo */
-  z-index: -1; /* Se mantiene detrás del texto original */
-}
-
-/* Segunda capa: distorsión cian */
-.glitch-text::after {
-  animation: glitch-2 0.3s infinite; /* Animación rápida */
-  color: #00FFFF; /* Color cian */
-  z-index: -2; /* Se mantiene más atrás */
-}
-
-/* Primera animación de glitch: movimientos sutiles */
-@keyframes glitch-1 {
-  0%, 100% { transform: translate(0); } /* Posición normal */
-  20% { transform: translate(-2px, 2px); } /* Desplazamiento diagonal */
-  40% { transform: translate(-2px, -2px); } /* Desplazamiento opuesto */
-  60% { transform: translate(2px, 2px); } /* Desplazamiento diagonal */
-  80% { transform: translate(2px, -2px); } /* Desplazamiento opuesto */
-}
-
-/* Segunda animación de glitch: movimientos opuestos */
-@keyframes glitch-2 {
-  0%, 100% { transform: translate(0); } /* Posición normal */
-  20% { transform: translate(2px, -2px); } /* Desplazamiento opuesto al anterior */
-  40% { transform: translate(2px, 2px); } /* Desplazamiento diagonal */
-  60% { transform: translate(-2px, -2px); } /* Desplazamiento opuesto */
-  80% { transform: translate(-2px, 2px); } /* Desplazamiento diagonal */
-} 
+ 

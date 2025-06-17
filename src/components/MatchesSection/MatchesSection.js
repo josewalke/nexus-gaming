@@ -1,6 +1,6 @@
 import React from 'react';
 import translations from '../../translations';
-import { FireParticles, TypewriterText } from '../Effects/ScrollEffects';
+import { FireParticles } from '../Effects/ScrollEffects';
 import { motion } from 'framer-motion';
 import './MatchesSection.css';
 
@@ -19,9 +19,14 @@ export default function MatchesSection({ lang }) {
         >
           {t.section2}
         </motion.h2>
-        <TypewriterText delay={0.3}>
-          <p>{t.section2Text}</p>
-        </TypewriterText>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          {t.section2Text}
+        </motion.p>
       </section>
     </FireParticles>
   );

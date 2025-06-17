@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { PERFORMANCE_CONFIG } from '../../config/performance';
 import translations from '../../translations';
 import { useResponsive } from '../../hooks/useResponsive';
-import { TypewriterText } from '../Effects/ScrollEffects';
+
 import { motion } from 'framer-motion';
 import './VideoSection.css';
 
@@ -135,10 +135,15 @@ export default function VideoSection({ lang }) {
           {t.nav[0]}
         </motion.h2>
         
-        {/* Texto con efecto de máquina de escribir */}
-        <TypewriterText delay={0.3}>
-          <p>{t.experienceSubtitle}</p>
-        </TypewriterText>
+        {/* Texto con animación de entrada */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          {t.experienceSubtitle}
+        </motion.p>
         {isDataSaving && (
           <div className="data-saving-notice">
             Modo ahorro de datos activado - Calidad de video reducida
