@@ -36,7 +36,7 @@ export default function EquipmentSection({ lang }) {
         >
           <div className="equipment-image">
             <img 
-              src="/assets/kat-vr.png" 
+              src={process.env.PUBLIC_URL + "/assets/kat-vr.png"} 
               alt={t.equipment.kat.title}
               loading="lazy"
             />
@@ -62,7 +62,7 @@ export default function EquipmentSection({ lang }) {
         >
           <div className="equipment-image">
             <img 
-              src="/assets/owo-vest.png" 
+              src={process.env.PUBLIC_URL + "/assets/owo-vest.png"} 
               alt={t.equipment.owo.title}
               loading="lazy"
             />
