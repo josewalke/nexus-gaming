@@ -1,24 +1,62 @@
 # https://www.robotstxt.org/robotstxt.html
+# Nexus Gaming eSport VR - Robots.txt
+
+# Configuración general para todos los bots
 User-agent: *
 Allow: /
 Allow: /sitemap.xml
 Allow: /assets/
+Allow: /blog/
+Allow: /equipment/
+Allow: /matches/
+Allow: /contact/
+Allow: /pricing/
+Allow: /about/
+Allow: /book/
+Allow: /faq/
 
-# Optimización para Google
+# Bloquear archivos innecesarios
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /.env
+Disallow: /.git/
+Disallow: /README.md
+Disallow: /build/
+Disallow: /dist/
+
+# Optimización específica para Google
 User-agent: Googlebot
 Allow: /
 Allow: /sitemap.xml
 Allow: /assets/
+Allow: /blog/
+Allow: /equipment/
+Allow: /matches/
+Allow: /contact/
+Allow: /pricing/
+Allow: /about/
+Allow: /book/
+Allow: /faq/
 Crawl-delay: 1
 
-# Optimización para Bing
+# Optimización específica para Bing
 User-agent: Bingbot
 Allow: /
 Allow: /sitemap.xml
 Allow: /assets/
+Allow: /blog/
+Allow: /equipment/
+Allow: /matches/
+Allow: /contact/
+Allow: /pricing/
+Allow: /about/
+Allow: /book/
+Allow: /faq/
 Crawl-delay: 1
 
-# Optimización para imágenes
+# Optimización para imágenes de Google
 User-agent: Googlebot-Image
 Allow: /assets/
 Allow: /*.jpg$
@@ -26,9 +64,51 @@ Allow: /*.jpeg$
 Allow: /*.gif$
 Allow: /*.png$
 Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.ico$
 
-# Sitemap
+# Optimización para vídeos de Google
+User-agent: Googlebot-Video
+Allow: /assets/
+Allow: /*.mp4$
+Allow: /*.webm$
+Allow: /*.avi$
+Allow: /*.mov$
+
+# Optimización para móviles de Google
+User-agent: Googlebot-Mobile
+Allow: /
+Allow: /sitemap.xml
+Allow: /assets/
+Allow: /blog/
+Allow: /equipment/
+Allow: /matches/
+Allow: /contact/
+Allow: /pricing/
+Allow: /about/
+Allow: /book/
+Allow: /faq/
+
+# Optimización para Yahoo
+User-agent: Slurp
+Allow: /
+Allow: /sitemap.xml
+Allow: /assets/
+Crawl-delay: 2
+
+# Optimización para DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /
+Allow: /sitemap.xml
+Allow: /assets/
+
+# Sitemaps
 Sitemap: https://nexusgaming.es/sitemap.xml
 
-# Host
+# Host principal
 Host: https://nexusgaming.es
+
+# Información adicional
+# Este archivo permite a los motores de búsqueda indexar todo el contenido público
+# mientras bloquea archivos de desarrollo y configuración sensibles.
+# Última actualización: 2024-12-19

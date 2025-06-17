@@ -1,6 +1,5 @@
 import React from 'react';
 import translations from '../../translations';
-import OptimizedImage from '../OptimizedImage';
 import { FloatingParticles } from '../Effects/ScrollEffects';
 import { motion } from 'framer-motion';
 import './EquipmentSection.css';
@@ -36,7 +35,7 @@ export default function EquipmentSection({ lang }) {
           viewport={{ once: true }}
         >
           <div className="equipment-image">
-            <OptimizedImage 
+            <img 
               src="/assets/kat-vr.png" 
               alt={t.equipment.kat.title}
               loading="lazy"
@@ -62,7 +61,7 @@ export default function EquipmentSection({ lang }) {
           viewport={{ once: true }}
         >
           <div className="equipment-image">
-            <OptimizedImage 
+            <img 
               src="/assets/owo-vest.png" 
               alt={t.equipment.owo.title}
               loading="lazy"

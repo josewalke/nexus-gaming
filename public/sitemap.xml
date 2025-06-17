@@ -1,28 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página principal -->
   <url>
     <loc>https://nexusgaming.es/</loc>
-    <lastmod>2024-03-20</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en"/>
+    <image:image>
+      <image:loc>https://nexusgaming.es/assets/og-image.jpg</image:loc>
+      <image:title>Nexus Gaming eSport VR - Experiencia Inmersiva</image:title>
+      <image:caption>Centro de gaming VR con equipamiento de última generación</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Sección de equipamiento -->
   <url>
     <loc>https://nexusgaming.es/equipment</loc>
-    <lastmod>2024-03-20</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/equipment"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/equipment"/>
+    <image:image>
+      <image:loc>https://nexusgaming.es/assets/kat-vr.png</image:loc>
+      <image:title>KAT Walk Core 2+ - Movimiento VR Completo</image:title>
+      <image:caption>Sistema de movimiento completo para realidad virtual</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nexusgaming.es/assets/owo-vest.png</image:loc>
+      <image:title>OWO Vest - Chaleco Háptico</image:title>
+      <image:caption>Chaleco háptico para sensaciones realistas en VR</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Sección de partidas -->
   <url>
     <loc>https://nexusgaming.es/matches</loc>
-    <lastmod>2024-03-20</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/matches"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/matches"/>
+    <image:image>
+      <image:loc>https://nexusgaming.es/assets/experience-video.mp4</image:loc>
+      <image:title>Partidas PvP VR Competitivas</image:title>
+      <image:caption>Experiencia competitiva en realidad virtual</image:caption>
+    </image:image>
   </url>
+  
+  <!-- Página de contacto -->
+  <url>
+    <loc>https://nexusgaming.es/contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/contact"/>
+  </url>
+  
+  <!-- Página de precios -->
+  <url>
+    <loc>https://nexusgaming.es/pricing</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/pricing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/pricing"/>
+  </url>
+  
+  <!-- Página sobre nosotros -->
+  <url>
+    <loc>https://nexusgaming.es/about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/about"/>
+  </url>
+  
+  <!-- Blog -->
+  <url>
+    <loc>https://nexusgaming.es/blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/blog"/>
+  </url>
+  
+  <!-- Artículo de ejemplo -->
+  <url>
+    <loc>https://nexusgaming.es/blog/ejemplo-articulo-seo</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/blog/ejemplo-articulo-seo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/blog/ejemplo-articulo-seo"/>
+  </url>
+  
+  <!-- Página de reservas -->
+  <url>
+    <loc>https://nexusgaming.es/book</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/book"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/book"/>
+  </url>
+  
+  <!-- Página de FAQ -->
+  <url>
+    <loc>https://nexusgaming.es/faq</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nexusgaming.es/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexusgaming.es/en/faq"/>
+  </url>
+  
 </urlset> 

@@ -4,70 +4,61 @@ export default function OptimizedImage({
   src, 
   alt, 
   className = '', 
-  placeholder = '/assets/placeholder.jpg',
+  loading = 'lazy',
+  decoding = 'async',
   ...props 
 }) {
-  const [imageSrc, setImageSrc] = useState(placeholder);
-  const [imageRef, setImageRef] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const observerRef = useRef();
+  const [hasError, setHasError] = useState(false);
+  const imageRef = useRef();
 
   useEffect(() => {
-    let observer;
-    
-    if (imageRef) {
-      if (IntersectionObserver) {
-        observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                setIsInView(true);
-                observer.unobserve(imageRef);
-              }
-            });
-          },
-          {
-            threshold: 0.1,
-            rootMargin: '50px'
-          }
-        );
-        observer.observe(imageRef);
-        observerRef.current = observer;
-      } else {
-        // Fallback para navegadores que no soportan IntersectionObserver
-        setIsInView(true);
-      }
-    }
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [imageRef]);
-
-  useEffect(() => {
-    if (isInView) {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        setImageSrc(src);
+    const img = imageRef.current;
+    if (img) {
+      const handleLoad = () => {
         setIsLoaded(true);
+        setHasError(false);
       };
-      img.onerror = () => {
-        // Si falla la carga, mantener el placeholder
+      
+      const handleError = () => {
         console.warn(`Failed to load image: ${src}`);
+        setHasError(true);
+        setIsLoaded(false);
+      };
+
+      img.addEventListener('load', handleLoad);
+      img.addEventListener('error', handleError);
+
+      return () => {
+        img.removeEventListener('load', handleLoad);
+        img.removeEventListener('error', handleError);
       };
     }
-  }, [isInView, src]);
+  }, [src]);
+
+  // Generar un alt descriptivo si no se proporciona
+  const generateAlt = (imageSrc) => {
+    if (alt) return alt;
+    
+    // Extraer nombre del archivo y generar descripción
+    const fileName = imageSrc.split('/').pop().split('.')[0];
+    const words = fileName.replace(/[-_]/g, ' ').split(' ');
+    const capitalizedWords = words.map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    );
+    
+    return `Imagen de ${capitalizedWords.join(' ')}`;
+  };
 
   return (
     <img
-      ref={setImageRef}
-      src={imageSrc}
-      alt={alt}
-      className={`optimized-image ${className} ${isLoaded ? 'loaded' : 'loading'}`}
+      ref={imageRef}
+      src={src}
+      alt={generateAlt(src)}
+      className={`optimized-image ${className} ${isLoaded ? 'loaded' : 'loading'} ${hasError ? 'error' : ''}`}
+      loading={loading}
+      decoding={decoding}
+      onError={() => setHasError(true)}
       {...props}
     />
   );
