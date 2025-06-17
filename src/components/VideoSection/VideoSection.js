@@ -60,17 +60,19 @@ export default function VideoSection({ lang }) {
     const playVideo = async () => {
       try {
         await video.play();
-        console.log('✅ Video reproduciéndose correctamente');
+        // console.log('✅ Video reproduciéndose correctamente');
       } catch (error) {
-        console.warn('⚠️ No se pudo autoplay:', error);
-        // En móviles, esperar interacción del usuario para reproducir
+        // console.warn('⚠️ No se pudo autoplay:', error);
+        
+        // En móviles, intentar reproducir después de la primera interacción
         if (isMobile) {
           const handleUserInteraction = () => {
-            video.play().catch(console.warn);
-            // Remover los event listeners después de la primera interacción
+            video.play().catch(() => {});
+            // Remover listeners después de la primera interacción
             document.removeEventListener('touchstart', handleUserInteraction);
             document.removeEventListener('click', handleUserInteraction);
           };
+          
           // Agregar listeners para detectar la primera interacción del usuario
           document.addEventListener('touchstart', handleUserInteraction);
           document.addEventListener('click', handleUserInteraction);
@@ -82,10 +84,10 @@ export default function VideoSection({ lang }) {
     playVideo();
 
     // Event listeners para debugging y monitoreo del video
-    video.addEventListener('loadstart', () => console.log('🎬 Video empezando a cargar'));
-    video.addEventListener('canplay', () => console.log('🎬 Video listo para reproducir'));
-    video.addEventListener('play', () => console.log('🎬 Video reproduciéndose'));
-    video.addEventListener('error', (e) => console.error('❌ Error en video:', e));
+    // video.addEventListener('loadstart', () => console.log('🎬 Video empezando a cargar'));
+    // video.addEventListener('canplay', () => console.log('🎬 Video listo para reproducir'));
+    // video.addEventListener('play', () => console.log('🎬 Video reproduciéndose'));
+    // video.addEventListener('error', (e) => console.error('❌ Error en video:', e));
 
     // Cleanup: remover event listeners al desmontar el componente
     return () => {

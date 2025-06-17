@@ -3,11 +3,24 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Select from 'react-select';
 import translations from '../../translations';
 import './Header.css';
+import { SHOW_DEBUG } from '../../config/debug';
+import { useResponsive } from '../../hooks/useResponsive';
+import { getConnectionInfo } from '../../config/video';
 
 export default function Header({ lang, setLang }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const responsive = useResponsive();
+  const [debugOpen, setDebugOpen] = useState(() => {
+    const saved = localStorage.getItem('nexusDebugPanelOpen');
+    return saved === null ? false : saved === 'true';
+  });
+  const [connection, setConnection] = useState(getConnectionInfo());
+  const [ping, setPing] = useState(null);
+  const [deviceMemory, setDeviceMemory] = useState(navigator.deviceMemory || 'N/A');
+  const [fps, setFps] = useState(null);
+  const [pageLoad, setPageLoad] = useState(null);
 
   const t = translations[lang];
 
@@ -58,6 +71,69 @@ export default function Header({ lang, setLang }) {
       document.body.style.overflow = 'unset';
     };
   }, [menuOpen]);
+
+  // Actualizar info de conexión en tiempo real
+  useEffect(() => {
+    const updateConnection = () => setConnection(getConnectionInfo());
+    if (navigator.connection) {
+      navigator.connection.addEventListener('change', updateConnection);
+    }
+    return () => {
+      if (navigator.connection) {
+        navigator.connection.removeEventListener('change', updateConnection);
+      }
+    };
+  }, []);
+
+  // Test de lag (ping a google)
+  useEffect(() => {
+    const testPing = async () => {
+      const start = Date.now();
+      try {
+        await fetch('https://www.google.com/favicon.ico?_=' + Date.now(), { method: 'HEAD', cache: 'no-store' });
+        setPing(Date.now() - start);
+      } catch {
+        setPing(null);
+      }
+    };
+    testPing();
+    const interval = setInterval(testPing, 10000); // Actualiza cada 10s
+    return () => clearInterval(interval);
+  }, []);
+
+  // Medir FPS
+  useEffect(() => {
+    let lastFrame = performance.now();
+    let frames = 0;
+    let lastFpsUpdate = performance.now();
+    let rafId;
+    function loop(now) {
+      frames++;
+      if (now - lastFpsUpdate > 1000) {
+        setFps(frames);
+        frames = 0;
+        lastFpsUpdate = now;
+      }
+      rafId = requestAnimationFrame(loop);
+    }
+    rafId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  // Medir tiempo de carga de la página
+  useEffect(() => {
+    if (performance.timing) {
+      const timing = performance.timing;
+      const loadTime = timing.loadEventEnd && timing.navigationStart ? (timing.loadEventEnd - timing.navigationStart) : null;
+      setPageLoad(loadTime);
+    } else {
+      setPageLoad(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('nexusDebugPanelOpen', debugOpen);
+  }, [debugOpen]);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -176,6 +252,100 @@ export default function Header({ lang, setLang }) {
           />
         </div>
       </nav>
+      {SHOW_DEBUG && (
+        <div style={{
+          position: 'fixed',
+          top: 10,
+          right: 10,
+          zIndex: 9999,
+          fontFamily: 'Orbitron, sans-serif',
+        }}>
+          <div
+            style={{
+              background: 'limegreen',
+              color: '#111',
+              padding: debugOpen ? '12px 24px' : '8px 18px',
+              borderRadius: '8px',
+              fontWeight: 'bold',
+              minWidth: debugOpen ? 260 : 80,
+              maxWidth: 350,
+              boxShadow: '0 2px 12px rgba(0,0,0,0.2)',
+              cursor: 'pointer',
+              transition: 'all 0.25s cubic-bezier(.4,2,.6,1)',
+              userSelect: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: debugOpen ? 'flex-end' : 'center',
+            }}
+            onClick={() => setDebugOpen((v) => !v)}
+            title={debugOpen ? 'Ocultar debug' : 'Mostrar debug'}
+          >
+            <span style={{marginRight: debugOpen ? 12 : 0, fontWeight: 700}}>
+              {debugOpen ? 'DEBUG ACTIVO' : 'DEBUG'}
+            </span>
+            <span style={{fontSize: 18, transform: debugOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s'}}>
+              ▶
+            </span>
+          </div>
+          {debugOpen && (
+            <div style={{
+              background: 'white',
+              color: '#111',
+              marginTop: 2,
+              borderRadius: '8px',
+              padding: '12px 18px',
+              fontWeight: 400,
+              fontSize: 14,
+              wordBreak: 'break-all',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.12)',
+              minWidth: 260,
+              maxWidth: 350,
+            }}>
+              <div><b>Ancho ventana:</b> {window.innerWidth}px</div>
+              <div><b>Alto ventana:</b> {window.innerHeight}px</div>
+              <div><b>Idioma:</b> {lang}</div>
+              <div><b>Dispositivo:</b> {responsive.isDesktop ? 'Desktop' : responsive.isTablet ? 'Tablet' : 'Móvil'}</div>
+              <div><b>Orientación:</b> {responsive.orientation}</div>
+              <div><b>Touch:</b> {responsive.isTouch ? 'Sí' : 'No'}</div>
+              <div><b>Notch:</b> {responsive.hasNotchDevice ? 'Sí' : 'No'}</div>
+              <div><b>Ruta actual:</b> {location.pathname}</div>
+              <div><b>userAgent:</b> {navigator.userAgent}</div>
+              <div><b>Fecha/Hora:</b> {new Date().toLocaleString()}</div>
+              <div><b>Menú abierto:</b> {menuOpen ? 'Sí' : 'No'}</div>
+              <hr style={{margin: '10px 0'}} />
+              <div><b>Conexión:</b> {connection.effectiveType}</div>
+              <div><b>Velocidad estimada:</b> {connection.downlink ? connection.downlink + ' Mbps' : 'N/A'}</div>
+              <div><b>Latencia estimada:</b> {connection.rtt ? connection.rtt + ' ms' : 'N/A'}</div>
+              <div><b>Lag (ping real):</b> {ping !== null ? ping + ' ms' : 'N/A'}</div>
+              <hr style={{margin: '10px 0'}} />
+              <div>
+                <b>Memoria disponible:</b> 
+                <span style={{color: deviceMemory !== 'N/A' && deviceMemory < 2 ? 'red' : '#111'}}>
+                  {deviceMemory !== 'N/A' ? deviceMemory + ' GB' : 'N/A'}
+                </span>
+              </div>
+              <div>
+                <b>FPS (aprox):</b> 
+                <span style={{
+                  color: fps === null ? '#111' : fps >= 50 ? 'green' : fps >= 30 ? 'orange' : 'red',
+                  fontWeight: fps !== null && fps < 30 ? 'bold' : 'normal',
+                }}>
+                  {fps !== null ? fps : 'N/A'}
+                </span>
+              </div>
+              <div>
+                <b>Tiempo de carga:</b> 
+                <span style={{
+                  color: pageLoad === null ? '#111' : pageLoad < 1500 ? 'green' : pageLoad < 3000 ? 'orange' : 'red',
+                  fontWeight: pageLoad !== null && pageLoad > 3000 ? 'bold' : 'normal',
+                }}>
+                  {pageLoad !== null ? pageLoad + ' ms' : 'N/A'}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </header>
   );
 } 

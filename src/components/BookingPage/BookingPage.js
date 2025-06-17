@@ -4,6 +4,12 @@ import { FloatingParticles } from '../Effects/ScrollEffects';
 import Header from '../Header/Header';
 import translations from '../../translations';
 import './BookingPage.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { registerLocale } from 'react-datepicker';
+import es from 'date-fns/locale/es';
+import Select from 'react-select';
+registerLocale('es', es);
 
 export default function BookingPage({ lang, setLang }) {
   const t = translations[lang] || translations['es'];
@@ -21,6 +27,8 @@ export default function BookingPage({ lang, setLang }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  const [selectedDate, setSelectedDate] = useState(formData.date ? new Date(formData.date) : null);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -29,16 +37,16 @@ export default function BookingPage({ lang, setLang }) {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setFormData(prev => ({ ...prev, date: date ? date.toISOString().split('T')[0] : '' }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simular envío del formulario
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      console.log('Datos del formulario:', formData);
-    }, 2000);
+    // console.log('Datos del formulario:', formData);
+    // Aquí iría la lógica para enviar los datos
+    alert('¡Gracias por tu reserva! Te contactaremos pronto.');
   };
 
   const experiences = [
@@ -143,6 +151,66 @@ export default function BookingPage({ lang, setLang }) {
     { value: 5, label: t.booking.participants.five },
     { value: 6, label: t.booking.participants.six }
   ];
+
+  const customTimeStyles = {
+    control: (base, state) => ({
+      ...base,
+      backgroundColor: 'rgba(255,255,255,0.1)',
+      borderColor: state.isFocused ? '#FF0033' : 'rgba(0,255,255,0.3)',
+      boxShadow: state.isFocused ? '0 0 12px #00FFFF, 0 0 4px 2px #FF0033' : 'none',
+      borderRadius: 10,
+      color: '#fff',
+      fontFamily: 'Orbitron',
+      fontSize: '0.90rem',
+      minHeight: 48,
+      paddingLeft: 0,
+      paddingRight: 0,
+      transition: 'all 0.3s',
+    }),
+    menu: (base) => ({
+      ...base,
+      backgroundColor: '#18181c',
+      border: '1.5px solid #00FFFF',
+      borderRadius: 10,
+      color: '#fff',
+      fontFamily: 'Orbitron',
+      fontSize: '0.95rem',
+      zIndex: 1003,
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected
+        ? '#FF0033'
+        : state.isFocused
+        ? 'rgba(255,0,51,0.7)'
+        : 'transparent',
+      color: state.isSelected || state.isFocused ? '#fff' : '#fff',
+      fontWeight: state.isSelected ? 700 : 400,
+      fontFamily: 'Orbitron',
+      fontSize: '0.95rem',
+      cursor: 'pointer',
+      transition: 'all 0.2s',
+    }),
+    singleValue: (base) => ({
+      ...base,
+      color: '#fff',
+      fontFamily: 'Orbitron',
+      fontSize: '0.90rem',
+    }),
+    dropdownIndicator: (base, state) => ({
+      ...base,
+      color: '#00FFFF',
+      padding: 2,
+      transition: '0.3s',
+    }),
+    indicatorSeparator: () => ({ display: 'none' }),
+    input: (base) => ({
+      ...base,
+      color: '#fff',
+      fontFamily: 'Orbitron',
+      fontSize: '0.90rem',
+    }),
+  };
 
   if (submitSuccess) {
     return (
@@ -261,19 +329,39 @@ export default function BookingPage({ lang, setLang }) {
                 <div className="form-row">
                   <div className="form-group date-group">
                     <label htmlFor="date">{t.booking.form.date}</label>
-                    <div className="date-input-wrapper">
-                      <input
-                        type="date"
+                    <div className="date-input-wrapper" style={{position: 'relative', display: 'flex', alignItems: 'center'}}>
+                      <DatePicker
+                        selected={selectedDate}
+                        onChange={handleDateChange}
+                        locale="es"
+                        dateFormat="dd/MM/yyyy"
+                        minDate={new Date()}
+                        placeholderText={t.booking.form.selectDate}
+                        className="custom-date-input"
                         id="date"
                         name="date"
-                        value={formData.date}
-                        onChange={handleInputChange}
-                        required
-                        min={new Date().toISOString().split('T')[0]}
-                        placeholder={t.booking.form.selectDate}
-                        className="date-input"
+                        autoComplete="off"
+                        customInput={
+                          <input
+                            type="text"
+                            style={{paddingRight: '2.5rem'}}
+                          />
+                        }
                       />
-                      <span className="calendar-icon">
+                      <span
+                        className="calendar-icon"
+                        style={{
+                          position: 'absolute',
+                          right: '1rem',
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          cursor: 'pointer',
+                          zIndex: 2
+                        }}
+                        onClick={() => document.getElementById('date').focus()}
+                        tabIndex={0}
+                        title="Seleccionar fecha"
+                      >
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <rect x="3" y="5" width="18" height="16" rx="3" stroke="#00FFFF" strokeWidth="2"/>
                           <path d="M16 3V7" stroke="#00FFFF" strokeWidth="2" strokeLinecap="round"/>
@@ -288,21 +376,20 @@ export default function BookingPage({ lang, setLang }) {
                   </div>
                   <div className="form-group">
                     <label htmlFor="time">{t.booking.form.time}</label>
-                    <select
+                    <Select
                       id="time"
                       name="time"
-                      value={formData.time}
-                      onChange={handleInputChange}
+                      value={timeSlots.find(slot => slot.time === formData.time) || null}
+                      onChange={option => handleInputChange({ target: { name: 'time', value: option ? option.time : '' } })}
+                      options={timeSlots}
+                      getOptionLabel={option => `${option.time} - ${option.period}`}
+                      getOptionValue={option => option.time}
+                      placeholder={t.booking.form.selectTime}
+                      styles={customTimeStyles}
+                      isSearchable={false}
+                      menuPlacement="auto"
                       required
-                      className="time-select"
-                    >
-                      <option value="" disabled>{t.booking.form.selectTime}</option>
-                      {timeSlots.map((slot, index) => (
-                        <option key={index} value={slot.time}>
-                          {slot.time} - {slot.period}
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </div>
                 </div>
 

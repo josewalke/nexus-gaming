@@ -21,7 +21,7 @@ export default function OptimizedImage({
       };
       
       const handleError = () => {
-        console.warn(`Failed to load image: ${src}`);
+        // console.warn(`Failed to load image: ${src}`);
         setHasError(true);
         setIsLoaded(false);
       };

@@ -169,7 +169,7 @@
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 10px;
   color: #FFFFFF;
-  font-size: 1rem;
+  font-size: 0.90rem;
   transition: all 0.3s ease;
   font-family: 'Orbitron', sans-serif;
 }
@@ -223,7 +223,7 @@
 }
 
 .form-group select option:hover {
-  background-color: rgba(0, 255, 255, 0.2);
+  background-color: #FF0033;
   color: #FFFFFF;
 }
 
@@ -439,7 +439,7 @@
   }
 }
 
-/* Estilos adicionales para el calendario */
+/* Estilos para el calendario */
 .form-group input[type="date"] {
   cursor: pointer;
   position: relative;
@@ -450,179 +450,6 @@
   padding-right: 2.5rem;
   font-weight: 500;
   transition: all 0.3s ease;
-}
-
-/* Efecto de resplandor al hacer hover */
-.form-group input[type="date"]:hover {
-  border-color: rgba(0, 255, 255, 0.6);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-/* Efecto de resplandor al hacer focus */
-.form-group input[type="date"]:focus {
-  border-color: #00FFFF;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-/* Animación del icono del calendario */
-.form-group input[type="date"]:hover,
-.form-group input[type="date"]:focus {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3e%3c/rect%3e%3cline x1='16' y1='2' x2='16' y2='6'%3e%3c/line%3e%3cline x1='8' y1='2' x2='8' y2='6'%3e%3c/line%3e%3cline x1='3' y1='10' x2='21' y2='10'%3e%3c/line%3e%3c/svg%3e");
-}
-
-/* Estilos para el texto del calendario */
-.form-group input[type="date"]::-webkit-datetime-edit {
-  color: #FFFFFF;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-}
-
-.form-group input[type="date"]::-webkit-datetime-edit-text {
-  color: rgba(0, 255, 255, 0.8);
-  padding: 0 0.2em;
-  font-weight: 600;
-}
-
-.form-group input[type="date"]::-webkit-datetime-edit-month-field,
-.form-group input[type="date"]::-webkit-datetime-edit-day-field,
-.form-group input[type="date"]::-webkit-datetime-edit-year-field {
-  color: #FFFFFF;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-/* Efectos de focus en los campos de fecha */
-.form-group input[type="date"]:focus::-webkit-datetime-edit-text {
-  color: #00FFFF;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
-}
-
-.form-group input[type="date"]:focus::-webkit-datetime-edit-month-field,
-.form-group input[type="date"]:focus::-webkit-datetime-edit-day-field,
-.form-group input[type="date"]:focus::-webkit-datetime-edit-year-field {
-  color: #00FFFF;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
-}
-
-/* Estilos para el indicador del calendario */
-.form-group input[type="date"]::-webkit-calendar-picker-indicator {
-  background: transparent;
-  bottom: 0;
-  color: transparent;
-  cursor: pointer;
-  height: auto;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: auto;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover en el indicador */
-.form-group input[type="date"]:hover::-webkit-calendar-picker-indicator {
-  filter: brightness(1.2);
-}
-
-/* Estilos para Firefox */
-.form-group input[type="date"]::-moz-calendar-picker-indicator {
-  background: transparent;
-  border: none;
-  color: transparent;
-  cursor: pointer;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  transition: all 0.3s ease;
-}
-
-/* Efecto hover para Firefox */
-.form-group input[type="date"]:hover::-moz-calendar-picker-indicator {
-  filter: brightness(1.2);
-}
-
-/* Estilos para el calendario popup (cuando se abre) */
-.form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  background-color: rgba(0, 255, 255, 0.1);
-}
-
-/* Estilos específicos para el grupo de fecha */
-.form-row .form-group:first-child {
-  position: relative;
-}
-
-.form-row .form-group:first-child::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.05), transparent);
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.form-row .form-group:first-child:hover::before {
-  opacity: 1;
-}
-
-/* Icono de calendario personalizado - CORREGIDO */
-.form-row .form-group:first-child::after {
-  content: '📅';
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  pointer-events: none;
-  opacity: 0.7;
-  z-index: 1;
-  transition: all 0.3s ease;
-}
-
-.form-row .form-group:first-child:hover::after {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.1);
-  filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
-}
-
-/* Estilos para el calendario cuando se abre */
-.form-group input[type="date"]::-webkit-calendar-picker-indicator:active {
-  background-color: rgba(0, 255, 255, 0.2);
-}
-
-/* Mejorar la apariencia del calendario nativo */
-.form-group input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1) hue-rotate(180deg) brightness(1.5);
-}
-
-.form-group input[type="date"]:hover::-webkit-calendar-picker-indicator {
-  filter: invert(1) hue-rotate(180deg) brightness(2);
-}
-
-/* Estilos para el calendario popup en Chrome */
-.form-group input[type="date"]::-webkit-calendar-picker-indicator:focus {
-  outline: 2px solid #00FFFF;
-  outline-offset: 2px;
-}
-
-/* Estilos para el calendario popup en Firefox */
-.form-group input[type="date"]::-moz-calendar-picker-indicator:focus {
-  outline: 2px solid #00FFFF;
-  outline-offset: 2px;
 }
 
 /* Estilos para las opciones del select de hora */
@@ -667,7 +494,7 @@
   color: #FFFFFF;
 }
 
-/* Estilos específicos para el select de hora */
+/* Estilos para el select de hora */
 .time-select {
   cursor: pointer;
   appearance: none;
@@ -719,17 +546,168 @@
   outline: none;
 }
 
-/* Efectos de focus en los campos de fecha */
-.time-select:focus::-webkit-datetime-edit-text {
-  color: #00FFFF;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+/* Estilos para el indicador del calendario */
+.time-select::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+  transition: all 0.3s ease;
 }
 
-.time-select:focus::-webkit-datetime-edit-month-field,
-.time-select:focus::-webkit-datetime-edit-day-field,
-.time-select:focus::-webkit-datetime-edit-year-field {
-  color: #00FFFF;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+/* Efecto hover en el indicador */
+.time-select:hover::-webkit-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para Firefox */
+.time-select::-moz-calendar-picker-indicator {
+  background: transparent;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover para Firefox */
+.time-select:hover::-moz-calendar-picker-indicator {
+  filter: brightness(1.2);
+}
+
+/* Estilos para el calendario popup (cuando se abre) */
+.time-select::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+/* Estilos para el calendario cuando se abre */
+.time-select::-webkit-calendar-picker-indicator:active {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* Mejorar la apariencia del calendario nativo */
+.time-select::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5);
+}
+
+.time-select:hover::-webkit-calendar-picker-indicator {
+  filter: invert(1) hue-rotate(180deg) brightness(2);
+}
+
+/* Estilos para el calendario popup en Chrome */
+.time-select::-webkit-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Estilos para el calendario popup en Firefox */
+.time-select::-moz-calendar-picker-indicator:focus {
+  outline: 2px solid #00FFFF;
+  outline-offset: 2px;
+}
+
+/* Estilos para las opciones del select de hora */
+.time-select option {
+  background-color: #0a0a0a;
+  color: #FFFFFF;
+  padding: 0.8rem 1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  border: none;
+  margin: 2px 0;
+}
+
+.time-select option:hover {
+  background-color: rgba(0, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+.time-select option:checked {
+  background-color: rgba(0, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.time-select option:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para el dropdown del select */
+.time-select:focus option {
+  background-color: #1a1a1a;
+}
+
+/* Mejorar la visibilidad del texto seleccionado */
+.time-select:invalid {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.time-select:valid {
+  color: #FFFFFF;
+}
+
+/* Estilos para el select de hora */
+.time-select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300FFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.time-select:hover {
+  border-color: #FF0033;
+  box-shadow: 0 0 8px 0 #00FFFF;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.time-select:focus {
+  border-color: #FF0033;
+  box-shadow: 0 0 12px 0 #00FFFF, 0 0 4px 2px #FF0033;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Estilos para el texto del calendario */
+.time-select::-webkit-datetime-edit {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+.time-select::-webkit-datetime-edit-text {
+  color: rgba(0, 255, 255, 0.8);
+  padding: 0 0.2em;
+  font-weight: 600;
+}
+
+.time-select::-webkit-datetime-edit-month-field,
+.time-select::-webkit-datetime-edit-day-field,
+.time-select::-webkit-datetime-edit-year-field {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 /* Estilos para el indicador del calendario */
@@ -803,7 +781,8 @@
 }
 
 /* --- Personalización avanzada del input de fecha y su icono --- */
-.date-group .date-input-wrapper {
+/* Eliminar completamente el bloque de .date-group .date-input-wrapper y .calendar-icon para evitar errores y duplicidad de iconos */
+/* .date-group .date-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -883,4 +862,74 @@
 .date-group .date-input::-ms-input-placeholder {
   color: #00FFFF;
   opacity: 0.7;
-} 
+} */
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
+input[type="date"]::-moz-calendar-picker-indicator {
+  display: none !important;
+}
+input[type="date"]::-ms-clear {
+  display: none !important;
+}
+input[type="date"]::-ms-expand {
+  display: none !important;
+}
+
+/* === ESTILOS OSCUROS Y LETRAS BLANCAS PARA REACT-DATEPICKER === */
+.react-datepicker,
+.react-datepicker__header {
+  background: #18181c !important;
+  color: #fff !important;
+  border: 1.5px solid #00FFFF;
+}
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--today {
+  color: #fff !important;
+  background: none !important;
+}
+.react-datepicker__day--disabled,
+.react-datepicker__day--outside-month {
+  color: #444 !important;
+  opacity: 0.5 !important;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: #00FFFF !important;
+  color: #18181c !important;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.react-datepicker__day--today {
+  border: 1.5px solid #FF0033 !important;
+  color: #fff !important;
+}
+.react-datepicker__day:hover {
+  background: #FF0033 !important;
+  color: #fff !important;
+}
+.react-datepicker__navigation-icon::before {
+  border-color: #00FFFF !important;
+}
+.react-datepicker__header {
+  border-bottom: 1px solid #00FFFF !important;
+}
+.react-datepicker__month-container {
+  font-family: 'Orbitron', sans-serif;
+}
+.react-datepicker__day--disabled {
+  color: #666 !important;
+  background: none !important;
+  opacity: 0.4 !important;
+}
+.react-datepicker__input-container input.custom-date-input {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+/* === FIN ESTILOS OSCUROS REACT-DATEPICKER === */ 
