@@ -5,7 +5,7 @@ import translations from '../../translations';
 import './Header.css';
 import { SHOW_DEBUG } from '../../config/debug';
 import { useResponsive } from '../../hooks/useResponsive';
-import { getConnectionInfo } from '../../config/video';
+import { useCoreWebVitals, usePerformanceMonitor } from '../../hooks/usePerformance';
 
 export default function Header({ lang, setLang }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,10 +16,10 @@ export default function Header({ lang, setLang }) {
     const saved = localStorage.getItem('nexusDebugPanelOpen');
     return saved === null ? false : saved === 'true';
   });
-  const [connection, setConnection] = useState(getConnectionInfo());
+  const [connection, setConnection] = useState(null);
   const [ping, setPing] = useState(null);
   const [deviceMemory] = useState(navigator.deviceMemory || 'N/A');
-  const [fps, setFps] = useState(null);
+  const [fps, setFps] = useState(0);
   const [pageLoad, setPageLoad] = useState(null);
 
   const t = translations[lang];
@@ -34,6 +34,34 @@ export default function Header({ lang, setLang }) {
     { id: 'matches', label: t.nav[1] },
     { id: 'equipment', label: t.nav[2] }
   ];
+
+  // Hooks de performance
+  const coreWebVitals = useCoreWebVitals();
+  const performanceData = usePerformanceMonitor();
+
+  // Función para obtener información de conexión
+  const getConnectionInfo = () => {
+    if (navigator.connection) {
+      return {
+        type: navigator.connection.effectiveType,
+        downlink: navigator.connection.downlink,
+        rtt: navigator.connection.rtt,
+        saveData: navigator.connection.saveData
+      };
+    }
+    return null;
+  };
+
+  // Función para cambiar idioma
+  const handleLanguageChange = (newLang) => {
+    setLang(newLang);
+    setMenuOpen(false);
+  };
+
+  // Función para alternar menú
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   // Cerrar menú al hacer scroll
   useEffect(() => {
@@ -132,10 +160,6 @@ export default function Header({ lang, setLang }) {
     localStorage.setItem('nexusDebugPanelOpen', debugOpen);
   }, [debugOpen]);
 
-  const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   const handleNavClick = (id) => {
     setMenuOpen(false);
     
@@ -171,7 +195,7 @@ export default function Header({ lang, setLang }) {
           </div>
           <button 
             className="nexus-menu-toggle" 
-            onClick={handleMenuToggle}
+            onClick={toggleMenu}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
@@ -199,7 +223,7 @@ export default function Header({ lang, setLang }) {
             menuPlacement="auto"
             isSearchable={false}
             defaultValue={langOptions.find(opt => opt.value === lang)}
-            onChange={(e) => setLang(e.value)}
+            onChange={(e) => handleLanguageChange(e.value)}
             classNamePrefix="nexus-select"
             className="nexus-select"
             styles={{
@@ -310,9 +334,9 @@ export default function Header({ lang, setLang }) {
               <div><b>Fecha/Hora:</b> {new Date().toLocaleString()}</div>
               <div><b>Menú abierto:</b> {menuOpen ? 'Sí' : 'No'}</div>
               <hr style={{margin: '10px 0'}} />
-              <div><b>Conexión:</b> {connection.effectiveType}</div>
-              <div><b>Velocidad estimada:</b> {connection.downlink ? connection.downlink + ' Mbps' : 'N/A'}</div>
-              <div><b>Latencia estimada:</b> {connection.rtt ? connection.rtt + ' ms' : 'N/A'}</div>
+              <div><b>Conexión:</b> {connection?.type}</div>
+              <div><b>Velocidad estimada:</b> {connection?.downlink ? connection.downlink + ' Mbps' : 'N/A'}</div>
+              <div><b>Latencia estimada:</b> {connection?.rtt ? connection.rtt + ' ms' : 'N/A'}</div>
               <div><b>Lag (ping real):</b> {ping !== null ? ping + ' ms' : 'N/A'}</div>
               <hr style={{margin: '10px 0'}} />
               <div>

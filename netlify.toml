@@ -1,0 +1,76 @@
+[build]
+  publish = "build"
+  command = "npm run build:prod"
+
+[build.environment]
+  GENERATE_SOURCEMAP = "false"
+  CI = "true"
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Service-Worker-Allowed = "/"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[context.production.environment]
+  REACT_APP_ENV = "production"
+  REACT_APP_API_URL = "https://api.nexusgaming.es"
+
+[context.deploy-preview.environment]
+  REACT_APP_ENV = "staging"
+  REACT_APP_API_URL = "https://staging-api.nexusgaming.es"
+
+[context.branch-deploy.environment]
+  REACT_APP_ENV = "development"
+  REACT_APP_API_URL = "https://dev-api.nexusgaming.es" 

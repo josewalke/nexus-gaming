@@ -6,6 +6,7 @@ export default function OptimizedImage({
   className = '', 
   loading = 'lazy',
   decoding = 'async',
+  sizes = '100vw',
   ...props 
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +22,7 @@ export default function OptimizedImage({
       };
       
       const handleError = () => {
-        // console.warn(`Failed to load image: ${src}`);
+        console.warn(`Failed to load image: ${src}`);
         setHasError(true);
         setIsLoaded(false);
       };
@@ -58,6 +59,7 @@ export default function OptimizedImage({
       className={`optimized-image ${className} ${isLoaded ? 'loaded' : 'loading'} ${hasError ? 'error' : ''}`}
       loading={loading}
       decoding={decoding}
+      sizes={sizes}
       onError={() => setHasError(true)}
       {...props}
     />
