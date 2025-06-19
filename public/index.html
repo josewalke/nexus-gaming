@@ -21,10 +21,15 @@
     
     <!-- Font Preload para LCP -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" /></noscript>
     
     <!-- Critical Inline CSS para LCP -->
     <style>
+      /* Importar Orbitron críticamente */
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+      
       /* Estilos críticos inline para mejorar LCP */
       .nexus-hero {
         display: flex;
@@ -80,6 +85,41 @@
         transform: translateY(0);
         z-index: 2;
         font-display: swap;
+      }
+      
+      /* Estilos críticos para el logo */
+      .nexus-logo {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 24px;
+        color: #FFFFFF;
+        white-space: nowrap;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        overflow: visible;
+      }
+      
+      .nexus-logo::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -6px;
+        height: 3px;
+        width: 0;
+        background: linear-gradient(90deg, #00FFFF, #FF0033);
+        border-radius: 2px;
+        transition: width 0.25s cubic-bezier(.4,1.4,.6,1), background 0.2s;
+        z-index: 1;
+        pointer-events: none;
+      }
+      
+      .nexus-logo:hover::after {
+        width: 100%;
       }
       
       /* Optimizaciones para LCP */
