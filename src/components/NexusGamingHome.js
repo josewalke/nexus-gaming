@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useEffect } from 'react';
 import Header from './Header/Header';
 import Hero from './Hero/Hero';
 import ParallaxSection from './ParallaxSection/ParallaxSection';
-import LazyComponent from './LazyComponent';
+// import LazyComponent from './LazyComponent';
 import SEOMetaTags from './SEO/SEOMetaTags';
 import '../styles/Global.css';
 import '../styles/Effects.css';

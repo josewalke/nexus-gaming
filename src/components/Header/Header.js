@@ -5,7 +5,7 @@ import translations from '../../translations';
 import './Header.css';
 import { SHOW_DEBUG } from '../../config/debug';
 import { useResponsive } from '../../hooks/useResponsive';
-import { useCoreWebVitals, usePerformanceMonitor } from '../../hooks/usePerformance';
+// import { useCoreWebVitals, usePerformanceMonitor } from '../../hooks/usePerformance';
 
 export default function Header({ lang, setLang }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,8 +36,8 @@ export default function Header({ lang, setLang }) {
   ];
 
   // Hooks de performance
-  const coreWebVitals = useCoreWebVitals();
-  const performanceData = usePerformanceMonitor();
+  // const coreWebVitals = useCoreWebVitals();
+  // const performanceData = usePerformanceMonitor();
 
   // Función para obtener información de conexión
   const getConnectionInfo = () => {
