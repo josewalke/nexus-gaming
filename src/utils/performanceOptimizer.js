@@ -278,8 +278,8 @@ export const monitorAndOptimize = () => {
   }
 };
 
-// Exportar todas las funciones
-export default {
+// Exportación nombrada en lugar de anónima
+const performanceOptimizer = {
   optimizeImages,
   optimizeFonts,
   optimizeCriticalCSS,
@@ -290,4 +290,6 @@ export default {
   optimizeServiceWorker,
   initializePerformanceOptimizations,
   monitorAndOptimize
-}; 
+};
+
+export default performanceOptimizer; 

@@ -187,7 +187,8 @@ export const monitorConnectionChanges = () => {
   }
 };
 
-export default {
+// Exportación nombrada en lugar de anónima
+const performanceAnalytics = {
   sendPerformanceMetrics,
   sendPerformanceScore,
   sendPerformanceError,
@@ -195,4 +196,6 @@ export default {
   getBrowserPerformanceMetrics,
   sendBrowserMetrics,
   monitorConnectionChanges
-}; 
+};
+
+export default performanceAnalytics; 
