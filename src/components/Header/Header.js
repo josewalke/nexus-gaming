@@ -5,13 +5,13 @@ import translations from '../../translations';
 import './Header.css';
 import { SHOW_DEBUG } from '../../config/debug';
 import { useResponsive } from '../../hooks/useResponsive';
-// import { useCoreWebVitals, usePerformanceMonitor } from '../../hooks/usePerformance';
+import { useCoreWebVitals, usePerformanceMonitor } from '../../hooks/usePerformance';
 
 export default function Header({ lang, setLang }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const responsive = useResponsive();
+  const { isMobile } = useResponsive();
   const [debugOpen, setDebugOpen] = useState(() => {
     const saved = localStorage.getItem('nexusDebugPanelOpen');
     return saved === null ? false : saved === 'true';
@@ -19,7 +19,7 @@ export default function Header({ lang, setLang }) {
   const [connection, setConnection] = useState(null);
   const [ping, setPing] = useState(null);
   const [deviceMemory] = useState(navigator.deviceMemory || 'N/A');
-  const [fps, setFps] = useState(0);
+  const [fps, setFps] = useState(60);
   const [pageLoad, setPageLoad] = useState(null);
 
   const t = translations[lang];
@@ -36,8 +36,8 @@ export default function Header({ lang, setLang }) {
   ];
 
   // Hooks de performance
-  // const coreWebVitals = useCoreWebVitals();
-  // const performanceData = usePerformanceMonitor();
+  const coreWebVitals = useCoreWebVitals();
+  const performanceData = usePerformanceMonitor();
 
   // Función para obtener información de conexión
   const getConnectionInfo = () => {
@@ -325,10 +325,10 @@ export default function Header({ lang, setLang }) {
               <div><b>Ancho ventana:</b> {window.innerWidth}px</div>
               <div><b>Alto ventana:</b> {window.innerHeight}px</div>
               <div><b>Idioma:</b> {lang}</div>
-              <div><b>Dispositivo:</b> {responsive.isDesktop ? 'Desktop' : responsive.isTablet ? 'Tablet' : 'Móvil'}</div>
-              <div><b>Orientación:</b> {responsive.orientation}</div>
-              <div><b>Touch:</b> {responsive.isTouch ? 'Sí' : 'No'}</div>
-              <div><b>Notch:</b> {responsive.hasNotchDevice ? 'Sí' : 'No'}</div>
+              <div><b>Dispositivo:</b> {isMobile ? 'Móvil' : 'Desktop'}</div>
+              <div><b>Orientación:</b> {isMobile ? 'Vertical' : 'Horizontal'}</div>
+              <div><b>Touch:</b> {isMobile ? 'Sí' : 'No'}</div>
+              <div><b>Notch:</b> {isMobile ? 'Sí' : 'No'}</div>
               <div><b>Ruta actual:</b> {location.pathname}</div>
               <div><b>userAgent:</b> {navigator.userAgent}</div>
               <div><b>Fecha/Hora:</b> {new Date().toLocaleString()}</div>
@@ -363,6 +363,16 @@ export default function Header({ lang, setLang }) {
                   {pageLoad !== null ? pageLoad + ' ms' : 'N/A'}
                 </span>
               </div>
+              <hr style={{margin: '10px 0'}} />
+              <div><b>LCP:</b> {coreWebVitals?.lcp ? coreWebVitals.lcp + 'ms' : 'N/A'}</div>
+              <div><b>FID:</b> {coreWebVitals?.fid ? coreWebVitals.fid + 'ms' : 'N/A'}</div>
+              <div><b>CLS:</b> {coreWebVitals?.cls ? coreWebVitals.cls.toFixed(3) : 'N/A'}</div>
+              <div><b>FCP:</b> {coreWebVitals?.fcp ? coreWebVitals.fcp + 'ms' : 'N/A'}</div>
+              <div><b>TTFB:</b> {coreWebVitals?.ttfb ? coreWebVitals.ttfb + 'ms' : 'N/A'}</div>
+              <hr style={{margin: '10px 0'}} />
+              <div><b>Performance FPS:</b> {performanceData?.fps || 'N/A'}</div>
+              <div><b>Memory Used:</b> {performanceData?.memory?.used ? Math.round(performanceData.memory.used / 1024 / 1024) + 'MB' : 'N/A'}</div>
+              <div><b>Load Time:</b> {performanceData?.loadTime ? performanceData.loadTime + 'ms' : 'N/A'}</div>
             </div>
           )}
         </div>
