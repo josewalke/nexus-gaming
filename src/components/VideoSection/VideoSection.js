@@ -17,8 +17,10 @@ export default function VideoSection({ lang }) {
   const { isMobile } = useResponsive();
   // Referencia al elemento de video para controlarlo
   const videoRef = useRef(null);
+  const sectionRef = useRef(null);
   const [videoQuality, setVideoQuality] = useState('high');
   const [isDataSaving, setIsDataSaving] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // Detectar preferencias de ahorro de datos y tipo de conexión
@@ -40,6 +42,46 @@ export default function VideoSection({ lang }) {
         setVideoQuality(newQuality);
       });
     }
+  }, []);
+
+  // Intersection Observer para detectar cuando la sección es visible
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // La sección es visible, reproducir el video
+            setIsVisible(true);
+            if (video.paused) {
+              video.play().catch(() => {
+                // Silenciar errores de autoplay
+              });
+            }
+          } else {
+            // La sección no es visible, pausar el video
+            setIsVisible(false);
+            if (!video.paused) {
+              video.pause();
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.3, // El video se pausa cuando menos del 30% está visible
+        rootMargin: '0px 0px -10% 0px' // Margen adicional para mejor detección
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   // Seleccionar fuente de video según calidad
@@ -80,8 +122,10 @@ export default function VideoSection({ lang }) {
       }
     };
 
-    // Intentar reproducir el video
-    playVideo();
+    // Intentar reproducir el video solo si está visible
+    if (isVisible) {
+      playVideo();
+    }
 
     // Event listeners para debugging y monitoreo del video
     // video.addEventListener('loadstart', () => console.log('🎬 Video empezando a cargar'));
@@ -96,15 +140,19 @@ export default function VideoSection({ lang }) {
       video.removeEventListener('play', () => {});
       video.removeEventListener('error', () => {});
     };
-  }, [isMobile]); // Se ejecuta cuando cambia el estado de móvil
+  }, [isMobile, isVisible]); // Se ejecuta cuando cambia el estado de móvil o visibilidad
 
   return (
-    <section id="experience" className="nexus-section nexus-video-section">
+    <section 
+      ref={sectionRef}
+      id="experience" 
+      className="nexus-section nexus-video-section"
+    >
       {/* Video de fondo con configuración optimizada */}
       <video
         ref={videoRef}
         className="nexus-video-bg"
-        autoPlay
+        autoPlay={false} // Cambiado a false para control manual
         muted
         loop
         playsInline

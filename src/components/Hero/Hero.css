@@ -1,4 +1,4 @@
-/* ----------- HERO SECTION - ESTILO APPLE ----------- */
+/* ----------- HERO SECTION - ESTILO APPLE OPTIMIZADO ----------- */
 .nexus-hero {
   display: flex;
   flex-direction: column;
@@ -10,9 +10,12 @@
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
   position: relative;
   overflow: hidden;
+  /* Optimizaciones para performance */
+  contain: layout style paint;
+  will-change: auto;
 }
 
-/* Efecto de partículas de fondo */
+/* Efecto de partículas de fondo - Optimizado */
 .nexus-hero::before {
   content: '';
   position: absolute;
@@ -23,6 +26,9 @@
   background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
               radial-gradient(circle at 80% 20%, rgba(255, 0, 51, 0.1) 0%, transparent 50%);
   pointer-events: none;
+  /* Optimizaciones */
+  contain: layout style paint;
+  will-change: auto;
 }
 
 .nexus-hero h1 {
@@ -34,9 +40,14 @@
   line-height: 1.1;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 1s ease-out 0.3s forwards;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards; /* Reducido delay */
   position: relative;
   z-index: 2;
+  /* Optimizaciones para LCP */
+  contain: layout style paint;
+  will-change: transform, opacity;
+  /* Preload de fuentes */
+  font-display: swap;
 }
 
 .nexus-hero h1::after {
@@ -49,7 +60,9 @@
   height: 2px;
   background: linear-gradient(90deg, transparent, #00FFFF, transparent);
   opacity: 0;
-  animation: fadeIn 1s ease-out 1s forwards;
+  animation: fadeIn 0.8s ease-out 0.8s forwards; /* Reducido delay */
+  /* Optimizaciones */
+  contain: layout style paint;
 }
 
 .nexus-hero p {
@@ -61,9 +74,13 @@
   max-width: 600px;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s ease-out 0.6s forwards;
+  animation: fadeInUp 0.8s ease-out 0.4s forwards; /* Reducido delay */
   position: relative;
   z-index: 2;
+  /* Optimizaciones */
+  contain: layout style paint;
+  will-change: transform, opacity;
+  font-display: swap;
 }
 
 .nexus-hero button {
@@ -80,8 +97,12 @@
   overflow: hidden;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s ease-out 0.9s forwards;
+  animation: fadeInUp 0.6s ease-out 0.6s forwards; /* Reducido delay */
   z-index: 2;
+  /* Optimizaciones para performance */
+  contain: layout style paint;
+  will-change: transform;
+  font-display: swap;
 }
 
 .nexus-hero button::before {
@@ -93,6 +114,8 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.6s ease;
+  /* Optimizaciones */
+  contain: layout style paint;
 }
 
 .nexus-hero button:hover {
@@ -107,7 +130,7 @@
   transform: translateY(0);
 }
 
-/* Animaciones */
+/* Animaciones optimizadas */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -128,7 +151,7 @@
   }
 }
 
-/* Scroll indicator */
+/* Scroll indicator - Optimizado */
 .nexus-hero::after {
   content: '';
   position: absolute;
@@ -140,8 +163,10 @@
   background: linear-gradient(to bottom, #00FFFF, transparent);
   animation: scrollIndicator 2s ease-in-out infinite;
   opacity: 0;
-  animation-delay: 2s;
+  animation-delay: 1.5s; /* Reducido delay */
   animation-fill-mode: forwards;
+  /* Optimizaciones */
+  contain: layout style paint;
 }
 
 @keyframes scrollIndicator {
@@ -155,7 +180,14 @@
   }
 }
 
-/* ----------- RESPONSIVE HERO ----------- */
+/* Optimizaciones para LCP */
+[data-lcp-element="true"] {
+  /* Prioridad alta para el elemento LCP */
+  contain: layout style paint;
+  will-change: transform, opacity;
+}
+
+/* ----------- RESPONSIVE HERO OPTIMIZADO ----------- */
 @media (max-width: 1024px) {
   .nexus-hero {
     padding: 100px 20px 60px;
@@ -190,7 +222,7 @@
   }
 }
 
-/* Reduced motion support */
+/* Reduced motion support - Optimizado */
 @media (prefers-reduced-motion: reduce) {
   .nexus-hero h1,
   .nexus-hero p,
@@ -198,10 +230,38 @@
     animation: none;
     opacity: 1;
     transform: none;
+    transition: none;
   }
   
+  .nexus-hero h1::after,
   .nexus-hero::after {
     animation: none;
-    opacity: 0.5;
+    opacity: 1;
   }
+  
+  .nexus-hero button:hover {
+    transform: none;
+  }
+  
+  .nexus-hero button:hover::before {
+    left: -100%;
+  }
+}
+
+/* Optimizaciones adicionales para performance */
+@media (max-width: 768px) {
+  .nexus-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+  
+  .nexus-hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+}
+
+/* Preload crítico para fuentes */
+@font-face {
+  font-family: 'System Font';
+  font-display: swap;
+  src: local('Segoe UI'), local('Helvetica Neue'), local('Arial');
 } 

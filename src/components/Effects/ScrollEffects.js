@@ -73,8 +73,8 @@ export const FireParticles = ({ children }) => {
       transition={{ duration: 1 }}
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      {/* Generamos 150 partículas de fuego para máxima densidad y cobertura */}
-      {[...Array(150)].map((_, i) => (
+      {/* Generamos 50 partículas de fuego para mejor performance y densidad moderada */}
+      {[...Array(50)].map((_, i) => (
         <motion.div
           key={i}
           className="fire-particle"

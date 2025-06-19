@@ -4,6 +4,7 @@ import Hero from './Hero/Hero';
 import ParallaxSection from './ParallaxSection/ParallaxSection';
 // import LazyComponent from './LazyComponent';
 import SEOMetaTags from './SEO/SEOMetaTags';
+import { initializePerformanceOptimizations, monitorAndOptimize } from '../utils/performanceOptimizer';
 import '../styles/Global.css';
 import '../styles/Effects.css';
 
@@ -42,6 +43,17 @@ const OptimizedLoadingSpinner = () => (
 
 export default function NexusGamingHome({ lang, setLang }) {
   const currentPath = window.location.pathname;
+
+  // Inicializar optimizaciones de performance
+  useEffect(() => {
+    // Aplicar optimizaciones críticas inmediatamente
+    initializePerformanceOptimizations();
+    
+    // Iniciar monitoreo y optimización en tiempo real
+    monitorAndOptimize();
+    
+    console.log('🚀 Optimizaciones de performance aplicadas');
+  }, []);
 
   // Preload inteligente de componentes cuando el usuario hace scroll
   useEffect(() => {
