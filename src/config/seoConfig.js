@@ -47,4 +47,4 @@ export const getPageMetadata = (pageKey) => {
   return seoConfig.pages[pageKey] || seoConfig.pages.home;
 };
 
-export default seoConfig; 
+export default seoConfig;

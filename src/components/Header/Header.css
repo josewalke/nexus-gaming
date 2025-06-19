@@ -92,21 +92,6 @@
   color: #00FFFF;
 }
 
-.nexus-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #00FFFF;
-  transition: width 0.3s ease;
-}
-
-.nexus-nav a:hover::after {
-  width: 100%;
-}
-
 /* Header Controls */
 .nexus-header-controls {
   display: flex;
@@ -267,27 +252,32 @@
   transition: all 0.3s ease;
   position: relative;
   cursor: pointer;
+  display: inline-block;
+  overflow: visible;
 }
 
 .nexus-logo::after {
   content: '';
   position: absolute;
-  bottom: -5px;
   left: 0;
-  width: 0;
+  right: 0;
+  bottom: -6px;
   height: 3px;
+  width: 0;
   background: linear-gradient(90deg, #00FFFF, #FF0033);
-  transition: width 0.4s ease;
   border-radius: 2px;
+  transition: width 0.25s cubic-bezier(.4,1.4,.6,1), background 0.2s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nexus-logo:hover::after {
+  width: 100%;
 }
 
 .nexus-logo:hover {
   text-shadow: 0 0 0px rgba(255, 255, 255, 1), 0 0 0px rgba(0, 255, 255, 0.8);
   transform: scale(1.02);
-}
-
-.nexus-logo:hover::after {
-  width: 100%;
 }
 
 .nexus-menu-toggle {
@@ -503,6 +493,24 @@
   .nexus-logo {
     font-size: 16px;
   }
+  
+  /* Mantener el efecto de línea en móviles pequeños */
+  .nexus-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00FFFF, #FF0033);
+    transition: width 0.4s ease;
+    border-radius: 1px;
+    z-index: 1;
+  }
+
+  .nexus-logo:hover::after {
+    width: 100%;
+  }
 
   .nexus-nav a {
     font-size: 18px;
@@ -534,6 +542,24 @@
 
   .nexus-logo {
     font-size: 18px;
+  }
+  
+  /* Mantener el efecto de línea en landscape */
+  .nexus-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00FFFF, #FF0033);
+    transition: width 0.4s ease;
+    border-radius: 1px;
+    z-index: 1;
+  }
+
+  .nexus-logo:hover::after {
+    width: 100%;
   }
 
   .nexus-nav a,

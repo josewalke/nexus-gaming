@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Logo Effect</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            padding: 50px;
+            margin: 0;
+        }
+        
+        .nexus-logo {
+            font-size: 24px;
+            color: #FFFFFF;
+            white-space: nowrap;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 0 0px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            overflow: visible;
+        }
+
+        .nexus-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00FFFF, #FF0033);
+            transition: width 0.4s ease;
+            border-radius: 2px;
+            z-index: 1;
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+
+        .nexus-logo:hover {
+            text-shadow: 0 0 0px rgba(255, 255, 255, 1), 0 0 0px rgba(0, 255, 255, 0.8);
+            transform: scale(1.02);
+        }
+
+        .nexus-logo:hover::after {
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+        
+        .test-container {
+            text-align: center;
+            margin-top: 100px;
+        }
+        
+        .instructions {
+            margin-top: 30px;
+            color: #ccc;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Test del Efecto de Línea del Logo</h1>
+        <div class="nexus-logo">
+            NEXUS eSPORT VR
+        </div>
+        <div class="instructions">
+            <p>Haz hover sobre el texto "NEXUS eSPORT VR" para ver el efecto de línea con gradiente</p>
+            <p>Deberías ver una línea que aparece desde la izquierda hacia la derecha con colores cian y rojo</p>
+        </div>
+    </div>
+</body>
+</html> 
